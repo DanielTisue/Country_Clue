@@ -4,18 +4,22 @@ import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
 
-import guitar from './images/guitar.png'
+import guitar from './images/guitar_purple.jpg'
 import useStyles from './styles';
 
 const App = () => {
   const classes = useStyles();
   return (
-      <Container maxwidth="lg">
-        <AppBar className={classes.appBar} position="static" color="inherit">
+     
+    <Container maxwidth="lg">
+      <AppBar className={classes.appBar} position="static" color="inherit">
+        <Typography className={classes.heading} variant="h6" align="center">get a...</Typography>
+
+        <Typography className={classes.heading} variant="h4" align="center"> Country Clue</Typography>
+
         <img className={classes.image} src={guitar} alt="guitar" align="center" height="50" />
-        <Typography className={classes.heading} variant="h3" align="center">Country Clue</Typography>
-        
-        </AppBar>
+
+      </AppBar>
 
         <Grow in>
           <Container>
@@ -29,6 +33,8 @@ const App = () => {
             </Grid>
           </Container>
         </Grow>
+
+
       </Container>
   );
 }
