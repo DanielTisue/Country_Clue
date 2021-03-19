@@ -14,9 +14,9 @@ const getPosts = async (req, res) => {
 }
 
 const createPost = async (req, res) => {
-  const { title, message, selectedFile, author, tags } = req.body;
+  const { author, title, message, tags, selectedFile } = req.body;
 
-  const newPostMessage = new PostMessage({ title, message, selectedFile, author, tags })
+  const newPostMessage = new PostMessage({ author, title, message, tags, selectedFile })
 
   try {
     await newPostMessage.save();
