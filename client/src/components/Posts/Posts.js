@@ -4,6 +4,7 @@ import useStyles from './styles';
 
 
 const Posts = () => {
+  const classes = useStyles();
   return (
     <React.Fragment>
       <h1>POSTS</h1>
