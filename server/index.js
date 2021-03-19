@@ -8,13 +8,15 @@ const postRoutes = require('./routes/posts.js');
 
 const app = express();
 
-app.use('/posts', postRoutes);
+
 
 app.use(express.json({ extended: true }));
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.json());
 //app.use(express.urlencoded()); -documentation says to use this but error comes stating body-parser is deprecated...hmmm...possibly more research on this needed
 app.use(cors());
+
+app.use('/posts', postRoutes);
 
 const PORT = process.env.PORT || 5000;
 
