@@ -1,5 +1,6 @@
 import React from 'react';
 import './Post.css';
+import heart from '../Images/LikeCount.svg'
 
 class Post extends React.Component {
 
@@ -11,7 +12,7 @@ class Post extends React.Component {
 
   renderTags(tags) {
     return tags.map(tag => {
-      return <span key={tag}>{tag}</span>
+      return <span key={String}>{tag}</span>
     })
   }
 
@@ -19,10 +20,10 @@ class Post extends React.Component {
     const { post } = this.props;
     return ( 
     <div className= "post">
-            <div>{post.likeCount}</div>
+            <div className="likeCount">{post.likeCount} <img className="like-icon" alt="like-icon" src={heart} /></div>
             <h3>{post.title}</h3>
-            <img src={post.image} />
-            <p>{post.message}</p>
+            <img alt="placeHolder" src={post.image} />
+            <p className="message">{post.message}</p>
             <p>{post.tags}</p>
             <p>{this.renderDate(post.createdAt)} - {post.author}</p>
             <button className="read-more">Read more</button>
