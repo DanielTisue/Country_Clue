@@ -1,4 +1,5 @@
 import React from 'react';
+import './Post.css';
 
 class Post extends React.Component {
 
@@ -17,14 +18,14 @@ class Post extends React.Component {
   render(){
     const { post } = this.props;
     return ( 
-    <div className= "post" key={post._id}>
+    <div className= "post">
             <div>{post.likeCount}</div>
             <h3>{post.title}</h3>
-            <div>{post.image}</div>
+            <img src={post.image} />
             <p>{post.message}</p>
             <p>{post.tags}</p>
             <p>{this.renderDate(post.createdAt)} - {post.author}</p>
-            <button className="button">Read more</button>
+            <button className="read-more">Read more</button>
         </div>
         );
   }

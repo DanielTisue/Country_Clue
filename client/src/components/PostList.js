@@ -16,14 +16,17 @@ class PostList extends React.Component {
   }
 
 
-  renderList() {
-    return this.state.posts.map( post => {
-    return <Post post={post} />
-  });
-  }
+  // renderList() {
+  //   return this.state.posts.map( post => {
+  //   return <Post post={post} key={post._id} />
+  // });
+  // }
 
 render(){
-  return <div>{this.renderList()}</div>;
+ return this.state.posts.map( post => {
+    return <Post post={post} key={post._id} />
+  });
+  // return <div>{this.renderList()}</div>;
   }
 }
 
