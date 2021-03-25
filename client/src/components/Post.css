@@ -13,20 +13,20 @@
   background-color: cadetblue;
 }
 
-.likeCount {
+.post-likeCount {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   max-width: 275px;
 }
 
-.like-icon {
+.post-like-icon {
   height: 25px;
   width: 25px;
   border: none;
 }
 
-img {
+.post-img {
   width: 350px;
   border: 1px solid black;
   height: 150px;
@@ -43,10 +43,3 @@ img {
   margin: 0 auto;
 }
 
-.showTitle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #171717;
-  width: 100px;
-}

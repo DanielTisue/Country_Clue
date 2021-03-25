@@ -28,12 +28,12 @@ class Post extends React.Component {
     const { post } = this.props;
     return ( 
     <div className="post" onClick={this.showPost} >
-            <div className="likeCount">{post.likeCount} <img className="like-icon" alt="like-icon" src={heart} /></div>
+            <div className="post-likeCount">{post.likeCount} <img className="post-like-icon" alt="like-icon" src={heart} /></div>
             <h3>{post.title}</h3>
-            <img alt="placeHolder" src={post.image} />
-            <p className="description">{post.description}</p>
-            <p>{post.tags}</p>
-            <p>{this.renderDate(post.createdAt)} - {post.author}</p>
+            <img className="post-img" alt="placeHolder" src={post.image} />
+            <p className="post-description">{post.description}</p>
+            <p className="post-tags">{post.tags}</p>
+            <p className="post-date">{this.renderDate(post.createdAt)} - {post.author}</p>
             <button className="read-more" >Read more</button>
         </div>
         );

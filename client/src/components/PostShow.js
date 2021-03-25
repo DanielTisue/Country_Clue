@@ -18,9 +18,7 @@ class PostShow extends React.Component {
     const res = await axios.get(
       `http://localhost:5000/posts/${this.props.match.params.id}`
       );
-    // console.log(res);
     this.setState({postShow: res.data});
-    // console.log(this.state.postShow.title);
   }
 
   renderDate(dateString) {
@@ -29,18 +27,19 @@ class PostShow extends React.Component {
   }
 
   render(){
+
     const postShow = this.state.postShow;
-    // const { post } = this.props;
 
     return ( 
           <div className="postShow-container">
-            <div className="likeCount">{postShow.likeCount}</div>
-            <h3>{postShow.title}</h3>
-            <img alt="show-image" src={postShow.image} />
+            <div className="show-post">
+            <div className="show-likeCount">{postShow.likeCount}</div>
+            <h3 className="show-title">{postShow.title}</h3>
+            <img className="show-image" alt="" src={postShow.image} />
             <p className="show-article">{postShow.message}</p>
             <p>{postShow.tags}</p>
             <p>{this.renderDate(postShow.createdAt)} - {postShow.author}</p>
-            
+            </div>
           </div>
           
           )
