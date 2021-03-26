@@ -1,18 +1,16 @@
 
 .post {
   width: 300px;
-  height: 400px;
+  height: 450px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* border: 1px solid #171717; */
   border-radius: 5px;
   padding: 25px 15px;
   box-shadow: 1px 1px  5px #d2d2d2;
   margin: 8px;
   background-color: #ffffff;
-  /* filter: brightness(100%); */
 }
 
 .post-item {
@@ -54,19 +52,26 @@
 .post-tags {
   font-size: 13px;
   line-height: 18px;
-  /* text-align: center; */
-  padding-bottom: 10px;
+  text-align: right;
+  padding-bottom: 20px;
 }
 
 .read-more {
   padding: 8px 20px;
-  background-color: purple;
   font-size: 15px;
   max-width: 75%;
   border-radius: 5px;
   border: none;
   margin: 0 auto;
   color: #ffffff;
+  background-color: #ba8ade;
+  box-shadow: 3px 3px 3px #d2d2d2;
+  opacity: .75;
+}
+
+.read-more:hover {
+  opacity: 1;
+  box-shadow: 2px 2px 5px #171717;
 }
 
 .post-date {

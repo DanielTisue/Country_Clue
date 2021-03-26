@@ -5,11 +5,22 @@
    font-family: Arial, Helvetica, sans-serif;
  }
 
-html {
-  height: 100%;
+ html {
+   height: 200%;
+ }
+
+body {
+  /* height: 500%; */
   background: hsla(245, 92%, 61%, 1);
   background: linear-gradient(120deg, hsla(245, 92%, 61%, 1) 22%, hsla(280, 97%, 59%, 1) 100%) no-repeat;
   background-size: cover;
   /* filter: brightness(50%); */
+}
+
+#root {
+  display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
+    grid-gap: 15px;
 }
 

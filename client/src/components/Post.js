@@ -27,8 +27,8 @@ class Post extends React.Component {
   render(){
     const { post } = this.props;
     return ( 
-    
-    <div className="post" onClick={this.showPost} >
+    // <div className="post-container">
+      <div className="post" onClick={this.showPost} >
             <div className="post-likeCount post-item">{post.likeCount} <img className="post-like-icon" alt="like-icon" src={heart} /></div>
             <h3 className="post-title post-item">{post.title}</h3>
             <img className="post-img post-item" alt="placeHolder" src={post.image} />
@@ -37,7 +37,7 @@ class Post extends React.Component {
             <button className="read-more post-item" >Read more</button>
             <p className="post-date">{this.renderDate(post.createdAt)}</p>
         </div>
-       
+    // </div>   
         );
   }
 }
