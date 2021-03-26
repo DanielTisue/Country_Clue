@@ -3,6 +3,11 @@ const Post = require('../models/postModel');
 
 const router = express.Router();
 
+router.get('/', async (req, res) => {
+  const posts = await Post.find();
+  res.json(posts);
+});
+
 router.post('/', async (req, res) => {
 	// retrieve data
 	const { title, description, image, message, tags, createdAt, author } = req.body;
@@ -17,7 +22,6 @@ router.post('/', async (req, res) => {
 		createdAt,
 		author
 	});
-
 	//save it
   try {
     const savedPost = await newPost.save();
@@ -25,11 +29,6 @@ router.post('/', async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-});
-
-router.get('/', async (req, res) => {
-  const posts = await Post.find();
-  res.json(posts);
 });
 
 router.get('/:id', async (req, res) => {
