@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: purple;
+  /* background-color: purple; */
 }
 
 .postForm {
@@ -33,7 +33,7 @@
 }
 
 #postForm-item-1 {
-padding-top: 30px;
+  padding-top: 30px;
 }
 
 input {
