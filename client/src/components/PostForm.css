@@ -5,11 +5,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: purple; */
 }
 
 .postForm {
-  border: 1px solid black;
+  box-shadow: 5px 5px 5px 5px #d2d2d2;
   border-radius: 10px;
   height: 700px;
   width: 550px;
@@ -22,7 +21,7 @@
 
 .postForm-title {
   font-family: Arial, Helvetica, sans-serif;
-  color: purple;
+  color: black;
   text-align: center;
   /* border-bottom: 1px solid #d2d2d2; */
 }
@@ -63,8 +62,6 @@ textarea {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
   line-height: 19px;
-  
-  /* color: rgba(0, 0, 0, .3); */
 }
 
 label {
@@ -74,7 +71,7 @@ label {
   padding-top: 5px;
   display: block;
   font-weight: bold;
-  color: #ba8ade;
+  color: #000;
   text-shadow: 0 1px 1px #d2d2d2;
 }
 
@@ -91,7 +88,7 @@ label {
   letter-spacing: 2px;
   text-shadow: 0 .5px .5px #d2d2d2;
   color: #ffffff;
-  background-color: #ba8ade;
+  background-color: #000;
   opacity: .75;
 }
 
