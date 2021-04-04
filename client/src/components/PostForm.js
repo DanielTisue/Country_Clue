@@ -14,7 +14,6 @@ class PostForm extends Component {
       image: "",
       message: "",
       tags: "",
-      createdAt:"",
       author: "",
     }
   }
@@ -42,24 +41,25 @@ class PostForm extends Component {
   // }
 
   render() {
-    const { title, description, image, message, tags, createdAt, author } = this.state;
+    const { title, description, image, message, tags, author } = this.state;
     return (
       
       <div className="postForm-container">
         
         <form className="postForm" onSubmit={this.submitHandler}>
+          <div className="internalPostForm-alignment">
           <h3 className="postForm-title">Make it count!</h3>
           
           <div className="postForm-item" id="postForm-item-1">
             <label>Title</label>
-            <input type="text" name="title" value={title} required onChange={this.changeHandler} />
+            <input type="text" name="title" placeholder="Enter the title of your article" value={title} required onChange={this.changeHandler} />
           </div>
           <div className="postForm-item">
             <label>Description</label>
-            <input type="text" name="description" value={description} required onChange={this.changeHandler} />
+            <input type="text" name="description" placeholder="Enter a short description of your article" value={description} required onChange={this.changeHandler} />
           </div>
           <div className="postForm-item">
-            <label className="file-upload">Choose and upload your image below</label>
+            <label className="file-upload">Upload your image below</label>
             <input id="file-upload-input" type="file" name="image" accept="image/*" value={image} onChange={this.changeHandler} />
           </div>
           <div className="postForm-item">
@@ -68,18 +68,22 @@ class PostForm extends Component {
           </div>
            <div className="postForm-item">
              <label>Tags</label>
-            <input type="text" name="tags" value={tags} required onChange={this.changeHandler} />
+            <input type="text" name="tags" placeholder="Tags will help organize your articles written #tag" value={tags} required onChange={this.changeHandler} />
           </div>
           <div className="postForm-item">
             <label>Author</label>
-            <input type="text" name="author" value={author} onChange={this.changeHandler} />
+            <input type="text" name="author" placeholder="You could use a pseudonym" value={author} onChange={this.changeHandler} />
           </div>
-           <div className="postForm-item">
+           {/* <div className="postForm-item">
             <label>Date</label>
-            <input type="text" name="createdAt" value={createdAt} onChange={this.changeHandler} />
-          </div>
+            <input type="date" name="createdAt" value={createdAt} onChange={this.changeHandler} />
+          </div> */}
+          <div className="postForm-item">
           <button className="postForm-button" type="submit">Submit</button>
+          </div>
+          </div>
         </form>
+        
         </div>
         
     )

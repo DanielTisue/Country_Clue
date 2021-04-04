@@ -24,8 +24,8 @@ const postSchema = new mongoose.Schema({
     default: 0
   },
   createdAt: {
-    type: Date,
-    required: true
+    type: Date, 
+    default: Date.now 
   },
   author: String,
 });
