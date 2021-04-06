@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-// import './Post.css';
+import '../style.css';
 // import heart from '../Images/LikeCount.svg';
 
 class PostShow extends React.Component {
@@ -31,7 +31,7 @@ class PostShow extends React.Component {
     const postShow = this.state.postShow;
 
     return ( 
-          <div className="postShow-container">
+          // <div className="container">
             <div className="show-post">
             <div className="show-likeCount">{postShow.likeCount}</div>
             <h3 className="show-title">{postShow.title}</h3>
@@ -40,7 +40,7 @@ class PostShow extends React.Component {
             <p>{postShow.tags}</p>
             <p>{this.renderDate(postShow.createdAt)} - {postShow.author}</p>
             </div>
-          </div>
+          // </div>
           
           )
   }

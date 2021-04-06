@@ -18,17 +18,21 @@ class PostList extends React.Component {
   }
 
 
-  // renderList() {
-  //   return this.state.posts.map( post => {
-  //   return <Post post={post} key={post._id} />
-  // });
-  // }
-
-render(){
- return this.state.posts.map( post => {
+  renderList() {
+    return this.state.posts.map( post => {
     return <Post post={post} key={post._id} />
   });
-  // return <div>{this.renderList()}</div>;
+  }
+
+render(){
+//  return this.state.posts.map( post => {
+//     return <Post post={post} key={post._id} />
+//   });
+  return <div className="container">
+            <div className="flex-container">
+              {this.renderList()}
+            </div>
+          </div>;
   }
 }
 
