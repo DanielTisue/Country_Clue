@@ -36,5 +36,8 @@ router.get('/:id', async (req, res) => {
   res.json(post);
 });
 
+router.get('/:id/edit', async (req, res) => {
+  res.send('This works');
+});
 
 module.exports = router;
