@@ -4,6 +4,7 @@ import Home from './components/Home';
 import PostList from './components/PostList';
 import PostShow from './components/PostShow';
 import PostForm from './components/PostForm';
+import EditForm from './components/PostEdit'
 import './style.css';
 
 class App extends React.Component{
@@ -14,9 +15,10 @@ class App extends React.Component{
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/posts/:id" component={PostShow} />
-          <Route path="/posts" component={PostList} />
-          <Route path="/create" component={PostForm} />
+          <Route exact path="/posts/:id" component={PostShow} />
+          <Route exact path="/posts/:id/edit" component={EditForm} />
+          <Route exact path="/posts" component={PostList} />
+          <Route exact path="/create" component={PostForm} />
         </Switch>
       </BrowserRouter>
     )

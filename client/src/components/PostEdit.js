@@ -4,7 +4,7 @@ import './PostForm.css';
 
 
 
-class PostForm extends Component {
+class EditForm extends Component {
   constructor(props) {
     super(props)
 
@@ -14,8 +14,25 @@ class PostForm extends Component {
       image: "",
       message: "",
       tags: "",
-      author: "",
+      author: ""
     }
+  }
+
+   componentDidMount() {
+    axios.get(`http://localhost:5000/posts/${this.props.match.params.id}`)
+      .then(res => {
+        this.setState({
+          title: res.data.title,
+          description: res.data.description,
+          image: res.data.image,
+          message: res.data.message,
+          tags: res.data.tags,
+          author: res.data.author
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
   changeHandler = e => {
@@ -25,7 +42,7 @@ class PostForm extends Component {
   submitHandler = e => {
     e.preventDefault()
     console.log(this.state);
-    axios.post("http://localhost:5000/posts/", this.state)
+    axios.put(`http://localhost:5000/posts/${this.props.match.params.id}`, this.state)
     .then(res => {
       console.log(res);
     })
@@ -33,8 +50,8 @@ class PostForm extends Component {
       console.log(err);
     })
 
-     // Redirect to Post List 
-    this.props.history.push('/posts')
+     // Redirect to Student List 
+    this.props.history.push('/posts/:id')
   }
 
   render() {
@@ -42,10 +59,10 @@ class PostForm extends Component {
     return (
       
       <div className="postForm-container">
-        
+       
         <form className="postForm" onSubmit={this.submitHandler}>
           <div className="internalPostForm-alignment">
-          <h3 className="postForm-title">Make it count!</h3>
+          <h3 className="postForm-title">Edit Form</h3>
           
           <div className="postForm-item" id="postForm-item-1">
             <label>Title</label>
@@ -83,4 +100,4 @@ class PostForm extends Component {
   }
 }
 
-export default PostForm;
+export default EditForm;

@@ -3,11 +3,7 @@ const Post = require('../models/postModel');
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-  const posts = await Post.find();
-  res.json(posts);
-});
-
+// CREATE
 router.post('/', async (req, res) => {
 	// retrieve data
 	const { title, description, image, message, tags, createdAt, author } = req.body;
@@ -31,13 +27,31 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
-  const post = await Post.findById(req.params.id);
-  res.json(post);
+// GET
+router.get('/', async (req, res) => {
+  const posts = await Post.find();
+  res.json(posts);
 });
 
-router.get('/:id/edit', async (req, res) => {
-  res.send('This works');
+//GET SINGLE POST
+router.get('/:id', async (req, res) => {
+	try {
+		const post = await Post.findById(req.params.id);
+		res.json(post);
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+//UPDATE POST
+router.put('/:id', (req, res) => {
+	const editPost = Post.findByIdAndUpdate(req.params.id);
+	res.json(editPost);
+});
+
+//DELETE POST
+router.delete('/:id', (req, res) => {
+	Post.findByIdAndRemove(req.params.id);
 });
 
 module.exports = router;
