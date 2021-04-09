@@ -8,6 +8,14 @@ class EditForm extends Component {
   constructor(props) {
     super(props)
 
+      this.onChangeTitle = this.onChangeTitle.bind(this);
+      this.onChangeDescription = this.onChangeDescription.bind(this);
+      this.onChangeImage = this.onChangeImage.bind(this);
+      this.onChangeMessage = this.onChangeMessage.bind(this);
+      this.onChangeTags = this.onChangeTags.bind(this);
+      this.onChangeAuthor = this.onChangeAuthor.bind(this);    
+      this.onSubmitHandler = this.onSubmitHandler.bind(this); 
+
     this.state = {
       title: "",
       description: "",
@@ -35,58 +43,84 @@ class EditForm extends Component {
       })
   }
 
-  changeHandler = e => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
+  // I feel like there is a way easier to do this and that I already found and applied this but we'll see
 
-  submitHandler = e => {
+      onChangeTitle(e) {
+        this.setState({title: e.target.value})
+      } 
+      onChangeDescription(e) {
+        this.setState({description: e.target.value})
+      } 
+      onChangeImage(e) {
+        this.setState({image: e.target.value})
+      }
+      onChangeMessage(e) {
+        this.setState({message: e.target.value})
+      } 
+      onChangeTags(e) {
+        this.setState({tags: e.target.value})
+      }
+      onChangeAuthor(e) {
+        this.setState({author: e.target.value})
+      }
+
+  onSubmitHandler = e => {
     e.preventDefault()
-    console.log(this.state);
-    axios.put(`http://localhost:5000/posts/${this.props.match.params.id}`, this.state)
+    const postObject = {
+      title: this.state.title, 
+      description: this.state.description, 
+      image: this.state.image, 
+      message: this.state.message, 
+      tags: this.state.tags, 
+      author: this.state.author
+    };
+    // console.log(this.state);
+    axios.put(`http://localhost:5000/posts/${this.props.match.params.id}`, postObject)
     .then(res => {
-      console.log(res);
+      // console.log(res.data);
+      // console.log("Post successfully updated")
     })
     .catch(err => {
       console.log(err);
     })
 
-     // Redirect to Student List 
-    this.props.history.push('/posts/:id')
+     // Redirect to Post  
+    this.props.history.push(`/posts/${this.props.match.params.id}`);
   }
 
   render() {
-    const { title, description, image, message, tags, author } = this.state;
+    
     return (
       
       <div className="postForm-container">
        
-        <form className="postForm" onSubmit={this.submitHandler}>
+        <form className="postForm" onSubmit={this.onSubmitHandler}>
           <div className="internalPostForm-alignment">
           <h3 className="postForm-title">Edit Form</h3>
           
           <div className="postForm-item" id="postForm-item-1">
             <label>Title</label>
-            <input type="text" name="title" placeholder="Enter the title of your article" value={title} required onChange={this.changeHandler} />
+            <input type="text" name="title" placeholder="Enter the title of your article" value={this.state.title} required onChange={this.onChangeTitle} />
           </div>
           <div className="postForm-item">
             <label>Description</label>
-            <input type="text" name="description" placeholder="Enter a short description of your article" value={description} required onChange={this.changeHandler} />
+            <input type="text" name="description" placeholder="Enter a short description of your article" value={this.state.description} required onChange={this.onChangeDescription} />
           </div>
           <div className="postForm-item">
             <label className="file-upload">Upload your image below</label>
-            <input id="file-upload-input" type="file" name="image" accept="image/*" value={image} onChange={this.changeHandler} />
+            <input id="file-upload-input" type="file" name="image" accept="image/*" value={this.state.image} onChange={this.onChangeImage} />
           </div>
           <div className="postForm-item">
             <label>Article</label>
-            <textarea placeholder="Type your article here" type="text" name="message" value={message} required onFocus={(e) => e.target.placeholder = ""} onChange={this.changeHandler} ></textarea>
+            <textarea type="text" name="message" value={this.state.message} required onChange={this.onChangeMessage} ></textarea>
           </div>
            <div className="postForm-item">
              <label>Tags</label>
-            <input type="text" name="tags" placeholder="Tags will help organize your articles written #tag" value={tags} required onChange={this.changeHandler} />
+            <input type="text" name="tags" placeholder="Tags will help organize your articles written #tag" value={this.state.tags} required onChange={this.onChangeTags} />
           </div>
           <div className="postForm-item">
             <label>Author</label>
-            <input type="text" name="author" placeholder="You could use a pseudonym" value={author} onChange={this.changeHandler} />
+            <input type="text" name="author" placeholder="You could use a pseudonym" value={this.state.author} onChange={this.onChangeAuthor} />
           </div>
           <div className="postForm-item">
           <button className="postForm-button" type="submit">Submit</button>
