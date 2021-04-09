@@ -44,16 +44,14 @@ router.get('/:id', async (req, res) => {
 });
 
 //UPDATE POST
-router.put('/:id', (req, res, next) => {
- Post.findByIdAndUpdate(req.params.id, { $set: req.body }, async (err, data) => {
-  try {
-      await res.json(data);
-      console.log('Post updated successfully !');
-			res.redirect("http://localhost:3000/post/:id");
-    }catch (err) {
-      console.log(err);
-    } 
-    });
+router.put('/:id', function(req, res, next) {
+  Post.findByIdAndUpdate(req.params.id, req.body, (err, updatedPost) => {
+    if (err) {
+			console.log(err);
+			// return next(err);
+		} 
+    res.json(updatedPost);
+  });
 });
 
 //DELETE POST

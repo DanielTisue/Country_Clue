@@ -77,15 +77,15 @@ class EditForm extends Component {
     // console.log(this.state);
     axios.put(`http://localhost:5000/posts/${this.props.match.params.id}`, postObject)
     .then(res => {
-      // console.log(res.data);
-      // console.log("Post successfully updated")
+      console.log(res.data);
+      console.log("Post successfully updated")
     })
     .catch(err => {
       console.log(err);
     })
-
+  
      // Redirect to Post  
-    this.props.history.push(`/posts/${this.props.match.params.id}`);
+    // this.props.history.push(`/posts/${this.props.match.params.id}`);
   }
 
   render() {
@@ -125,6 +125,7 @@ class EditForm extends Component {
           <div className="postForm-item">
           <button className="postForm-button" type="submit">Submit</button>
           </div>
+           <button className="delete-button">Back to post</button>
           </div>
         </form>
         
