@@ -79,13 +79,14 @@ class EditForm extends Component {
     .then(res => {
       console.log(res.data);
       console.log("Post successfully updated")
+    }) 
+    // Redirect to Post  
+    .then (res => {
+      this.props.history.push(`/posts/${this.props.match.params.id}`);
     })
     .catch(err => {
       console.log(err);
     })
-  
-     // Redirect to Post  
-    // this.props.history.push(`/posts/${this.props.match.params.id}`);
   }
 
   render() {
@@ -125,7 +126,7 @@ class EditForm extends Component {
           <div className="postForm-item">
           <button className="postForm-button" type="submit">Submit</button>
           </div>
-           <button className="delete-button">Back to post</button>
+           <button className="back-button">Back to post</button>
           </div>
         </form>
         

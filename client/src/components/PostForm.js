@@ -29,12 +29,13 @@ class PostForm extends Component {
     .then(res => {
       console.log(res);
     })
+      // Redirect to Post  
+    .then (res => {
+      this.props.history.push('/posts');
+    })
     .catch(err => {
       console.log(err);
-    })
-
-     // Redirect to Post List 
-    this.props.history.push('/posts')
+    })    
   }
 
   render() {
@@ -74,6 +75,7 @@ class PostForm extends Component {
           <div className="postForm-item">
           <button className="postForm-button" type="submit">Submit</button>
           </div>
+           <button className="back-button">Back to all posts</button>
           </div>
         </form>
         
