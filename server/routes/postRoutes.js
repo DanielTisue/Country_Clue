@@ -55,8 +55,16 @@ router.put('/:id', function(req, res, next) {
 });
 
 //DELETE POST
-// router.delete('/:id', (req, res) => {
-// 	Post.findByIdAndRemove(req.params.id);
-// });
+router.delete('/:id', (req, res) => {
+	Post.findByIdAndRemove(req.params.id, (err, data) => {
+		if (err) {
+			console.log(err);
+		} else {
+			res.status(200).json({
+				msg: data
+			})
+		}
+	});
+});
 
 module.exports = router;

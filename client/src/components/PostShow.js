@@ -1,9 +1,14 @@
 import axios from 'axios';
-import React from 'react';
+import React, { Component } from 'react';
+// import { Link } from 'react-router-dom';
 import '../style.css';
 // import heart from '../Images/LikeCount.svg';
 
-class PostShow extends React.Component {
+class PostShow extends Component {
+  constructor(props) {
+    super(props);
+    this.deletePost = this.deletePost.bind(this);
+  }
    
   state = {
     postShow: {}
@@ -26,6 +31,20 @@ class PostShow extends React.Component {
     return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
   }
 
+  deletePost() {
+    axios.delete(`http://localhost:5000/posts/${this.props.match.params.id}`)
+      .then((res) => {
+        console.log('Post deleted');
+      })
+        // Redirect to Post  
+      .then (res => {
+        this.props.history.push('/posts');
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
   render(){
 
     const postShow = this.state.postShow;
@@ -39,6 +58,7 @@ class PostShow extends React.Component {
             <p className="show-article">{postShow.message}</p>
             <p>{postShow.tags}</p>
             <p>{this.renderDate(postShow.createdAt)} - {postShow.author}</p>
+            <button onClick={this.deletePost}>Delete</button>
             </div>
           // </div>
           
