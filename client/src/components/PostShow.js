@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
-import '../style.css';
+import './PostShow.css';
 // import heart from '../Images/LikeCount.svg';
 
 class PostShow extends Component {
@@ -50,17 +50,32 @@ class PostShow extends Component {
     const postShow = this.state.postShow;
 
     return ( 
-          // <div className="container">
+          <div className="postShow-container">
             <div className="show-post">
-            <div className="show-likeCount">{postShow.likeCount}</div>
-            <h3 className="show-title">{postShow.title}</h3>
-            <img className="show-image" alt="" src={postShow.image} />
-            <p className="show-article">{postShow.message}</p>
-            <p>{postShow.tags}</p>
-            <p>{this.renderDate(postShow.createdAt)} - {postShow.author}</p>
-            <button onClick={this.deletePost}>Delete</button>
+
+              <div className="show-item">
+              <div className="show-likeCount">{postShow.likeCount}</div>
+              </div>
+              <div className="show-item">
+              <h3 className="show-title">{postShow.title}</h3>
+              </div>
+              <div className="show-item">
+              <img className="show-image" alt="" src={postShow.image} />
+              </div>
+              <div className="show-item">
+              <p className="show-article">{postShow.message}</p>
+              </div>
+              <div className="show-item">
+              <div className="show-tags">{postShow.tags}</div>
+              </div>
+              <div className="show-item">
+              <div className="show-date">{this.renderDate(postShow.createdAt)} - {postShow.author}</div>
+              </div>
+              <div className="show-item">
+              <button onClick={this.deletePost}>Delete</button>
+              </div>
             </div>
-          // </div>
+          </div>
           
           )
   }
