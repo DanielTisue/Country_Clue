@@ -13,7 +13,7 @@ class EditForm extends Component {
       this.onChangeImage = this.onChangeImage.bind(this);
       this.onChangeMessage = this.onChangeMessage.bind(this);
       this.onChangeTags = this.onChangeTags.bind(this);
-      this.onChangeAuthor = this.onChangeAuthor.bind(this);    
+      // this.onChangeAuthor = this.onChangeAuthor.bind(this);    
       this.onSubmitHandler = this.onSubmitHandler.bind(this); 
 
     this.state = {
@@ -22,7 +22,7 @@ class EditForm extends Component {
       image: "",
       message: "",
       tags: "",
-      author: ""
+      // author: ""
     }
   }
 
@@ -34,8 +34,8 @@ class EditForm extends Component {
           description: res.data.description,
           image: res.data.image,
           message: res.data.message,
-          tags: res.data.tags,
-          author: res.data.author
+          tags: res.data.tags
+          // author: res.data.author
         });
       })
       .catch((error) => {
@@ -60,9 +60,9 @@ class EditForm extends Component {
       onChangeTags(e) {
         this.setState({tags: e.target.value})
       }
-      onChangeAuthor(e) {
-        this.setState({author: e.target.value})
-      }
+      // onChangeAuthor(e) {
+      //   this.setState({author: e.target.value})
+      // }
 
   onSubmitHandler = e => {
     e.preventDefault()
@@ -72,7 +72,6 @@ class EditForm extends Component {
       image: this.state.image, 
       message: this.state.message, 
       tags: this.state.tags, 
-      author: this.state.author
     };
     // console.log(this.state);
     axios.put(`http://localhost:5000/posts/${this.props.match.params.id}`, postObject)
@@ -119,10 +118,10 @@ class EditForm extends Component {
              <label>Tags</label>
             <input type="text" name="tags" placeholder="Tags will help organize your articles written #tag" value={this.state.tags} required onChange={this.onChangeTags} />
           </div>
-          <div className="postForm-item">
+          {/* <div className="postForm-item">
             <label>Author</label>
             <input type="text" name="author" placeholder="You could use a pseudonym" value={this.state.author} onChange={this.onChangeAuthor} />
-          </div>
+          </div> */}
           <div className="postForm-item">
           <button className="postForm-button" type="submit">Submit</button>
           </div>

@@ -18,7 +18,6 @@ const postSchema = new mongoose.Schema({
     required: true 
   },
   tags: {type: [String]},
-  selectedFile: String,
   likeCount: {
     type: Number,
     default: 0
@@ -27,7 +26,7 @@ const postSchema = new mongoose.Schema({
     type: Date, 
     default: Date.now 
   },
-  author: String,
+  author: "",
 });
 
 const Post = mongoose.model('Post', postSchema);

@@ -23,7 +23,6 @@ mongoose.set('useCreateIndex', true);
 
 app.use('/posts', postRoutes);
 
-
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);
 })
