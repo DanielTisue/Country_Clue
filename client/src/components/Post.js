@@ -1,6 +1,7 @@
 import React from 'react';
 import './Post.css';
-import heart from '../Images/LikeCount.svg'
+import heart from '../Images/LikeCount.svg';
+import tagImage from '../Images/tag.svg';
 
 class Post extends React.Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class Post extends React.Component {
 
   renderTags(tags) {
     return tags.map(tag => {
-      return <span key={String}>{tag}</span>
+      return <span className="tag" key={String}>{tag}<img className="tag-svg" src={tagImage} alt="tag" /></span>
     });
   }
 
@@ -33,7 +34,7 @@ class Post extends React.Component {
             <h3 className="post-title post-item">{post.title}</h3>
             <img className="post-img post-item" alt="placeHolder" src={post.image} />
             <p className="post-description post-item">{post.description}</p>
-            <p className="post-tags post-item">{post.tags}</p>
+            <p className="post-tags post-item">{this.renderTags(post.tags)}</p>
             <button className="read-more post-item" >Read more</button>
             <p className="post-date">{this.renderDate(post.createdAt)}</p>
         </div>
