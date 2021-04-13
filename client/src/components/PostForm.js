@@ -39,9 +39,9 @@ class PostForm extends Component {
       console.log(res);
     })
       // Redirect to Post  
-    // .then (res => {
-    //   this.props.history.push('/posts');
-    // })
+    .then (res => {
+      this.props.history.push('/posts');
+    })
     .catch(err => {
       console.log(err);
     })    
