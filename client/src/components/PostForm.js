@@ -33,10 +33,11 @@ class PostForm extends Component {
 
   submitHandler = e => {
     e.preventDefault()
-    console.log(this.state);
+    // console.log(this.state);
     axios.post("http://localhost:5000/posts/", this.state)
     .then(res => {
       console.log(res);
+      alert("your post has been submitted succesfully");
     })
       // Redirect to Post  
     .then (res => {
