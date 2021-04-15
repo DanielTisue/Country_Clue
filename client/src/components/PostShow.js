@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import './PostShow.css';
 // import heart from '../Images/LikeCount.svg';
+import tagImage from '../Images/tag.svg';
 
 class PostShow extends Component {
   constructor(props) {
@@ -44,6 +45,12 @@ class PostShow extends Component {
         console.log(err);
       })
   }
+
+  //  renderTags(tags) {
+  //   return tags.map(tag => {
+  //     return <span className="tag" key={tag}>{tag}<img className="tag-svg" src={tagImage} alt="tag" /></span>
+  //   });
+  // }
 
   render(){
 

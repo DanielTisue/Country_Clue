@@ -16,7 +16,7 @@ class Post extends React.Component {
 
   renderTags(tags) {
     return tags.map(tag => {
-      return <span className="tag" key={String}>{tag}<img className="tag-svg" src={tagImage} alt="tag" /></span>
+      return <span className="tag" key={tag}>{tag}<img className="tag-svg" src={tagImage} alt="tag" /></span>
     });
   }
 
