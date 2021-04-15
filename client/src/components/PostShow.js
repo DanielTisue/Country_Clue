@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import './PostShow.css';
 // import heart from '../Images/LikeCount.svg';
-import tagImage from '../Images/tag.svg';
+// import tagImage from '../Images/tag.svg';
 
 class PostShow extends Component {
   constructor(props) {
