@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import './PostShow.css';
 // import heart from '../Images/LikeCount.svg';
-// import tagImage from '../Images/tag.svg';
+import tagImage from '../Images/tag.svg';
 
 class PostShow extends Component {
   constructor(props) {
@@ -12,7 +12,16 @@ class PostShow extends Component {
   }
    
   state = {
-    postShow: {}
+    postShow: {
+      likeCount: "",
+      title: "",
+      image:"",
+      message: "",
+      tags: [],
+      createdAt: "",
+      author:""
+
+    }
   }
 
   componentDidMount() {
@@ -46,11 +55,11 @@ class PostShow extends Component {
       })
   }
 
-  //  renderTags(tags) {
-  //   return tags.map(tag => {
-  //     return <span className="tag" key={tag}>{tag}<img className="tag-svg" src={tagImage} alt="tag" /></span>
-  //   });
-  // }
+   renderTags(tags) {
+    return tags.map(tag => {
+      return <span className="postShow-tag" key={tag}>{tag}<img className="postShow-tagImage" src={tagImage} alt="tag" /></span>
+    });
+  }
 
   render(){
 
@@ -66,18 +75,20 @@ class PostShow extends Component {
               <div className="show-item">
               <h3 className="show-title">{postShow.title}</h3>
               </div>
+               <div className="show-item">
+              <div className="show-date">{this.renderDate(postShow.createdAt)} - {postShow.author}</div>
+              </div>
               <div className="show-item">
               <img className="show-image" alt="" src={postShow.image} />
+              </div>
+               <div className="show-item-tags">
+              <div className="show-tags">{this.renderTags(postShow.tags)}</div>
               </div>
               <div className="show-item">
               <p className="show-article">{postShow.message}</p>
               </div>
-              <div className="show-item">
-              <div className="show-tags">{postShow.tags}</div>
-              </div>
-              <div className="show-item">
-              <div className="show-date">{this.renderDate(postShow.createdAt)} - {postShow.author}</div>
-              </div>
+             
+             
               <div className="show-item">
               <button onClick={this.deletePost}>Delete</button>
               </div>
