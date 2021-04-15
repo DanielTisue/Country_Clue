@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import './PostShow.css';
-// import heart from '../Images/LikeCount.svg';
+import heart from '../Images/LikeCount.svg';
 import tagImage from '../Images/tag.svg';
 
 class PostShow extends Component {
@@ -70,13 +70,13 @@ class PostShow extends Component {
             <div className="show-post">
 
               <div className="show-item">
-              <div className="show-likeCount">{postShow.likeCount}</div>
+              <div className="show-likeCount"><span className="show-heartSvg"><img className="heart-svg" alt="heart" src={heart}/></span><sup>{postShow.likeCount}</sup></div>
               </div>
               <div className="show-item">
               <h3 className="show-title">{postShow.title}</h3>
               </div>
                <div className="show-item">
-              <div className="show-date">{this.renderDate(postShow.createdAt)} - {postShow.author}</div>
+              <div className="show-date">{postShow.author} - {this.renderDate(postShow.createdAt)}</div>
               </div>
               <div className="show-item">
               <img className="show-image" alt="" src={postShow.image} />

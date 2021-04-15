@@ -22,7 +22,23 @@
 
 .show-likeCount {
   position: relative;
-  left: 98%;
+  left: 95%;
+  font-size: 17px;
+  line-height: 22px;
+ 
+}
+
+.heart-svg {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  margin: 0 2px;
+}
+
+.show-date {
+  font-size: 15px;
+  line-height: 20px;
 }
 
 .show-image {
