@@ -44,7 +44,8 @@ class EditForm extends Component {
   }
 
   // I feel like there is a way easier to do this and that I already found and applied this but we'll see
-
+    
+  
       onChangeTitle(e) {
         this.setState({title: e.target.value})
       } 
@@ -57,9 +58,15 @@ class EditForm extends Component {
       onChangeMessage(e) {
         this.setState({message: e.target.value})
       } 
+
       onChangeTags(e) {
-        this.setState({tags: e.target.value})
+        let tags = e.target.value.split(",").map(e => e.trim());
+        this.setState({tags});
       }
+
+      // onChangeTags(e) {
+      //   this.setState({tags: e.target.value})
+      // }
       // onChangeAuthor(e) {
       //   this.setState({author: e.target.value})
       // }
@@ -76,7 +83,7 @@ class EditForm extends Component {
     // console.log(this.state);
     axios.put(`http://localhost:5000/posts/${this.props.match.params.id}`, postObject)
     .then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       console.log("Post successfully updated")
     }) 
     // Redirect to Post  
@@ -100,28 +107,24 @@ class EditForm extends Component {
           
           <div className="postForm-item" id="postForm-item-1">
             <label>Title</label>
-            <input type="text" name="title" placeholder="Enter the title of your article" value={this.state.title} required onChange={this.onChangeTitle} />
+            <input type="text" name="title" placeholder="Enter the title of your article" value={this.state.title || ''} required onChange={this.onChangeTitle} />
           </div>
           <div className="postForm-item">
             <label>Description</label>
-            <input type="text" name="description" placeholder="Enter a short description of your article" value={this.state.description} required onChange={this.onChangeDescription} />
+            <input type="text" name="description" placeholder="Enter a short description of your article" value={this.state.description || ''} required onChange={this.onChangeDescription} />
           </div>
           <div className="postForm-item">
             <label className="file-upload">Upload your image below</label>
-            <input id="file-upload-input" type="file" name="image" accept="image/*" value={this.state.image} onChange={this.onChangeImage} />
+            <input id="file-upload-input" type="file" name="image" accept="image/*" value={this.state.image || ''} onChange={this.onChangeImage} />
           </div>
           <div className="postForm-item">
             <label>Article</label>
-            <textarea type="text" name="message" value={this.state.message} required onChange={this.onChangeMessage} ></textarea>
+            <textarea type="text" name="message" value={this.state.message || ''} required onChange={this.onChangeMessage} ></textarea>
           </div>
            <div className="postForm-item">
              <label>Tags</label>
-            <input type="text" name="tags" placeholder="Tags will help organize your articles written #tag" value={this.state.tags} required onChange={this.onChangeTags} />
+            <input type="text" name="tags" placeholder="Tags will help organize your articles written #tag" value={this.state.tags || ''} required onChange={this.onChangeTags} />
           </div>
-          {/* <div className="postForm-item">
-            <label>Author</label>
-            <input type="text" name="author" placeholder="You could use a pseudonym" value={this.state.author} onChange={this.onChangeAuthor} />
-          </div> */}
           <div className="postForm-item">
           <button className="postForm-button" type="submit">Submit</button>
           </div>
