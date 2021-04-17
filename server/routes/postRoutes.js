@@ -3,36 +3,7 @@ const Post = require('../models/postModel');
 
 const router = express.Router();
 
-//*************************************************//
-// const crypto = require('crypto');
-// const multer = require('multer');
-// const cloudinary = require('cloudinary');
-// const cloudinaryStorage = require('multer-storage-cloudinary');
 
-// cloudinary.config({
-// 	  cloud_name: process.env.CLOUDNAME,
-//     api_key: process.env.CLOUDINARY_API_KEY, 
-//     api_secret: process.env.CLOUDINARY_API_SECRET
-// });
-
-// const storage = cloudinaryStorage({
-//   cloudinary: cloudinary,
-//   folder: process.env.CLOUDFOLDER,
-//   allowedFormats: ['jpeg', 'jpg', 'png'],
-
-//   IMAGE RENDERING/UPLOAD CONFIG
-//   transformation: [{ width: 350, crop: 'fill' }],
-  
-//   filename: function (req, file, cb) {
-//   	let buf = crypto.randomBytes(16);
-//   	buf = buf.toString('hex');
-//   	let uniqFileName = file.originalname.replace(/\.jpeg|\.jpg|\.png/ig, '');
-//   	uniqFileName += buf;
-//     cb(undefined, uniqFileName );
-//   }
-// });
-// const upload = multer({ storage });
-//*************************************************//
 
 // CREATE - upload.single('image') ?
 router.post('/',  async (req, res) => {
