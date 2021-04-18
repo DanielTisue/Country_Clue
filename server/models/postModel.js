@@ -10,8 +10,7 @@ const postSchema = new mongoose.Schema({
     required: true
   },
   image: {
-    url: String,
-    public_id: String
+   type: String
   },
   message: { 
     type: String, 
@@ -26,7 +25,10 @@ const postSchema = new mongoose.Schema({
     type: Date, 
     default: Date.now 
   },
-  author: "",
+  author: {
+    type: String,
+    default: 'Elton Claude'
+  },
 });
 
 const Post = mongoose.model('Post', postSchema);

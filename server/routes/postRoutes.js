@@ -1,12 +1,16 @@
 const express = require('express');
+const router = express.Router();
+const multer = require('multer');
 const Post = require('../models/postModel');
 
-const router = express.Router();
-
-
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, "./client/public/uploads");
+	}
+})
 
 // CREATE - upload.single('image') ?
-router.post('/',  async (req, res) => {
+router.post('/', async (req, res) => {
 	// retrieve data
 	const { title, description, image, message, tags, createdAt, author } = req.body;
 	// req.body.image = {
@@ -26,6 +30,7 @@ router.post('/',  async (req, res) => {
 	//save it
   try {
     const savedPost = await newPost.save();
+		console.log(savedPost);
     res.json(savedPost);
   } catch (error) {
     console.log(error);

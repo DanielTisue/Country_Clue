@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import './PostForm.css';
-// import TagsInput from './TagsInput';
 
 
 
@@ -25,6 +24,11 @@ class PostForm extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
+  // imageHandler = ({ target }) => {
+  //   this.setState(target.file[0]);
+  //   this.setState(target.value);
+  // }
+
 
   tagHandler = e => {
     let tags = e.target.value.split(",").map(e => e.trim());
@@ -34,9 +38,12 @@ class PostForm extends Component {
   submitHandler = e => {
     e.preventDefault()
     // console.log(this.state);
+    // const formdata = new FormData();
+    // formdata.append('image', fileData);
+
     axios.post("http://localhost:5000/posts/", this.state)
     .then(res => {
-      console.log(res);
+      // console.log(res);
       alert("your post has been submitted succesfully");
     })
       // Redirect to Post  
