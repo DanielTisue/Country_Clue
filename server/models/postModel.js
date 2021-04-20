@@ -3,18 +3,18 @@ const mongoose = require('mongoose');
 const postSchema = new mongoose.Schema({
   title: { 
     type: String, 
-    required: true 
+    // required: true 
   },
   description: {
     type: String,
-    required: true
+    // required: true
   },
   image: {
    type: String
   },
   message: { 
     type: String, 
-    required: true 
+    // required: true 
   },
   tags: {type: [String]},
   likeCount: {
