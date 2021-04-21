@@ -1,18 +1,34 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+const cloudinary = require('cloudinary');
 const Post = require('../models/postModel');
 
-const storage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, "./client/public/uploads");
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+
+cloudinary.config({
+	cloud_name: process.env.CLOUDNAME,
+	api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET 
+})
+
+const storage = new CloudinaryStorage({
+	cloudinary: cloudinary,
+	params: {
+		folder: "countryClue",
+		format: async () => "png" || "jpg" || "gif" || "jpeg",
+		public_id: (req, file) => file.filename
 	}
 })
 
-// CREATE - upload.single('image') ?
-router.post('/', async (req, res) => {
+const parser = multer({ storage: storage });
+
+
+// CREATE 
+router.post('/', parser.single("image"), async (req, res) => {
 	// retrieve data
-	const { title, description, image, message, tags, createdAt, author } = req.body;
+	 const { title, description, message, tags, createdAt, author } = req.body;
+	 const image = req.file.path;
 	// req.body.image = {
 	// 	url: req.file.secure_url,
 	// 	public_id: req.file.public_id
@@ -27,6 +43,7 @@ router.post('/', async (req, res) => {
 		createdAt,
 		author
 	});
+	console.log(newPost);
 	//save it
   try {
     const savedPost = await newPost.save();
