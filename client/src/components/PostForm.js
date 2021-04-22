@@ -24,10 +24,26 @@ class PostForm extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  // imageHandler = ({ target }) => {
-  //   this.setState(target.file[0]);
-  //   this.setState(target.value);
-  // }
+  imageHandler = () => {
+    // const { files } = document.querySelector('input[type="file"]')
+    // console.log('Image file', files[0]);
+
+    // const formData = new FormData();
+    // formData.append('file', files[0]);
+
+    // method, folder-preset
+    // formData.append('upload_preset', 'CountryClue');
+    // const options = {
+    //   method: 'POST',
+    //   body: formData,
+    // };
+
+    // post to cloudinary
+    // return fetch('https://api.Cloudinary.com/v1_1/:danieltisue/image/upload', options)
+    //   .then(res => res.json())
+    //   .then(res => console.log(res))
+    //   .catch(err => console.log(err));
+  }
 
 
   tagHandler = e => {
@@ -88,7 +104,6 @@ class PostForm extends Component {
           </div>
            <div className="postForm-item">
              <label>Tags</label>
-             {/* <TagsInput selectedTags={selectedTags}   /> */}
             <input type="text" name="tags" placeholder="Make you hit space after each tag" value={tags} required onChange={this.tagHandler} />
           </div>
           <div className="postForm-item">

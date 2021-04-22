@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, {useState} from 'react';
-// import axios from 'axios';
 import './PostForm.css';
 
 //   title
@@ -16,8 +15,7 @@ const CreatePostForm = () => {
         [fileData, setFileData] = useState(),
         [image, setFile] = useState(""),
         [message, setMessage] = useState("");
-        // [tags, setTags] = useState("");
-  // const author = useState("Elton Claude");
+        //[tags, setTags] = useState("");
 
 const handleFileChange = ({target}) => {
   setFileData(target.files[0]);
@@ -32,8 +30,16 @@ const handleSubmit = async (e) => {
   const formdata = new FormData();
 
   formdata.append("image", fileData);
+  formdata.append("title", title);
+  formdata.append("description", description);
+  formdata.append("message", message);
+  // formdata.append("title", title);
+ 
+
+  // console.log(formdata);
 
   await axios.post("http://localhost:5000/posts/", formdata)
+  
   .then((res) => console.log("res", res.data))
   .catch((error) => console.log(error));
 };
