@@ -19,27 +19,16 @@ const storage =  new CloudinaryStorage({
 	params: {
 						folder: "countryClue",
 						public_id: (req, file) => file.filename,
-						format: async () => "png" || "jpg",
+						format: async () => "jpg",
 						// allowedFormats: ["jpeg", "jpg", "png"],
 					}
-	//Probably will delete this.....				
-  // filename: function(req, file, cb) {
-  //   let buf = crypto.randomBytes(16);
-  //   buf = buf.toString("hex");
-  //   let uniqFileName = file.originalname.replace(/\.jpeg|\.jpg|\.png/gi, "");
-  //   uniqFileName += buf;
-  //   cb(undefined, uniqFileName);
-  // }
 });
 const upload = multer({ storage: storage });
-
-//New create route for image only.
-
-
 
 // CREATE 
 router.post('/', upload.single("image"), async (req, res) => {
 	try {
+
 				const title = req.body.title,
 							description = req.body.description,
 							image = req.file.path,
@@ -47,8 +36,6 @@ router.post('/', upload.single("image"), async (req, res) => {
 							tags = req.body.tags,
 							createdAt = req.body.createdAt,
 							author = req.body.author
-
-				// console.log(typeof image);
 
 				const newPost = new Post({
 					title,
