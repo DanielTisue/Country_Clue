@@ -7,15 +7,14 @@
   flex-direction: column;
   justify-content: center;
   border-radius: 5px;
-  padding: 25px 15px;
+  padding: 25px 0;
   box-shadow: 1px 1px  5px #d2d2d2;
   margin: 8px;
   background-color: #ffffff;
 }
 
 .post-item {
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding: 7px 15px;
 }
 
 .post-likeCount {
@@ -36,10 +35,12 @@
 }
 
 .post-img {
-  width: 350px;
-  border: 1px solid black;
-  height: 150px;
-  margin: 0 -26px;
+  width: 100%;
+  height: 200px;
+  /* border: 1px solid black; */
+  /* min-height: 100%; */
+  padding: 2px 0 !important;
+  object-fit: contain;
 }
 
 .post-description {
@@ -92,6 +93,7 @@
 
 .post-date {
  padding-top: 20px;
+ padding-right: 15px;
  font-size: 11px;
  line-height: 17px;
  text-align: right;
