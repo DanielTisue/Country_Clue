@@ -20,7 +20,7 @@ const storage =  new CloudinaryStorage({
 						folder: "countryClue",
 						public_id: (req, file) => file.filename,
 						format: async () => "jpg",
-						// allowedFormats: ["jpeg", "jpg", "png"],
+						allowedFormats: ["jpeg", "jpg", "png"],
 					}
 });
 const upload = multer({ storage: storage });
