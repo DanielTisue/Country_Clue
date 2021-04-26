@@ -1,8 +1,8 @@
 require('dotenv').config({ path: '../../.env' });
 const express = require('express');
 const router = express.Router();
-const crypto = require('crypto');
 const multer = require('multer');
+const path = require('path');
 const cloudinary = require('cloudinary').v2;
 const Post = require('../models/postModel');
 
@@ -21,6 +21,14 @@ const storage =  new CloudinaryStorage({
 						public_id: (req, file) => file.filename,
 						format: async () => "jpg",
 						allowedFormats: ["jpeg", "jpg", "png"],
+						fileFilter: (req, file, cb) => {
+							let ext = path.extname(file.originalname);  
+							if (ext !== ".jpg" && ext !== ".jpeg" && ext !== ".png") {
+								cb(new Error("File type is not supported"), false);
+								return;
+							}
+							cb(null, true);
+						},
 					}
 });
 const upload = multer({ storage: storage });
