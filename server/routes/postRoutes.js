@@ -31,11 +31,16 @@ router.post('/', upload.single("image"), async (req, res) => {
 
 				const title = req.body.title,
 							description = req.body.description,
-							image = req.file.path,
+							image = { 
+								url: req.file.path,
+								public_id: req.file.path.public_id
+							},
 							message = req.body.message,
 							tags = req.body.tags,
 							createdAt = req.body.createdAt,
 							author = req.body.author
+
+							console.log(image);
 
 				const newPost = new Post({
 					title,
@@ -50,6 +55,7 @@ router.post('/', upload.single("image"), async (req, res) => {
 				//save it
 					const savedPost = await newPost.save();
 					res.json(savedPost);
+					console.log(req.body.image);
   } catch (error) {
     console.log(error);
   }

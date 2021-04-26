@@ -18,7 +18,9 @@ const CreatePostForm = () => {
         //[tags, setTags] = useState("");
 
 const handleFileChange = ({target}) => {
+  console.log(target.files[0]);
   setFileData(target.files[0]);
+  console.log(target.value);
   setFile(target.value);
   // console.log(target.files[0]);
 
@@ -33,10 +35,10 @@ const handleSubmit = async (e) => {
   formdata.append("title", title);
   formdata.append("description", description);
   formdata.append("message", message);
-  // formdata.append("title", title);
+  // formdata.append("tags", tags);
  
 
-  // console.log(formdata);
+ console.log(fileData);
 
   await axios.post("http://localhost:5000/posts/", formdata)
   
