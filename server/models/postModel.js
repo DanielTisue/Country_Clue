@@ -10,9 +10,12 @@ const postSchema = new mongoose.Schema({
     // required: true
   },
   image: {
-    //  type: String
-    url: String,
-    public_id: String
+     type: String
+    // url: String,
+    // public_id: String
+  },
+  cloudinary_id: {
+    type: String
   },
   message: { 
     type: String, 

@@ -2,7 +2,6 @@ require('dotenv').config({ path: '../../.env' });
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const path = require('path');
 const cloudinary = require('cloudinary').v2;
 const Post = require('../models/postModel');
 
@@ -21,14 +20,6 @@ const storage =  new CloudinaryStorage({
 						public_id: (req, file) => file.filename,
 						format: async () => "jpg",
 						allowedFormats: ["jpeg", "jpg", "png"],
-						fileFilter: (req, file, cb) => {
-							let ext = path.extname(file.originalname);  
-							if (ext !== ".jpg" && ext !== ".jpeg" && ext !== ".png") {
-								cb(new Error("File type is not supported"), false);
-								return;
-							}
-							cb(null, true);
-						},
 					}
 });
 const upload = multer({ storage: storage });
@@ -37,16 +28,17 @@ const upload = multer({ storage: storage });
 router.post('/', upload.single("image"), async (req, res) => {
 	try {
 
+			const result = await cloudinary.uploader.upload(req.file.path);
+				console.log(result);
+
 				const title = req.body.title,
 							description = req.body.description,
-							image = { 
-								url: req.file.path,
-								public_id: req.file.path.public_id
-							},
+							image = req.file.path,
+							cloudinary_id = result.public_id,
 							message = req.body.message,
 							tags = req.body.tags,
 							createdAt = req.body.createdAt,
-							author = req.body.author
+							author = req.body.author;
 
 							console.log(image);
 
@@ -54,6 +46,7 @@ router.post('/', upload.single("image"), async (req, res) => {
 					title,
 					description,
 					image,
+					cloudinary_id,
 					message,
 					tags,
 					createdAt,
