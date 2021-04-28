@@ -27,26 +27,28 @@ const upload = multer({ storage: storage });
 // CREATE 
 router.post('/', upload.single("image"), async (req, res) => {
 	try {
-
-			const result = await cloudinary.uploader.upload(req.file.path);
+//NEED to test with removing unsigned _upload and revert back to upload. Have to check if images are being saved twice in cloudinary. 
+			const result = await cloudinary.uploader.unsigned_upload(req.file.path, 'CountryClue');
 				console.log(result);
-
+				
+			
 				const title = req.body.title,
 							description = req.body.description,
-							image = req.file.path,
+							image = result.secure_url,
 							cloudinary_id = result.public_id,
+							// image_sig = result.signature,							
 							message = req.body.message,
 							tags = req.body.tags,
 							createdAt = req.body.createdAt,
 							author = req.body.author;
 
-							console.log(image);
 
 				const newPost = new Post({
 					title,
 					description,
 					image,
 					cloudinary_id,
+					// image_sig,
 					message,
 					tags,
 					createdAt,
@@ -90,16 +92,17 @@ router.put('/:id', function(req, res, next) {
 });
 
 //DELETE POST
-router.delete('/:id', (req, res) => {
-	Post.findByIdAndRemove(req.params.id, (err, data) => {
-		if (err) {
+router.delete('/:id', async (req, res) => {
+		try {		
+			let post = await Post.findById(req.params.id);
+			console.log(post.cloudinary_id);
+			await cloudinary.uploader.destroy(post.cloudinary_id, function(error,result) {
+  console.log(result, error) });
+			// await post.remove();
+			// res.json(post);
+		} catch(err) {
 			console.log(err);
-		} else {
-			res.status(200).json({
-				msg: data
-			})
 		}
-	});
 });
 
 module.exports = router;
