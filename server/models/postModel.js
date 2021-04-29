@@ -14,12 +14,9 @@ const postSchema = new mongoose.Schema({
     // url: String,
     // public_id: String
   },
-  cloudinary_id: {
+  image_id: {
     type: String
   },
-  // image_sig: {
-  //   type: String
-  // },
   message: { 
     type: String, 
     // required: true 

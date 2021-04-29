@@ -14,6 +14,7 @@ cloudinary.config({
 })
 
 const storage =  new CloudinaryStorage({
+	
   cloudinary: cloudinary,
 	params: {
 						folder: "countryClue",
@@ -24,19 +25,22 @@ const storage =  new CloudinaryStorage({
 });
 const upload = multer({ storage: storage });
 
-// CREATE 
+// CREATE upload.single("image")
 router.post('/', upload.single("image"), async (req, res) => {
 	try {
-//NEED to test with removing unsigned _upload and revert back to upload. Have to check if images are being saved twice in cloudinary. 
-			const result = await cloudinary.uploader.unsigned_upload(req.file.path, 'CountryClue');
-				console.log(result);
-				
+ 
+			const result = await cloudinary.uploader.upload(req.file.path); //only works when multer function is used but adds image twice.
+		//NEED to test with removing unsigned _upload and revert back to upload. Have to check if images are being saved twice in cloudinary.
+			// const result = await cloudinary.uploader.unsigned_upload(req.file, "CountryClue") - DIDN"T WORK
+			
+
 			
 				const title = req.body.title,
 							description = req.body.description,
 							image = result.secure_url,
-							cloudinary_id = result.public_id,
-							// image_sig = result.signature,							
+							image_id = result.public_id,
+							// image = req.file.secure_url,
+							// image_id = req.file.public_id,					
 							message = req.body.message,
 							tags = req.body.tags,
 							createdAt = req.body.createdAt,
@@ -47,8 +51,7 @@ router.post('/', upload.single("image"), async (req, res) => {
 					title,
 					description,
 					image,
-					cloudinary_id,
-					// image_sig,
+					image_id,
 					message,
 					tags,
 					createdAt,
@@ -58,7 +61,7 @@ router.post('/', upload.single("image"), async (req, res) => {
 				//save it
 					const savedPost = await newPost.save();
 					res.json(savedPost);
-					console.log(req.body.image);
+					// console.log(req.body.image);
   } catch (error) {
     console.log(error);
   }
@@ -95,11 +98,11 @@ router.put('/:id', function(req, res, next) {
 router.delete('/:id', async (req, res) => {
 		try {		
 			let post = await Post.findById(req.params.id);
-			console.log(post.cloudinary_id);
-			await cloudinary.uploader.destroy(post.cloudinary_id, function(error,result) {
-  console.log(result, error) });
-			// await post.remove();
-			// res.json(post);
+			// console.log(post.cloudinary_id);
+			// await cloudinary.uploader.destroy(post.cloudinary_id, function(error,result) {
+  		// console.log(result, error) });
+			await post.remove();
+			res.json(post);
 		} catch(err) {
 			console.log(err);
 		}

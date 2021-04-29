@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import './PostForm.css';
 
 //   title
@@ -17,10 +18,12 @@ const CreatePostForm = () => {
         [message, setMessage] = useState("");
         //[tags, setTags] = useState("");
 
+let history = useHistory();
+
 const handleFileChange = ({target}) => {
-  console.log(target.files[0]);
+  // console.log(target.files[0]);
   setFileData(target.files[0]);
-  console.log(target.value);
+  // console.log(target.value);
   setFile(target.value);
   // console.log(target.files[0]);
 
@@ -43,6 +46,9 @@ const handleSubmit = async (e) => {
   await axios.post("http://localhost:5000/posts/", formdata)
   
   .then((res) => console.log("res", res.data))
+  .then(res => {
+    history.push('/posts');
+    })
   .catch((error) => console.log(error));
 };
  
@@ -61,7 +67,7 @@ const handleSubmit = async (e) => {
     
      <div className="postForm-container">
         
-        <form className="postForm"> 
+        <form className="postForm" encType="multipart/form-data"> 
           <div className="internalPostForm-alignment">
             <h3 className="postForm-title">Make it count!</h3>
             
