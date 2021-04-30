@@ -14,7 +14,7 @@ cloudinary.config({
 })
 
 const storage =  new CloudinaryStorage({
-	
+
   cloudinary: cloudinary,
 	params: {
 						folder: "countryClue",
@@ -28,35 +28,28 @@ const upload = multer({ storage: storage });
 // CREATE upload.single("image")
 router.post('/', upload.single("image"), async (req, res) => {
 	try {
- 
-			const result = await cloudinary.uploader.upload(req.file.path); //only works when multer function is used but adds image twice.
-		//NEED to test with removing unsigned _upload and revert back to upload. Have to check if images are being saved twice in cloudinary.
-			// const result = await cloudinary.uploader.unsigned_upload(req.file, "CountryClue") - DIDN"T WORK
-			
-
-			
 				const title = req.body.title,
 							description = req.body.description,
-							image = result.secure_url,
-							image_id = result.public_id,
-							// image = req.file.secure_url,
-							// image_id = req.file.public_id,					
+							// image = result.secure_url,
+							// image_id = result.public_id,
+							image = req.file.path,
+							image_id = req.file.filename,					
 							message = req.body.message,
 							tags = req.body.tags,
 							createdAt = req.body.createdAt,
 							author = req.body.author;
 
 
-				const newPost = new Post({
-					title,
-					description,
-					image,
-					image_id,
-					message,
-					tags,
-					createdAt,
-					author
-				});
+					const newPost = new Post({
+						title,
+						description,
+						image,
+						image_id,
+						message,
+						tags,
+						createdAt,
+						author
+					});
 
 				//save it
 					const savedPost = await newPost.save();
