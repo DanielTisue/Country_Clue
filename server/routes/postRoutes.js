@@ -91,9 +91,7 @@ router.put('/:id', function(req, res, next) {
 router.delete('/:id', async (req, res) => {
 		try {		
 			let post = await Post.findById(req.params.id);
-			// console.log(post.cloudinary_id);
-			// await cloudinary.uploader.destroy(post.cloudinary_id, function(error,result) {
-  		// console.log(result, error) });
+			await cloudinary.uploader.destroy(post.image_id)
 			await post.remove();
 			res.json(post);
 		} catch(err) {
