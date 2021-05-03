@@ -13,7 +13,6 @@ class EditForm extends Component {
       this.onChangeImage = this.onChangeImage.bind(this);
       this.onChangeMessage = this.onChangeMessage.bind(this);
       this.onChangeTags = this.onChangeTags.bind(this);
-      // this.onChangeAuthor = this.onChangeAuthor.bind(this);    
       this.onSubmitHandler = this.onSubmitHandler.bind(this); 
 
     this.state = {
@@ -26,13 +25,13 @@ class EditForm extends Component {
     }
   }
 
-   componentDidMount() {
+    componentDidMount() {
     axios.get(`http://localhost:5000/posts/${this.props.match.params.id}`)
       .then(res => {
         this.setState({
           title: res.data.title,
           description: res.data.description,
-          image: res.data.image,
+          // image: res.data.file.path,
           message: res.data.message,
           tags: res.data.tags
           // author: res.data.author
@@ -52,8 +51,10 @@ class EditForm extends Component {
       onChangeDescription(e) {
         this.setState({description: e.target.value})
       } 
-      onChangeImage(e) {
-        this.setState({image: e.target.value})
+      onChangeImage = ({ target }) => {
+        this.setState({
+          image: target.value
+        })
       }
       onChangeMessage(e) {
         this.setState({message: e.target.value})

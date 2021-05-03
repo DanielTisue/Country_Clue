@@ -10,7 +10,7 @@ import './PostForm.css';
 //   tags
 //   author
 
-const CreatePostForm = () => {
+const EditPostForm = () => {
   const [title, setTitle] = useState(""),
         [description, setDescription] = useState(""),
         [fileData, setFileData] = useState(),
@@ -27,6 +27,22 @@ const handleFileChange = ({target}) => {
   setFile(target.value);
 
 };
+
+componentDidMount() {
+   
+      .then(res => {
+        this.setState({
+          title: res.data.title,
+          description: res.data.description,
+          image: res.data.image,
+          message: res.data.message,
+          tags: res.data.tags
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -97,10 +113,6 @@ const handleSubmit = async (e) => {
                         setTags({tags})
                         }} />
             </div> */}
-            {/* <div className="postForm-item">
-              <label>Author</label>
-              <input type="text" name="author" defaultValue={author} />
-            </div> */}
             <div className="postForm-item">
             <button className="postForm-button" type="submit" onClick={handleSubmit}>Submit</button>
             </div>
@@ -115,4 +127,4 @@ const handleSubmit = async (e) => {
 
 }
 
-export default CreatePostForm;
+export default EditPostForm;

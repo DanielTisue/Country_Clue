@@ -19,19 +19,19 @@ const storage =  new CloudinaryStorage({
 	params: {
 						folder: "countryClue",
 						public_id: (req, file) => file.filename,
-						format: async () => "jpg",
 						allowedFormats: ["jpeg", "jpg", "png"],
+						format: async () => "jpg",
+						transformation: [{ width: 800, crop: 'scale' }],
+
 					}
 });
 const upload = multer({ storage: storage });
 
-// CREATE upload.single("image")
+// CREATE 
 router.post('/', upload.single("image"), async (req, res) => {
 	try {
 				const title = req.body.title,
 							description = req.body.description,
-							// image = result.secure_url,
-							// image_id = result.public_id,
 							image = req.file.path,
 							image_id = req.file.filename,					
 							message = req.body.message,
@@ -77,13 +77,25 @@ router.get('/:id', async (req, res) => {
 });
 
 //UPDATE POST
-router.put('/:id', function(req, res, next) {
-  Post.findByIdAndUpdate(req.params.id, req.body, (err, updatedPost) => {
+router.put('/:id', upload.single('image'), (req, res) => {
+  Post.findByIdAndUpdate(req.params.id, req.body, async (err, updatedPost) => {
     if (err) {
 			console.log(err);
 			// return next(err);
-		} 
-    res.json(updatedPost);
+		} else {
+			if(req.file) {
+				try {
+					await cloudinary.uploader.destroy(post.image_id);
+					updatedPost.image_id = req.file.filename;
+					updatedPost.image = req.file.path;
+					await post.save();
+					res.json(updatedPost);
+				} catch (err) {
+					console.log(err);
+				}
+			}
+		}
+    
   });
 });
 
