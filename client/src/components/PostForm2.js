@@ -45,9 +45,9 @@ const handleSubmit = async (e) => {
   await axios.post("http://localhost:5000/posts/", formdata)
   
   .then((res) => console.log("res", res.data))
-  // .then(res => {
-  //   history.push('/posts');
-  //   })
+  .then(res => {
+    history.push('/posts');
+    })
   .catch((error) => console.log(error));
 };
  

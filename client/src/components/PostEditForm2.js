@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, {useState} from 'react';
-import { useHistory } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+// import { useHistory } from 'react-router-dom';
 import './PostForm.css';
 
 //   title
@@ -10,7 +10,7 @@ import './PostForm.css';
 //   tags
 //   author
 
-const EditPostForm = () => {
+const EditPostForm = (props) => {
   const [title, setTitle] = useState(""),
         [description, setDescription] = useState(""),
         [fileData, setFileData] = useState(),
@@ -18,7 +18,7 @@ const EditPostForm = () => {
         [message, setMessage] = useState("");
         //[tags, setTags] = useState("");
 
-let history = useHistory();
+// let history = useHistory();
 
 const handleFileChange = ({target}) => {
   console.log(`this is the target value ${target.files[0]}`);
@@ -28,21 +28,22 @@ const handleFileChange = ({target}) => {
 
 };
 
-componentDidMount() {
-   
-      .then(res => {
-        this.setState({
-          title: res.data.title,
-          description: res.data.description,
-          image: res.data.image,
-          message: res.data.message,
-          tags: res.data.tags
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }
+// const getData = async ( ) => {
+//   try {
+//     let res = await axios.get(`http://localhost:5000/posts/${match.params.id}`)
+//           setTitle(res.title)
+//           setDescription(res.description)
+//           setFile(res.image)
+//           setMessage(res.message)
+//   } catch(err) {
+//     console.log(err);
+//   }
+// }
+
+// useEffect( () => {
+// getData();
+// }, []);
+
 
 const handleSubmit = async (e) => {
   e.preventDefault();

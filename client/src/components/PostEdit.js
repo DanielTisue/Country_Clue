@@ -19,9 +19,9 @@ class EditForm extends Component {
       title: "",
       description: "",
       image: "",
+      fileData: null,
       message: "",
-      tags: "",
-      // author: ""
+      tags: ""
     }
   }
 
@@ -31,10 +31,9 @@ class EditForm extends Component {
         this.setState({
           title: res.data.title,
           description: res.data.description,
-          // image: res.data.file.path,
+          old_image: res.data.image,
           message: res.data.message,
           tags: res.data.tags
-          // author: res.data.author
         });
       })
       .catch((error) => {
@@ -52,9 +51,10 @@ class EditForm extends Component {
         this.setState({description: e.target.value})
       } 
       onChangeImage = ({ target }) => {
-        this.setState({
-          image: target.value
-        })
+        this.setState({image: target.files[0]});
+        console.log(target.files[0]);
+        // this.setState({image: target.value});
+        // console.log(target.value);
       }
       onChangeMessage(e) {
         this.setState({message: e.target.value})
@@ -72,19 +72,27 @@ class EditForm extends Component {
       //   this.setState({author: e.target.value})
       // }
 
-  onSubmitHandler = e => {
+  onSubmitHandler = async (e) => {
     e.preventDefault()
-    const postObject = {
-      title: this.state.title, 
-      description: this.state.description, 
-      image: this.state.image, 
-      message: this.state.message, 
-      tags: this.state.tags, 
-    };
+
+    const formdata = new FormData();
+
+    formdata.append( "image", this.state.fileData)
+    formdata.append("title", this.state.title);
+    formdata.append("description", this.state.description);
+    formdata.append("message", this.state.message);
+
+    // const postObject = {
+    //   title: this.state.title, 
+    //   description: this.state.description, 
+    //   image: this.state.fileData, 
+    //   message: this.state.message, 
+    //   tags: this.state.tags, 
+    // };
     // console.log(this.state);
-    axios.put(`http://localhost:5000/posts/${this.props.match.params.id}`, postObject)
+    await axios.put(`http://localhost:5000/posts/${this.props.match.params.id}`, formdata)
     .then(res => {
-      // console.log(res.data);
+      console.log(res.data);
       console.log("Post successfully updated")
     }) 
     // Redirect to Post  
@@ -102,7 +110,7 @@ class EditForm extends Component {
       
       <div className="postForm-container">
        
-        <form className="postForm" onSubmit={this.onSubmitHandler}>
+        <form className="postForm" encType="multipart/form-data">
           <div className="internalPostForm-alignment">
           <h3 className="postForm-title">Edit Form</h3>
           
@@ -115,8 +123,10 @@ class EditForm extends Component {
             <input type="text" name="description" placeholder="Enter a short description of your article" value={this.state.description || ''} required onChange={this.onChangeDescription} />
           </div>
           <div className="postForm-item">
-            <label className="file-upload">Upload your image below</label>
-            <input id="file-upload-input" type="file" name="image" accept="image/*" value={this.state.image || ''} onChange={this.onChangeImage} />
+            {/* <label className="file-upload">Current Image</label>
+            <div style={{ width: 200 }}><img src={this.state.image} alt="current" /></div> */}
+            <label className="file-upload">Upload your new image below</label>
+            <input id="file-upload-input" type="file" name="image" accept="image/*" value={this.state.fileData || ''} onChange={this.onChangeImage} />
           </div>
           <div className="postForm-item">
             <label>Article</label>
@@ -124,10 +134,10 @@ class EditForm extends Component {
           </div>
            <div className="postForm-item">
              <label>Tags</label>
-            <input type="text" name="tags" placeholder="Tags will help organize your articles written #tag" value={this.state.tags || ''} required onChange={this.onChangeTags} />
+            <input type="text" name="tags" placeholder="Tags will help organize your articles written tag,tag,tag" value={this.state.tags || ''} onChange={this.onChangeTags} />
           </div>
           <div className="postForm-item">
-          <button className="postForm-button" type="submit">Submit</button>
+          <button className="postForm-button" type="submit" onClick={this.onSubmitHandler}>Submit</button>
           </div>
            <button className="back-button">Back to post</button>
           </div>

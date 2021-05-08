@@ -77,26 +77,49 @@ router.get('/:id', async (req, res) => {
 });
 
 //UPDATE POST
-router.put('/:id', upload.single('image'), (req, res) => {
-  Post.findByIdAndUpdate(req.params.id, req.body, async (err, updatedPost) => {
-    if (err) {
-			console.log(err);
-			// return next(err);
-		} else {
-			if(req.file) {
-				try {
-					await cloudinary.uploader.destroy(post.image_id);
-					updatedPost.image_id = req.file.filename;
-					updatedPost.image = req.file.path;
-					await post.save();
-					res.json(updatedPost);
-				} catch (err) {
-					console.log(err);
-				}
-			}
-		}
+router.put('/:id', upload.single("image"), async (req, res) => {
+	try {
+    let post = await Post.findById(req.params.id);
+    // Delete image from cloudinary
+    await cloudinary.uploader.destroy(post.image_id);
+    // Upload image to cloudinary
+    // const result = await cloudinary.uploader.upload(req.file.path);
+    const data = {
+      title: req.body.title,
+			description: req.body.description,
+			image: req.file.path,
+			image_id: req.file.filename,					
+			message: req.body.message,
+			tags: req.body.tags,
+			createdAt: req.body.createdAt,
+			author: req.body.author
+    };
+    post = await Post.findByIdAndUpdate(req.params.id, data, {
+ new: true
+ });
+    res.json(post);
+  } catch (err) {
+    console.log(err);
+  }
+  // Post.findByIdAndUpdate(req.params.id, req.body, async (err, updatedPost) => {
+   
+			
+	// 			try {
+
+	// 				if(req.file) {
+	// 				await cloudinary.uploader.destroy(post.image_id);
+	// 							image = req.file.path
+	// 							image_id = req.file.filename
+	// 				}
+	// 				await updatedPost.save();
+	// 				res.json(updatedPost);
+	// 			} catch (err) {
+	// 				console.log(err);
+	// 			}
+			
+		
     
-  });
+  // });
 });
 
 //DELETE POST

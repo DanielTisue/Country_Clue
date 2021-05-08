@@ -4,7 +4,7 @@ import Home from './components/Home';
 import PostList from './components/PostList';
 import PostShow from './components/PostShow';
 import CreatePostForm from './components/PostForm2';
-import EditPostForm from './components/PostEditForm2'
+import EditForm from './components/PostEdit'
 import './style.css';
 
 class App extends React.Component{
@@ -16,7 +16,7 @@ class App extends React.Component{
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/posts/:id" component={PostShow} />
-          <Route exact path="/posts/:id/edit" component={EditPostForm} />
+          <Route exact path="/posts/:id/edit" component={EditForm} />
           <Route exact path="/posts" component={PostList} />
           <Route exact path="/create" component={CreatePostForm} />
         </Switch>
