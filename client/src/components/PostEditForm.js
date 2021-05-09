@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, {useState, useEffect} from 'react';
-// import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './PostForm.css';
 
 //   title
@@ -10,63 +10,64 @@ import './PostForm.css';
 //   tags
 //   author
 
-const EditPostForm = (props) => {
-  const [title, setTitle] = useState(""),
-        [description, setDescription] = useState(""),
-        [fileData, setFileData] = useState(),
-        [image, setFile] = useState(""),
-        [message, setMessage] = useState("");
-        //[tags, setTags] = useState("");
+const PostEditForm = (props) => {
 
-// let history = useHistory();
-
-const handleFileChange = ({target}) => {
-  console.log(`this is the target value ${target.files[0]}`);
-  setFileData(target.files[0]);
-  console.log(`this is the target value ${target.value}`);
-  setFile(target.value);
-
-};
-
-// const getData = async ( ) => {
-//   try {
-//     let res = await axios.get(`http://localhost:5000/posts/${match.params.id}`)
-//           setTitle(res.title)
-//           setDescription(res.description)
-//           setFile(res.image)
-//           setMessage(res.message)
-//   } catch(err) {
-//     console.log(err);
-//   }
-// }
-
-// useEffect( () => {
-// getData();
-// }, []);
-
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-
-  const formdata = new FormData();
-
-  formdata.append("image", fileData);
-  formdata.append("title", title);
-  formdata.append("description", description);
-  formdata.append("message", message);
-  // formdata.append("tags", tags);
  
+ 
+    const [title, setTitle] = useState(""),
+            [description, setDescription] = useState(""),
+            [fileData, setFileData] = useState(),
+            [image, setFile] = useState(""),
+            [message, setMessage] = useState(""),
+            [oldImage, setImage] = useState("");
+            //[tags, setTags] = useState("");
 
- console.log(fileData);
+    let history = useHistory();
 
-  await axios.post("http://localhost:5000/posts/", formdata)
-  
-  .then((res) => console.log("res", res.data))
-  // .then(res => {
-  //   history.push('/posts');
-  //   })
-  .catch((error) => console.log(error));
-};
+
+  useEffect(() => {
+    fetch("http://localhost:5000/posts/" + props.match.params.id)
+    .then(res => res.json())
+    .then((result) => {
+     console.log(result.title)
+     setTitle(result.title)
+     setDescription(result.description)
+     setImage(result.image)
+     setMessage(result.message)
+    })
+      .catch((error) => console.log(error))
+  }, [props])
+
+    const handleFileChange = ({target}) => {
+      console.log(`this is the target value ${target.files[0]}`);
+      setFileData(target.files[0]);
+      console.log(`this is the target value ${target.value}`);
+      setFile(target.value);
+
+    };
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      const formdata = new FormData();
+
+      formdata.append("image", fileData);
+      formdata.append("title", title);
+      formdata.append("description", description);
+      formdata.append("message", message);
+      // formdata.append("tags", tags);
+    
+
+    console.log(fileData);
+
+      await axios.post("http://localhost:5000/posts/", formdata)
+      
+      .then((res) => console.log("res", res.data))
+      .then(res => {
+        history.push('/posts');
+        })
+      .catch((error) => console.log(error));
+    };
  
 // onChange={(e) => {
 //   let tags = e.target.value.split(",").map(e => e.trim());
@@ -98,7 +99,9 @@ const handleSubmit = async (e) => {
             </div>
 
             <div className="postForm-item">
-              <label className="file-upload">Upload your image below</label>
+               <label className="file-upload">Your Previous image</label>
+              <div><img src={oldImage} alt=""/></div>
+              <label className="file-upload">Upload a new image below</label>
               <input id="file-upload-input" type="file" name="file" accept="image/*" value={image} onChange={handleFileChange} />
             </div>
 
@@ -114,6 +117,10 @@ const handleSubmit = async (e) => {
                         setTags({tags})
                         }} />
             </div> */}
+            {/* <div className="postForm-item">
+              <label>Author</label>
+              <input type="text" name="author" defaultValue={author} />
+            </div> */}
             <div className="postForm-item">
             <button className="postForm-button" type="submit" onClick={handleSubmit}>Submit</button>
             </div>
@@ -128,4 +135,4 @@ const handleSubmit = async (e) => {
 
 }
 
-export default EditPostForm;
+export default PostEditForm;
