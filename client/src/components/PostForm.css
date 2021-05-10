@@ -72,6 +72,11 @@ input {
   border-bottom: 1px solid #171717;
 }
 
+.oldImage {
+  width: 100%;
+  max-width: 600px;
+}
+
 .file-upload {
   padding-bottom: 5px;
   padding-top: 15px;
