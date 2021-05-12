@@ -3,13 +3,6 @@ import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import './PostForm.css';
 
-//   title
-//   description
-//   image
-//   message
-//   tags
-//   author
-
 const CreatePostForm = () => {
   const [title, setTitle] = useState(""),
         [description, setDescription] = useState(""),
@@ -40,16 +33,12 @@ const handleSubmit = async (e) => {
       formdata.append("title", title);
       formdata.append("description", description);
       formdata.append("message", message);
+
       for (var i = 0; i < tags.length; i++ ) {
         formdata.append("tags[]", tags[i]);
       }
-      
-    
-
-      console.log(`this is the fordata tags ${tags}`);
 
       await axios.post("http://localhost:5000/posts/", formdata)
-      
       .then((res) => console.log("res", res.data))
       .then(res => {
         history.push('/posts');
