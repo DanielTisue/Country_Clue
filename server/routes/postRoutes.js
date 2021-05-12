@@ -35,9 +35,9 @@ router.post('/', upload.single("image"), async (req, res) => {
 							image = req.file.path,
 							image_id = req.file.filename,					
 							message = req.body.message,
-							tags = req.body.tags,
-							createdAt = req.body.createdAt,
-							author = req.body.author;
+							tags = req.body.tags;
+							// createdAt = req.body.createdAt,
+							// author = req.body.author;
 
 
 					const newPost = new Post({
@@ -46,9 +46,9 @@ router.post('/', upload.single("image"), async (req, res) => {
 						image,
 						image_id,
 						message,
-						tags,
-						createdAt,
-						author
+						tags
+						// createdAt,
+						// author
 					});
 
 				//save it

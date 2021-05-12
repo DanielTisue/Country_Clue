@@ -15,52 +15,47 @@ const CreatePostForm = () => {
         [description, setDescription] = useState(""),
         [fileData, setFileData] = useState(),
         [image, setFile] = useState(""),
-        [message, setMessage] = useState("");
-        //[tags, setTags] = useState("");
+        [message, setMessage] = useState(""),
+        [tags, setTags] = useState([]);
 
 let history = useHistory();
 
 const handleFileChange = ({target}) => {
-  console.log(`this is the target value ${target.files[0]}`);
   setFileData(target.files[0]);
-  console.log(`this is the target value ${target.value}`);
   setFile(target.value);
-
 };
+
+const tagHandler = (e) => {
+    let tag = e.target.value.split(",").map(e => e.trim());
+    setTags(tag);
+    console.log(tag);
+  }
 
 const handleSubmit = async (e) => {
-  e.preventDefault();
+      e.preventDefault();
 
-  const formdata = new FormData();
+      const formdata = new FormData();
 
-  formdata.append("image", fileData);
-  formdata.append("title", title);
-  formdata.append("description", description);
-  formdata.append("message", message);
-  // formdata.append("tags", tags);
- 
+      formdata.append("image", fileData);
+      formdata.append("title", title);
+      formdata.append("description", description);
+      formdata.append("message", message);
+      for (var i = 0; i < tags.length; i++ ) {
+        formdata.append("tags[]", tags[i]);
+      }
+      
+    
 
- console.log(fileData);
+      console.log(`this is the fordata tags ${tags}`);
 
-  await axios.post("http://localhost:5000/posts/", formdata)
-  
-  .then((res) => console.log("res", res.data))
-  .then(res => {
-    history.push('/posts');
-    })
-  .catch((error) => console.log(error));
-};
- 
-// onChange={(e) => {
-//   let tags = e.target.value.split(",").map(e => e.trim());
-//   setTags(e.target.value)
-//   }
-// }
-
-  // tagHandler = e => {
-  //   let tags = e.target.value.split(",").map(e => e.trim());
-  //    setTags({tags});
-  // }
+      await axios.post("http://localhost:5000/posts/", formdata)
+      
+      .then((res) => console.log("res", res.data))
+      .then(res => {
+        history.push('/posts');
+        })
+      .catch((error) => console.log(error));
+}; 
  
   return (
     
@@ -90,17 +85,11 @@ const handleSubmit = async (e) => {
               <textarea placeholder="Type your article here" type="text" name="message" value={message} onFocus={(e) => e.target.placeholder = ""} onChange={(e)=>setMessage(e.target.value)} ></textarea>
             </div>
 
-            {/* <div className="postForm-item">
+            <div className="postForm-item">
               <label>Tags</label>
-              <input type="text" name="tags" placeholder="Make you hit space after each tag" value={tags} required onChange={(e) => {
-                        let tags = e.target.value.split(",").map(e => e.trim());
-                        setTags({tags})
-                        }} />
-            </div> */}
-            {/* <div className="postForm-item">
-              <label>Author</label>
-              <input type="text" name="author" defaultValue={author} />
-            </div> */}
+              <input type="text" name="tags" placeholder="Make separate each tag with a comma: tag1,tag2,tag3" value={tags} onChange={tagHandler} />
+            </div>
+           
             <div className="postForm-item">
             <button className="postForm-button" type="submit" onClick={handleSubmit}>Submit</button>
             </div>
