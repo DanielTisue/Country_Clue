@@ -73,3 +73,27 @@
   height: 15px;
   margin: 0 2px;
 }
+
+#button-div {
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit {
+  padding: 8px 20px;
+  font-size: 15px;
+  max-width: 100%;
+  border-radius: 5px;
+  border: none;
+  /* margin: 0 auto; */
+  color: #ffffff;
+  background-color: rgb(255, 209, 56);
+  box-shadow: 3px 3px 3px #d2d2d2;
+  opacity: .75;
+}
+
+.edit:hover {
+  opacity: 1;
+  box-shadow: 2px 2px 5px #171717;
+}

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './PostShow.css';
 import heart from '../Images/LikeCount.svg';
 import tagImage from '../Images/tag.svg';
@@ -89,14 +89,19 @@ class PostShow extends Component {
               </div>
              
              
-              <div className="show-item">
-              <button onClick={this.deletePost}>Delete</button>
+              <div className="show-item" id="button-div">
+              <button className="read-more" onClick={this.deletePost}>Delete</button>
+              <Link to={`${this.props.match.params.id}/edit`} >
+              <button className="edit">Edit</button>
+              </Link>
               </div>
+              
             </div>
           </div>
           
           )
   }
 }
+
 
 export default PostShow;

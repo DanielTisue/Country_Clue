@@ -19,8 +19,8 @@ const PostEditForm = (props) => {
             [fileData, setFileData] = useState(),
             [image, setFile] = useState(""),
             [message, setMessage] = useState(""),
-            [oldImage, setImage] = useState("");
-            //[tags, setTags] = useState("");
+            [oldImage, setImage] = useState(""),
+            [tags, setTags] = useState([]);
 
     let history = useHistory();
 
@@ -29,11 +29,11 @@ const PostEditForm = (props) => {
     fetch("http://localhost:5000/posts/" + props.match.params.id)
     .then(res => res.json())
     .then((result) => {
-    //  console.log(result.title)
      setTitle(result.title)
      setDescription(result.description)
      setImage(result.image)
      setMessage(result.message)
+     setTags(result.tags)
     })
       .catch((error) => console.log(error))
   }, [props])
@@ -47,6 +47,12 @@ const PostEditForm = (props) => {
 
   };
 
+  const tagHandler = (e) => {
+    let tag = e.target.value.split(",").map(e => e.trim());
+    setTags(tag);
+    console.log(tag);
+  }
+
   //SUBMIT function
 
   const handleSubmit = async (e) => {
@@ -58,10 +64,10 @@ const PostEditForm = (props) => {
     formdata.append("title", title);
     formdata.append("description", description);
     formdata.append("message", message);
-    // formdata.append("tags", tags);
-  
-
-    console.log(fileData);
+    
+    for (var i = 0; i < tags.length; i++ ) {
+        formdata.append("tags[]", tags[i]);
+      }
 
     await axios.put("http://localhost:5000/posts/" + props.match.params.id, formdata)
     
@@ -72,16 +78,6 @@ const PostEditForm = (props) => {
     .catch((error) => console.log(error));
   };
  
-// onChange={(e) => {
-//   let tags = e.target.value.split(",").map(e => e.trim());
-//   setTags(e.target.value)
-//   }
-// }
-
-  // tagHandler = e => {
-  //   let tags = e.target.value.split(",").map(e => e.trim());
-  //    setTags({tags});
-  // }
  
   return (
     
@@ -105,7 +101,7 @@ const PostEditForm = (props) => {
                <label className="file-upload">Your Previous image</label>
               <div><img className="oldImage" src={oldImage} alt=""/></div>
               <label className="file-upload">Upload a new image below</label>
-              <input id="file-upload-input" type="file" name="file" accept="image/*" value={image} onChange={handleFileChange} />
+              <input id="file-upload-input" type="file" name="file" accept="image/*" value={image || ""} onChange={handleFileChange} />
             </div>
 
             <div className="postForm-item">
@@ -113,13 +109,10 @@ const PostEditForm = (props) => {
               <textarea placeholder="Type your article here" type="text" name="message" value={message} onFocus={(e) => e.target.placeholder = ""} onChange={(e)=>setMessage(e.target.value)} ></textarea>
             </div>
 
-            {/* <div className="postForm-item">
+            <div className="postForm-item">
               <label>Tags</label>
-              <input type="text" name="tags" placeholder="Make you hit space after each tag" value={tags} required onChange={(e) => {
-                        let tags = e.target.value.split(",").map(e => e.trim());
-                        setTags({tags})
-                        }} />
-            </div> */}
+              <input type="text" name="tags" placeholder="Make you hit space after each tag" value={tags} required onChange={tagHandler} />
+            </div>
           
             <div className="postForm-item">
             <button className="postForm-button" type="submit" onClick={handleSubmit}>Submit</button>

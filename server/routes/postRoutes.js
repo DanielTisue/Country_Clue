@@ -78,22 +78,27 @@ router.get('/:id', async (req, res) => {
 
 //UPDATE POST
 router.put('/:id', upload.single("image"), async (req, res) => {
-  try {
+   try {
 		let post = await Post.findById(req.params.id);
-		await cloudinary.uploader.destroy(post.image_id);
-		const updatedPost = {
-			title: req.body.title,
-			description: req.body.description,
-			image: req.file.path,
-			image_id: req.file.filename,					
-			message: req.body.message
-		}
-		post = await Post.findByIdAndUpdate(req.params.id, updatedPost);
-		res.json(updatedPost)
+		if (req.file) {
+				await cloudinary.uploader.destroy(post.image_id);
+				let updatedPost = {
+					title: req.body.title,
+					description: req.body.description,
+					image: req.file.path,
+					image_id: req.file.filename,					
+					message: req.body.message
+				}
+				post = await Post.findByIdAndUpdate(req.params.id, updatedPost, { new: true });
+				res.json(updatedPost)
+		} else {
+		await Post.findByIdAndUpdate(req.params.id, post);
+		res.json(post)
+		}		
 	} catch (err) {
 		console.log(err);
 	}
-	
+
   });
 
 
