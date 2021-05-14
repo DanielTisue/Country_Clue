@@ -46,7 +46,7 @@ class PostShow extends Component {
       .then((res) => {
         console.log('Post deleted');
       })
-        // Redirect to Post  
+        // Redirect to Posts  
       .then (res => {
         this.props.history.push('/posts');
       })
@@ -70,7 +70,7 @@ class PostShow extends Component {
             <div className="show-post">
 
               <div className="show-item">
-              <div className="show-likeCount"><span className="show-heartSvg"><img className="heart-svg" alt="heart" src={heart}/></span><sup>{postShow.likeCount}</sup></div>
+              <div className="show-likeCount"><span className="show-heartSvg"><img className="heart-svg" alt="heart" src={heart} onClick={this.likePost}/></span><sup>{postShow.likeCount}</sup></div>
               </div>
               <div className="show-item">
               <h3 className="show-title">{postShow.title}</h3>
