@@ -36,9 +36,6 @@ router.post('/', upload.single("image"), async (req, res) => {
 							image_id = req.file.filename,					
 							message = req.body.message,
 							tags = req.body.tags;
-							// createdAt = req.body.createdAt,
-							// author = req.body.author;
-
 
 					const newPost = new Post({
 						title,
@@ -47,20 +44,17 @@ router.post('/', upload.single("image"), async (req, res) => {
 						image_id,
 						message,
 						tags
-						// createdAt,
-						// author
 					});
 
 				//save it
 					const savedPost = await newPost.save();
 					res.json(savedPost);
-					// console.log(req.body.image);
   } catch (error) {
     console.log(error);
   }
 });
 
-// GET
+// GET All POSTS
 router.get('/', async (req, res) => {
   const posts = await Post.find();
   res.json(posts);
@@ -90,11 +84,18 @@ router.put('/:id', upload.single("image"), async (req, res) => {
 					message: req.body.message
 				}
 				post = await Post.findByIdAndUpdate(req.params.id, updatedPost, { new: true });
-				res.json(updatedPost)
+				res.json(updatedPost);
 		} else {
-		await Post.findByIdAndUpdate(req.params.id, post);
-		res.json(post)
-		}		
+			let updatedPost = {
+					title: req.body.title,
+					description: req.body.description,					
+					message: req.body.message
+			}
+			await Post.findByIdAndUpdate(req.params.id, updatedPost, { new: true });
+			res.json(updatedPost);
+		}
+	 
+			
 	} catch (err) {
 		console.log(err);
 	}
