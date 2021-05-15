@@ -94,6 +94,7 @@ textarea {
   font-size: 15px;
   line-height: 20px;
   resize: vertical;
+  white-space: pre-wrap;
 }
 
 label {
