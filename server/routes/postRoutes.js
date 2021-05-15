@@ -57,7 +57,7 @@ router.post('/', upload.single("image"), async (req, res) => {
 // GET All POSTS
 router.get('/', async (req, res) => {
   const posts = await Post.find();
-  res.json(posts);
+	res.json(posts);
 });
 
 //GET SINGLE POST
