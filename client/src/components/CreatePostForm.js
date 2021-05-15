@@ -1,6 +1,10 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
+import { Editor } from 'react-draft-wysiwyg';
+import { EditorState, convertToRaw } from 'draft-js';
+import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+// import {stateToHTML} from 'draft-js-export-html';
 import './PostForm.css';
 
 const CreatePostForm = () => {
@@ -8,7 +12,7 @@ const CreatePostForm = () => {
         [description, setDescription] = useState(""),
         [fileData, setFileData] = useState(),
         [image, setFile] = useState(""),
-        [message, setMessage] = useState(""),
+        [message, setMessage] = useState(EditorState.createEmpty()),
         [tags, setTags] = useState([]);
 
 let history = useHistory();
@@ -32,7 +36,7 @@ const handleSubmit = async (e) => {
       formdata.append("image", fileData);
       formdata.append("title", title);
       formdata.append("description", description);
-      formdata.append("message", message);
+      formdata.append("message", convertToRaw(message.getCurrentContent()));
 
       for (var i = 0; i < tags.length; i++ ) {
         formdata.append("tags[]", tags[i]);
@@ -68,11 +72,28 @@ const handleSubmit = async (e) => {
               <label className="file-upload">Upload your image below</label>
               <input id="file-upload-input" type="file" name="file" accept="image/*" value={image} onChange={handleFileChange} />
             </div>
-
             <div className="postForm-item">
-              <label>Article</label>
-              <textarea placeholder="Type your article here" type="text" name="message" value={message} onFocus={(e) => e.target.placeholder = ""} onChange={(e)=>setMessage(e.target.value)} ></textarea>
-            </div>
+            <Editor editorState={message}
+                  wrapperClassName="wrapper-class"
+                  editorClassName="editor-class"
+                  toolbarClassName="toolbar-class"
+                  toolbar={{
+                    options: ['inline', 'fontSize', 'list', 'textAlign', 'link' ],
+                    inline: { inDropdown: true },
+                    list: { inDropdown: true },
+                    textAlign: { inDropdown: true },
+                    link: { inDropdown: true },
+                    history: { inDropdown: false },
+                    monospace: {inDropdown: false}
+                  }}
+                  wrapperStyle={{ border: "1px solid #000", marginBottom: "20px" }}
+                  editorStyle={{ height: "500px", padding: "10px"}}
+                  onEditorStateChange={editorState => setMessage(editorState)} />
+              </div>
+           
+              {/* <label>Article</label>
+              <textarea placeholder="Type your article here" type="text" name="message" value={message} onFocus={(e) => e.target.placeholder = ""} onChange={(e)=>setMessage(e.target.value)} ></textarea> */}
+            
 
             <div className="postForm-item">
               <label>Tags</label>
