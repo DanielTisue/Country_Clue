@@ -56,7 +56,7 @@ router.post('/', upload.single("image"), async (req, res) => {
 
 // GET All POSTS
 router.get('/', async (req, res) => {
-  const posts = await Post.find();
+  const posts = await Post.find({}).sort( { _id: -1 });
 	res.json(posts);
 });
 
