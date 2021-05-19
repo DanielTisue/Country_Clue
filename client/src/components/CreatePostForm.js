@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
-import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, convertToRaw } from 'draft-js';
-import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-// import {stateToHTML} from 'draft-js-export-html';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
+// import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
+// import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
+// import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import './PostForm.css';
 
 const CreatePostForm = () => {
@@ -12,7 +14,7 @@ const CreatePostForm = () => {
         [description, setDescription] = useState(""),
         [fileData, setFileData] = useState(),
         [image, setFile] = useState(""),
-        [message, setMessage] = useState(EditorState.createEmpty()),
+        [message, setMessage] = useState(""),
         [tags, setTags] = useState([]);
 
 let history = useHistory();
@@ -36,14 +38,14 @@ const handleSubmit = async (e) => {
       formdata.append("image", fileData);
       formdata.append("title", title);
       formdata.append("description", description);
-      formdata.append("message", convertToRaw(message.getCurrentContent()));
+      formdata.append("message", message);
 
       for (var i = 0; i < tags.length; i++ ) {
         formdata.append("tags[]", tags[i]);
       }
 
       await axios.post("http://localhost:5000/posts/", formdata)
-      .then((res) => console.log("res", res.data))
+      .then(res => console.log("res", res.data))
       .then(res => {
         history.push('/posts');
         })
@@ -73,27 +75,22 @@ const handleSubmit = async (e) => {
               <input id="file-upload-input" type="file" name="file" accept="image/*" value={image} onChange={handleFileChange} />
             </div>
             <div className="postForm-item">
-            <Editor editorState={message}
-                  wrapperClassName="wrapper-class"
-                  editorClassName="editor-class"
-                  toolbarClassName="toolbar-class"
-                  toolbar={{
-                    options: ['inline', 'fontSize', 'list', 'textAlign', 'link' ],
-                    inline: { inDropdown: true },
-                    list: { inDropdown: true },
-                    textAlign: { inDropdown: true },
-                    link: { inDropdown: true },
-                    history: { inDropdown: false },
-                    monospace: {inDropdown: false}
-                  }}
-                  wrapperStyle={{ border: "1px solid #000", marginBottom: "20px" }}
-                  editorStyle={{ height: "500px", padding: "10px"}}
-                  onEditorStateChange={editorState => setMessage(editorState)} />
-              </div>
+              <label>Article</label>
+           <CKEditor
+                    editor={ ClassicEditor }
+                    
+                    value={message}
+                    onChange={ ( event, editor ) => {
+                        const data = editor.getData();
+                        setMessage(data)
+                        console.log(data);
+                    } }
+                    
+                />
            
               {/* <label>Article</label>
               <textarea placeholder="Type your article here" type="text" name="message" value={message} onFocus={(e) => e.target.placeholder = ""} onChange={(e)=>setMessage(e.target.value)} ></textarea> */}
-            
+            </div>
 
             <div className="postForm-item">
               <label>Tags</label>

@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './PostShow.css';
 import heart from '../Images/LikeCount.svg';
@@ -82,10 +82,13 @@ class PostShow extends Component {
               <img className="show-image" alt="" src={postShow.image} />
               </div>
                <div className="show-item-tags">
-              <div className="show-tags">{this.renderTags(postShow.tags)}</div>
+                <div className="show-tags">{this.renderTags(postShow.tags)}</div>
               </div>
+
+            
               <div className="show-item">
-              <p className="show-article">{postShow.message}</p>
+                <div dangerouslySetInnerHTML={{__html:postShow.message}}></div>
+                {/* <p className="show-article">{postShow.message}</p> */}
               </div>
              
              
