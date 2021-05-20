@@ -42,9 +42,9 @@ const PostEditForm = (props) => {
 
   //GET Image file
   const handleFileChange = ({target}) => {
-    console.log(`this is the target value ${target.files[0]}`);
+    // console.log(`this is the target value ${target.files[0]}`);
     setFileData(target.files[0]);
-    console.log(`this is the target value ${target.value}`);
+    // console.log(`this is the target value ${target.value}`);
     setFile(target.value);
 
   };
@@ -52,7 +52,7 @@ const PostEditForm = (props) => {
   const tagHandler = (e) => {
     let tag = e.target.value.split(",").map(e => e.trim());
     setTags(tag);
-    console.log(tag);
+    // console.log(tag);
   }
 
   //SUBMIT function
@@ -110,7 +110,7 @@ const PostEditForm = (props) => {
               <label>Article</label>
                <CKEditor className="article-editor" editor={ClassicEditor} value={message} data={message} onChange={( event, editor ) => { const data =         editor.getData();
                         setMessage(data)
-                        console.log(data);
+                        // console.log(data);
                     }}  />
             </div>
 

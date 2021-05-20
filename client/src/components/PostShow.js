@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import dompurify from 'dompurify';
 import { Link } from 'react-router-dom';
 import './PostShow.css';
 import heart from '../Images/LikeCount.svg';
@@ -27,6 +28,7 @@ class PostShow extends Component {
     this.getPostById();
   }
 
+  
   
   async getPostById() {
     const res = await axios.get(
@@ -87,7 +89,7 @@ class PostShow extends Component {
 
             
               <div className="show-item">
-                <div dangerouslySetInnerHTML={{__html:postShow.message}}></div>
+                <div dangerouslySetInnerHTML={{__html: dompurify.sanitize(postShow.message)}}></div>
                 {/* <p className="show-article">{postShow.message}</p> */}
               </div>
              
@@ -96,6 +98,9 @@ class PostShow extends Component {
               <button className="read-more" onClick={this.deletePost}>Delete</button>
               <Link to={`${this.props.match.params.id}/edit`} >
               <button className="edit">Edit</button>
+              </Link>
+               <Link to={'/posts'} >
+              <button className="read-more">Articles</button>
               </Link>
               </div>
               
