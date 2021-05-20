@@ -37,14 +37,14 @@ router.post('/', upload.single("image"), async (req, res) => {
 							message = req.body.message,
 							tags = req.body.tags;
 
-					const newPost = new Post({
-						title,
-						description,
-						image,
-						image_id,
-						message,
-						tags
-					});
+				const newPost = new Post({
+							title,
+							description,
+							image,
+							image_id,
+							message,
+							tags
+						});
 
 				//save it
 					const savedPost = await newPost.save();

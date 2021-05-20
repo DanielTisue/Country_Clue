@@ -13,8 +13,6 @@ class PostList extends React.Component {
 
   async getPosts() {
     const res = await axios.get("http://localhost:5000/posts/");
-    // const myData = [].concat(this.state.data)
-    // .sort((a, b) => a.itemM > b.itemM ? 1 : -1)
     this.setState({posts: res.data})
   }
 

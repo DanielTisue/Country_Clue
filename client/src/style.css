@@ -10,6 +10,7 @@
    width: 100%;
  }
 
+/* DESKTOP larger than laptop */
 @media only screen and (min-width: 1400px) {
    .container {
    max-width: 1300px !important;
@@ -37,3 +38,15 @@
    display: inline;
  }
 
+
+/* TABLET & MOBILE layout */
+ @media only screen and (max-width: 960px) {
+   .container {
+   max-width: 1300px !important;
+  }
+
+  .flex-container {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+}

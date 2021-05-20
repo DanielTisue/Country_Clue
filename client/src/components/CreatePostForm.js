@@ -3,10 +3,6 @@ import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
-// import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
-// import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
-// import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import './PostForm.css';
 
 const CreatePostForm = () => {
@@ -76,25 +72,17 @@ const handleSubmit = async (e) => {
             </div>
             <div className="postForm-item">
               <label>Article</label>
-           <CKEditor
-                    editor={ ClassicEditor }
-                    
-                    value={message}
-                    onChange={ ( event, editor ) => {
-                        const data = editor.getData();
+              <div className="CK-placeholder">Let the genius flow...</div>
+              <CKEditor className="article-editor" editor={ClassicEditor} value={message} onChange={( event, editor ) => { const data =         editor.getData();
                         setMessage(data)
                         console.log(data);
-                    } }
-                    
-                />
-           
-              {/* <label>Article</label>
-              <textarea placeholder="Type your article here" type="text" name="message" value={message} onFocus={(e) => e.target.placeholder = ""} onChange={(e)=>setMessage(e.target.value)} ></textarea> */}
+                    }}  />
+          
             </div>
 
             <div className="postForm-item">
               <label>Tags</label>
-              <input type="text" name="tags" placeholder="Make separate each tag with a comma: tag1,tag2,tag3" value={tags} onChange={tagHandler} />
+              <input type="text" name="tags" placeholder="Separate each tag with a comma and no spaces. Ex: tag1,tag2,tag3" value={tags} onChange={tagHandler} />
             </div>
            
             <div className="postForm-item">

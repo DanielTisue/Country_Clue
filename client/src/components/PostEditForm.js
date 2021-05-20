@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import './PostForm.css';
 
 //   title
@@ -106,7 +108,10 @@ const PostEditForm = (props) => {
 
             <div className="postForm-item">
               <label>Article</label>
-              <textarea placeholder="Type your article here" type="text" name="message" value={message} onFocus={(e) => e.target.placeholder = ""} onChange={(e)=>setMessage(e.target.value)} ></textarea>
+               <CKEditor className="article-editor" editor={ClassicEditor} value={message} data={message} onChange={( event, editor ) => { const data =         editor.getData();
+                        setMessage(data)
+                        console.log(data);
+                    }}  />
             </div>
 
             <div className="postForm-item">

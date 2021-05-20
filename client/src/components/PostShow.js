@@ -13,15 +13,14 @@ class PostShow extends Component {
    
   state = {
     postShow: {
-      likeCount: "",
-      title: "",
-      image:"",
-      message: "",
-      tags: [],
-      createdAt: "",
-      author:""
-
-    }
+                likeCount: "",
+                title: "",
+                image:"",
+                message: "",
+                tags: [],
+                createdAt: "",
+                author:""
+              }
   }
 
   componentDidMount() {
@@ -33,6 +32,7 @@ class PostShow extends Component {
     const res = await axios.get(
       `http://localhost:5000/posts/${this.props.match.params.id}`
       );
+      
     this.setState({postShow: res.data});
   }
 

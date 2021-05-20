@@ -2,7 +2,6 @@ require('dotenv').config({ path: '../.env' });
 const express = require('express' );
 const cors = require('cors');
 const mongoose = require('mongoose');
-//       Post = require('./models/postModel');
 
 const postRoutes = require('./routes/postRoutes');
 

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { default: slugify } = require('slugify');
 
 const postSchema = new mongoose.Schema({
   title: { 
@@ -35,6 +36,7 @@ const postSchema = new mongoose.Schema({
     default: 'Elton Claude'
   },
 });
+
 
 const Post = mongoose.model('Post', postSchema);
 

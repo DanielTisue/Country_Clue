@@ -39,6 +39,22 @@
   padding: 15px 0;
 }
 
+.ck-editor__editable {
+  height: 500px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.ck-file-dialog-button, .ck-toolbar__grouped-dropdown {
+  display: none;
+}
+
+.CK-placeholder {
+  color: #d2d2d2ee;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 textarea::placeholder {
   font-size: 13px;
   line-height: 20px;
@@ -46,9 +62,10 @@ textarea::placeholder {
 }
 
 input::placeholder {
-  font-size: 13px;
-  line-height: 22px;
-  font-style: italic;
+  font-size: 14px;
+  line-height: 26px;
+  color: #d2d2d2ee;
+  /* font-style: italic; */
 }
 
 /* Webkit */

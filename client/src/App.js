@@ -4,14 +4,12 @@ import Home from './components/Home';
 import PostList from './components/PostList';
 import PostShow from './components/PostShow';
 import CreatePostForm from './components/CreatePostForm';
-// import PostEdit from './components/PostEdit'
 import PostEditForm from './components/PostEditForm'
 import './style.css';
 
 class App extends React.Component{
   
   render(){
-    // const { post } = this.props;
     return (
       <BrowserRouter>
         <Switch>
