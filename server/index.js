@@ -4,6 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 const postRoutes = require('./routes/postRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -21,6 +22,7 @@ mongoose.set( 'useFindAndModify', false );
 mongoose.set('useCreateIndex', true);
 
 app.use('/posts', postRoutes);
+app.use('/auth', userRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);
