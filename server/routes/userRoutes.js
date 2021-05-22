@@ -14,32 +14,44 @@ router.post('/register', async (req, res) => {
 
     //Validate
     if(!username || !password || !passwordVerify) {
-      return res.status(400).json ({ errMessage : "Please enter all required fields!" });
+      console.log({ errMessage : "Please enter all required fields!" });
+      return res.status(400).json({
+        errorMessage: "Please enter all required fields!",
+      });
     }
 
     if(password.length < 6 ) {
-      return res.status(400).json ({ errMessage : "Please make sure your password is longer than 6 characters." });
+      console.log({ errMessage : "Please make sure your password is longer than 6 characters." });
+      return res.status(400).json({
+        errorMessage: "Please make sure your password is longer than 6 characters.",
+      });
     }
 
     if(password != passwordVerify ) {
-      return res.status(400).json ({ errMessage : "Please make sure your passwords match." });
+      console.log({ errMessage : "Please make sure your passwords match." });
+      return res.status(400).json({
+        errorMessage: "Please make sure your passwords match.",
+      });
     }
 
-    const existingUser = await User.findOne({ username: username });
+    const existingUser = await User.findOne({ username });
     if(existingUser) {
-      return res.status(400).json ({ errMessage : "An account with this username already exixts :(" });
+      console.log({ errMessage : "An account with this username already exixts :(" });
+      return res.status(400).json({
+        errorMessage: "An account with this username already exixts :(",
+      });
     }
 
-    //password hash
+    //Encrypt password
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
 
-    console.log(passwordHash);
+    // console.log(passwordHash);
 
     //Save new User
-    const newUser = new User({ username, password });
+    const newUser = new User({ username: username, password: passwordHash });
     const savedUser = await newUser.save();
-    res.json(savedUser);
+    // res.json(savedUser);
 
 
     //Log user in right away - Create & assign a token
@@ -49,11 +61,13 @@ router.post('/register', async (req, res) => {
 
     res.cookie('token', token, {
       httpOnly: true,
+      secure: true,
+      sameSite: "none",
     }).send();
 
   } catch (err) {
     console.log(err);
-    res.status(500).send();
+    // res.status(500).send();
   }
 
 });
@@ -66,19 +80,19 @@ router.post('/login', async (req, res) => {
 
      //Validate
     if(!username || !password) {
-      return res.status(400).json ({ errMessage : "Please enter all required fields!" });
+      console.log({ errMessage : "Please enter all required fields!" });
     }
 
     const existingUser = await User.findOne({ username });
     //Check for username
     if(!existingUser) {
-      return res.status(401).json ({ errMessage : "Incorrect username or password. Please try again." });
+      console.log({ errMessage : "Incorrect username or password. Please try again." });
     }
 
     const passwordUsed = await bcrypt.compare(password, existingUser.password);
     //Check for password
     if(!passwordUsed) {
-      return res.status(401).json ({ errMessage : "Incorrect username or password. Please try again." });
+      console.log({ errMessage : "Incorrect username or password. Please try again." });
     }
 
     //Create & assign a token
