@@ -2,6 +2,7 @@ require('dotenv').config({ path: '../.env' });
 const express = require('express' );
 const cors = require('cors');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
 const postRoutes = require('./routes/postRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -10,6 +11,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(express.json({ extended: true }));
+app.use(cookieParser());
 app.use(cors());
 
 //MONGO SETUP
