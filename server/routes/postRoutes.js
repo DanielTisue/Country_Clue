@@ -4,6 +4,7 @@ const router = express.Router();
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 const Post = require('../models/postModel');
+const auth = require('../middleware/auth');
 
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
