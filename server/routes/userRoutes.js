@@ -104,6 +104,8 @@ router.post('/login', async (req, res) => {
       httpOnly: true,
     }).send();
 
+    console.log("login sucessful");
+
   } catch (err) {
     console.log(err);
     res.status(500).send();
@@ -117,5 +119,21 @@ router.get('/logout', (req, res) => {
     })
     .send();
 });
+
+router.get('/loggedIn', (req, res) => {
+  try {
+    const token = req.cookies.token;
+    
+    if(!token) {
+      return res.json(false);
+    }
+
+    jwt.verify(token, process.env.SERIALIZE_CONFIG);
+
+    res.send(true);
+  } catch (err) {
+    res.json(false);
+  }
+})
 
 module.exports = router;
