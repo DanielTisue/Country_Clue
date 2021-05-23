@@ -5,24 +5,23 @@ import '../PostForm.css';
 
 axios.defaults.withCredentials = true;
 
-function Register() {
+function Login() {
 
   const [username, setUsername] = useState(""),
-        [password, setPassword] = useState(""),
-        [passwordVerify, setpasswordVerify] = useState("");
+        [password, setPassword] = useState("");
+       
   
-  async function register (e) {
+  async function loggingIn (e) {
     e.preventDefault();
     try {
-      const registerData = {
+      const loginData = {
         username,
-        password,
-        passwordVerify
+        password
       }
 
-      await axios.post('http://localhost:5000/auth/register', registerData, { withCredentials: true })
+      await axios.post('http://localhost:5000/auth/login', loginData, { withCredentials: true })
       .then(() => {
-        console.log("user successfully created", registerData);
+        console.log("user successfully created", loginData);
       }).catch((err) => console.log(err));
     } catch (err) {
       console.log(err);
@@ -32,9 +31,9 @@ function Register() {
   return (
   <div className="postForm-container">
     
-    <form className="postForm" onSubmit={register}>
+    <form className="postForm" onSubmit={loggingIn}>
       <div className="internalPostForm-alignment">
-        <h3 className="postForm-title">Register</h3>
+        <h3 className="postForm-title">Login</h3>
 
         <div className="postForm-item" id="postForm-item-1">
           <label>Username</label>
@@ -47,12 +46,7 @@ function Register() {
         </div>
 
         <div className="postForm-item" >
-          <label>Verify password</label>
-          <input type="password" placeholder="Verify password" value={passwordVerify} onChange={(e) => setpasswordVerify(e.target.value)} />
-        </div>
-
-        <div className="postForm-item" >
-          <button className="postForm-button" type="submit">Register</button>
+          <button className="postForm-button" type="submit">Login</button>
         </div>
       
       </div>
@@ -60,4 +54,4 @@ function Register() {
   </div>
   )}
 
-export default Register;
+export default Login;
