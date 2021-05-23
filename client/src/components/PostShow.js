@@ -90,7 +90,6 @@ class PostShow extends Component {
             
               <div className="show-item">
                 <div dangerouslySetInnerHTML={{__html: dompurify.sanitize(postShow.message)}}></div>
-                {/* <p className="show-article">{postShow.message}</p> */}
               </div>
              
              
