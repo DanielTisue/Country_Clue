@@ -1,7 +1,8 @@
 import axios from 'axios';
-import React from 'react';
-import {useState} from 'react';
-import '../PostForm.css';
+import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import AuthContext from '../Context/AuthContext';
+import '../Form.css';
 
 axios.defaults.withCredentials = true;
 
@@ -10,7 +11,10 @@ function Register() {
   const [username, setUsername] = useState(""),
         [password, setPassword] = useState(""),
         [passwordVerify, setpasswordVerify] = useState("");
-  
+
+  const { getLoggedIn } = useContext(AuthContext);
+  let history = useHistory();
+
   async function register (e) {
     e.preventDefault();
     try {
@@ -22,7 +26,10 @@ function Register() {
 
       await axios.post('http://localhost:5000/auth/register', registerData, { withCredentials: true })
       .then(() => {
+        getLoggedIn();
         console.log("user successfully created", registerData);
+      }).then(() => {
+        history.push('/');
       }).catch((err) => console.log(err));
     } catch (err) {
       console.log(err);

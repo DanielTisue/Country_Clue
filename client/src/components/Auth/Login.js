@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React from 'react';
-import {useState} from 'react';
-import '../PostForm.css';
+import React, {useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import '../Form.css';
 
 axios.defaults.withCredentials = true;
 
@@ -10,7 +10,8 @@ function Login() {
   const [username, setUsername] = useState(""),
         [password, setPassword] = useState("");
        
-  
+  let history = useHistory();
+
   async function loggingIn (e) {
     e.preventDefault();
     try {
@@ -21,8 +22,10 @@ function Login() {
 
       await axios.post('http://localhost:5000/auth/login', loginData, { withCredentials: true })
       .then(() => {
-        console.log("user successfully created", loginData);
-      }).catch((err) => console.log(err));
+        console.log("user successfully logged in", loginData);
+      }).then(res => {
+        history.push('/posts');
+        }).catch((err) => console.log(err));
     } catch (err) {
       console.log(err);
     }

@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import './PostForm.css';
+import '../Form.css';
+
 
 //   title
 //   description
 //   image
-//   message
+//   message  
 //   tags
 //   author
 
@@ -38,7 +39,7 @@ const PostEditForm = (props) => {
      setTags(result.tags)
     })
       .catch((error) => console.log(error))
-  }, [props])
+  }, [props]);
 
   //GET Image file
   const handleFileChange = ({target}) => {
@@ -75,7 +76,7 @@ const PostEditForm = (props) => {
     
     .then((res) => console.log("res", res.data))
     .then(res => {
-      history.push('/posts');
+      history.push('/posts/' + props.match.params.id);
       })
     .catch((error) => console.log(error));
   };

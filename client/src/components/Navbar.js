@@ -1,19 +1,44 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from 'react-router-dom';
+import AuthContext from "./Context/AuthContext";
+import LogOutBtn from './Auth/LogOutBtn';
 
-class Navbar extends React.Component {
-  render() {
+function Navbar() {
+const { loggedIn } = useContext(AuthContext);
+
     return (
-      <div>
+      <div className="">
         <ul>
+          <Link to='/'>
           <li className="navabar-link">Home</li>
+          </Link>
+
+          <Link to='/'>
           <li className="navabar-link">About</li>
-          <li className="navabar-link">The Latest</li>
-          <li className="navabar-link">New Artist</li>
-          <li className="navabar-link">Roadtrip Must Playlist</li>
+          </Link>
+
+          <Link to='/'>
+          <li className="navabar-link">Featured</li>
+          </Link>
+
+          <Link to='/posts' >
+          <li className="navabar-link">All Articles</li>
+          </Link>
+
+          {loggedIn === false && (
+            <Link to='/auth/login' >
+            <li className="navabar-link">Login</li>
+            </Link>
+          )}
+
+          {loggedIn === true && (
+            <LogOutBtn />
+          )}
+           
         </ul>
       </div>
     )
   }
-}
+
 
 export default Navbar;

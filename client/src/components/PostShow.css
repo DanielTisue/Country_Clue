@@ -75,9 +75,11 @@
 }
 
 #button-div {
-  width: 25%;
-  display: flex;
-  justify-content: space-between;
+  width: 75%;
+}
+
+.space-it {
+  margin-right: 20px;
 }
 
 .edit {
@@ -86,7 +88,6 @@
   max-width: 100%;
   border-radius: 5px;
   border: none;
-  /* margin: 0 auto; */
   color: #ffffff;
   background-color: rgb(255, 209, 56);
   box-shadow: 3px 3px 3px #d2d2d2;
