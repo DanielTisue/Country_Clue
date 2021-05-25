@@ -39,9 +39,15 @@ const handleSubmit = async (e) => {
       for (var i = 0; i < tags.length; i++ ) {
         formdata.append("tags[]", tags[i]);
       }
+      console.log(image, title, description, message, tags)
 
       await axios.post("http://localhost:5000/posts", formdata)
-      .then(res => console.log("res", res.data))
+      .then(res => 
+        console.log("res", res.data)
+        )
+        .then(res => 
+        console.log(formdata)
+        )
       .then(res => {
         history.push('/posts');
         })

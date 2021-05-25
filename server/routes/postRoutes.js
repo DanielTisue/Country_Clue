@@ -49,7 +49,7 @@ router.post('/', upload.single("image"), async (req, res) => {
 
 				//save it
 					const savedPost = await newPost.save();
-					// console.log(savedPost);
+					console.log(savedPost);
 					res.json(savedPost);
   } catch (error) {
     console.log(error);

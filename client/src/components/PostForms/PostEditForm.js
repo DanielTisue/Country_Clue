@@ -51,9 +51,9 @@ const PostEditForm = (props) => {
   };
 
   const tagHandler = (e) => {
-    let tag = e.target.value.split(",").map(e => e.trim());
-    setTags(tag);
-    // console.log(tag);
+      let tag = e.target.value.split(",").map(e => e.trim());
+      setTags(tag);
+     console.log(tag);
   }
 
   //SUBMIT function
