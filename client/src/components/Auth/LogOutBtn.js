@@ -11,7 +11,7 @@ function LogOutBtn() {
 
   async function logOut() {
       await axios.get('http://localhost:5000/auth/logout');
-      getLoggedIn();
+      await getLoggedIn();
       history.push('/');
   }
   return (
