@@ -25,12 +25,10 @@ function Register() {
       }
 
       await axios.post('http://localhost:5000/auth/register', registerData, { withCredentials: true })
-      .then(() => {
-        getLoggedIn();
-        console.log("user successfully created", registerData);
-      }).then(() => {
-        history.push('/');
-      }).catch((err) => console.log(err));
+      await getLoggedIn();
+        // console.log("user successfully created", registerData);
+      history.push('/');
+     
     } catch (err) {
       console.log(err);
     }

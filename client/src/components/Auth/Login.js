@@ -21,11 +21,9 @@ function Login() {
       }
 
       await axios.post('http://localhost:5000/auth/login', loginData, { withCredentials: true })
-      .then(() => {
-        console.log("user successfully logged in", loginData);
-      }).then(res => {
-        history.push('/posts');
-        }).catch((err) => console.log(err));
+      // console.log("user successfully logged in", loginData);
+      history.push('/posts');
+       
     } catch (err) {
       console.log(err);
     }
