@@ -40,7 +40,7 @@ const handleSubmit = async (e) => {
         formdata.append("tags[]", tags[i]);
       }
 
-      await axios.post("http://localhost:5000/posts/", formdata)
+      await axios.post("http://localhost:5000/posts", formdata)
       .then(res => console.log("res", res.data))
       .then(res => {
         history.push('/posts');

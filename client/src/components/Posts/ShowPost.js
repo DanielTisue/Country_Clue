@@ -1,3 +1,4 @@
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import dompurify from 'dompurify';
 import { Link, useHistory } from 'react-router-dom';
@@ -5,10 +6,12 @@ import '../PostShow.css';
 import heart from '../../Images/LikeCount.svg';
 import tagImage from '../../Images/tag.svg';
 import AuthContext from "../Context/AuthContext";
-import { useState, useEffect } from 'react';
+
 
 
 function ShowPost (props) {
+  const { loggedIn } = useContext(AuthContext);
+
   const [title, setTitle] = useState(""),
         [description, setDescription] = useState(""),
         [image, setImage] = useState(""),
@@ -34,7 +37,7 @@ function ShowPost (props) {
      setLikeCount(result.data.likeCount)
     })
       .catch((error) => console.log(error))
-  }, []);
+  }, [props]);
 
 
   // DELETE POST
@@ -107,18 +110,22 @@ function ShowPost (props) {
               <div className="show-item" id="button-div">
 
                 {/* DELETE */}
+                {loggedIn === true && (
                 <button className="read-more space-it" onClick={deletePost}>Delete</button>
-
+                )}
                 {/* EDIT */}
+                {loggedIn === true && (
                 <Link to={`${props.match.params.id}/edit`} >
                 <button className="edit space-it">Edit</button>
                 </Link>
+                )}
 
                 {/* BACK TO POSTS */}
+               
                 <Link to={'/posts'} >
                 <button className="read-more space-it">Articles</button>
                 </Link>
-
+                
 
               </div> 
               
