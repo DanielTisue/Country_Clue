@@ -29,14 +29,13 @@ const PostEditForm = (props) => {
 
 //Load data from post with id
   useEffect(() => {
-    fetch("http://localhost:5000/posts/" + props.match.params.id)
-    .then(res => res.json())
+    axios.get("http://localhost:5000/posts/" + props.match.params.id)
     .then((result) => {
-     setTitle(result.title)
-     setDescription(result.description)
-     setImage(result.image)
-     setMessage(result.message)
-     setTags(result.tags)
+     setTitle(result.data.title)
+     setDescription(result.data.description)
+     setImage(result.data.image)
+     setMessage(result.data.message)
+     setTags(result.data.tags)
     })
       .catch((error) => console.log(error))
   }, [props]);
@@ -51,9 +50,11 @@ const PostEditForm = (props) => {
   };
 
   const tagHandler = (e) => {
-      let tag = e.target.value.split(",").map(e => e.trim());
-      setTags(tag);
-     console.log(tag);
+   
+  let tag = e.target.value.split(",").map(e => e.trim());
+  setTags(tag);
+      
+  console.log('this is the:' + [...tag]);
   }
 
   //SUBMIT function
@@ -74,7 +75,7 @@ const PostEditForm = (props) => {
 
     await axios.put("http://localhost:5000/posts/" + props.match.params.id, formdata)
     
-    .then((res) => console.log("res", res.data))
+    .then((res) => console.log("res", res.data, res.data.tags))
     .then(res => {
       history.push('/posts/' + props.match.params.id);
       })
