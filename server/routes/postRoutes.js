@@ -29,7 +29,7 @@ const storage =  new CloudinaryStorage({
 const upload = multer({ storage: storage });
 
 // CREATE 
-router.post('/', upload.single("image"), async (req, res) => {
+router.post('/', auth, upload.single("image"), async (req, res) => {
 	try {
 				const title = req.body.title,
 							description = req.body.description,
@@ -83,7 +83,8 @@ router.put('/:id', upload.single("image"), async (req, res) => {
 					description: req.body.description,
 					image: req.file.path,
 					image_id: req.file.filename,					
-					message: req.body.message
+					message: req.body.message,
+					tags: req.body.tags
 				}
 				post = await Post.findByIdAndUpdate(req.params.id, updatedPost, { new: true });
 				res.json(updatedPost);
@@ -91,7 +92,8 @@ router.put('/:id', upload.single("image"), async (req, res) => {
 			let updatedPost = {
 					title: req.body.title,
 					description: req.body.description,					
-					message: req.body.message
+					message: req.body.message,
+				  tags: req.body.tags
 			}
 			await Post.findByIdAndUpdate(req.params.id, updatedPost, { new: true });
 			res.json(updatedPost);
