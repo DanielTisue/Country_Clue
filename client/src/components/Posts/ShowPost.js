@@ -60,6 +60,7 @@ function ShowPost (props) {
     return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
   }
 
+ 
   return (
           // POST CONTAINER
           <div className="postShow-container">
