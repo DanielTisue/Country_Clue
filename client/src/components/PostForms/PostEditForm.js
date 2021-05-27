@@ -24,6 +24,7 @@ const PostEditForm = (props) => {
             [message, setMessage] = useState(""),
             [oldImage, setImage] = useState(""),
             [tags, setTags] = useState([]);
+            // [newTags, setNewTags] = useState([]);
 
     let history = useHistory();
 
@@ -50,11 +51,10 @@ const PostEditForm = (props) => {
   };
 
   const tagHandler = (e) => {
-   
   let tag = e.target.value.split(",").map(e => e.trim());
-  setTags(tag);
-      
-  console.log('this is the:' + [...tag]);
+  setTags(tag)
+  // setNewTags(tag)   
+  console.log(tag);
   }
 
   //SUBMIT function
@@ -72,6 +72,10 @@ const PostEditForm = (props) => {
     for (var i = 0; i < tags.length; i++ ) {
         formdata.append("tags[]", tags[i]);
       }
+      
+  // for (var i = 0; i < tags.length; i++ ) {
+  //       formdata.append("newTags[]", newTags[i]);
+  //     }
 
     await axios.put("http://localhost:5000/posts/" + props.match.params.id, formdata)
     
@@ -110,10 +114,10 @@ const PostEditForm = (props) => {
 
             <div className="postForm-item">
               <label>Article</label>
-               <CKEditor className="article-editor" editor={ClassicEditor} value={message} data={message} onChange={( event, editor ) => { const data =         editor.getData();
-                        setMessage(data)
-                        // console.log(data);
-                    }}  />
+               <CKEditor className="article-editor" editor={ClassicEditor} value={message} data={message} onChange={( event, editor ) => { 
+                 const data = editor.getData();
+                setMessage(data)
+                }}  />
             </div>
 
             <div className="postForm-item">

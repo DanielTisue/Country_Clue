@@ -73,7 +73,7 @@ router.get('/:id', async (req, res) => {
 });
 
 //UPDATE POST
-router.put('/:id', upload.single("image"), async (req, res) => {
+router.put('/:id', auth, upload.single("image"), async (req, res) => {
    try {
 		let post = await Post.findById(req.params.id);
 		if (req.file) {
@@ -108,7 +108,7 @@ router.put('/:id', upload.single("image"), async (req, res) => {
 
 
 //DELETE POST
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
 		try {		
 			let post = await Post.findById(req.params.id);
 			await cloudinary.uploader.destroy(post.image_id)
