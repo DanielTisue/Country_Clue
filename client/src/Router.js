@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from './components/Home';
-import Navbar from './components/Navbar';
+import Home from './Home';
+import Navbar from './Navbar';
 import PostList from './components/Posts/PostList';
 import ShowPost from './components/Posts/ShowPost';
 import CreatePostForm from './components/PostForms/CreatePostForm';
