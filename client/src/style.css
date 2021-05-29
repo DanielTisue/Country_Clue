@@ -9,12 +9,7 @@
    height: 100%;
    width: 100%;
    background: rgb(63,94,251);
-   background: linear-gradient(121deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
- }
-
- #root {
-   background: rgb(63,94,251);
-   background: linear-gradient(121deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+   background: linear-gradient(122deg, rgba(63,94,251,1) 50%, rgba(70,239,252,1) 100%);  
  }
 
   .container {
@@ -53,13 +48,6 @@
    display: flex;
    justify-content: space-evenly;
  }
-
- .home-body {
-   /* background-color: darkred; */
-   height: 100vh;
-   width: 100%;
- }
-
 
 /* DESKTOP larger than laptop */
 @media only screen and (min-width: 1400px) {
