@@ -17,25 +17,6 @@
   padding: 7px 15px;
 }
 
-.post-likeCount {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.post-like-icon {
-  height: 20px;
-  width: 20px;
-}
-
-.like-number {
-  font-size: 13px;
-  padding-left: 2px;
-  position: relative;
-  top: -5px;
-  right: -3px;
-}
-
 .post-title {
   text-align: center;
 }
