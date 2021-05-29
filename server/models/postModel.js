@@ -20,10 +20,6 @@ const postSchema = new mongoose.Schema({
     // required: true 
   },
   tags: {type: [String]},
-  likeCount: {
-    type: Number,
-    default: 0
-  },
   createdAt: {
     type: Date, 
     default: Date.now 

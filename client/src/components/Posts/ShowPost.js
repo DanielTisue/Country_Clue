@@ -3,7 +3,6 @@ import axios from 'axios';
 import dompurify from 'dompurify';
 import { Link, useHistory } from 'react-router-dom';
 import '../PostShow.css';
-import heart from '../../Images/LikeCount.svg';
 import tagImage from '../../Images/tag.svg';
 import AuthContext from "../Context/AuthContext";
 
@@ -18,7 +17,6 @@ function ShowPost (props) {
         [message, setMessage] = useState(""),
         [createdAt, setDate] = useState(""),
         [author, setAuthor] = useState(""),
-        [likeCount, setLikeCount] = useState(),
         [tags, setTags] = useState([]);
 
   let history = useHistory();
@@ -34,7 +32,6 @@ function ShowPost (props) {
      setDate(result.data.createdAt)
      setAuthor(result.data.author)
      setTags(result.data.tags)
-     setLikeCount(result.data.likeCount)
     })
       .catch((error) => console.log(error))
   }, [props]);
@@ -66,13 +63,6 @@ function ShowPost (props) {
           <div className="postShow-container">
             {/* SHOW POST */}
             <div className="show-post">
-
-
-              {/* LIKECOUNT */}
-              <div className="show-item">
-                  <div className="show-likeCount"><span className="show-heartSvg"><img className="heart-svg" alt="heart" src={heart} /></span><sup>{likeCount}</sup></div>
-              </div>
-
 
               {/* TITLE */}
               <div className="show-item">

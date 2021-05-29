@@ -24,7 +24,6 @@ const PostEditForm = (props) => {
             [message, setMessage] = useState(""),
             [oldImage, setImage] = useState(""),
             [tags, setTags] = useState([]);
-            // [newTags, setNewTags] = useState([]);
 
     let history = useHistory();
 

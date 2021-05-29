@@ -1,6 +1,5 @@
 import React from 'react';
 import '../Post.css';
-import heart from '../../Images/LikeCount.svg';
 import tagImage from '../../Images/tag.svg';
 
 class Post extends React.Component {
@@ -30,8 +29,6 @@ class Post extends React.Component {
     return ( 
     
       <div className="post" onClick={this.showPost} >
-        <div className="post-likeCount post-item"><span className="show-heartSvg"><img className="post-like-icon" alt="heart" src={heart} /></span><sup className="like-number">{post.likeCount}</sup></div>
-            {/* <div className="post-likeCount post-item">{post.likeCount} <img className="post-like-icon" alt="like-icon" src={heart} /></div> */}
             <h3 className="post-title post-item">{post.title}</h3>
             <img className="post-img post-item" alt="placeHolder" src={post.image} />
             <p className="post-description post-item">{post.description}</p>
