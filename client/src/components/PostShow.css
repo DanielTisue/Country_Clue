@@ -20,6 +20,10 @@
   padding: 10px 0;
 }
 
+.show-item ul {
+  list-style-position: inside;
+}
+
 .show-date {
   font-size: 15px;
   line-height: 20px;
