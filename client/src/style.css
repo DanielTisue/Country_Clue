@@ -25,11 +25,20 @@
   flex-wrap: wrap;
  }
 
- li {
-   list-style: none;
+ li.navBar-link {
+  list-style: none;
    display: inline;
    text-decoration: none;
  }
+
+  ul li::marker {
+    margin-right: 25px;
+  }
+ /* li {
+   list-style: none;
+   display: inline;
+   text-decoration: none;
+ } */
 
  a {
    text-decoration: none;
