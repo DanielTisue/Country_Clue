@@ -30,6 +30,7 @@ const Router = () => {
           {loggedIn === false && (
           <Route exact path="/auth/login" component={Login} />
           )}
+          <Route path="*" component={() => "404 NOT FOUND" }/>
         </Switch>
       </BrowserRouter>
   )
