@@ -56,6 +56,11 @@ const PostEditForm = (props) => {
   console.log(tag);
   }
 
+  //REDIRECT
+  const backRouter = () => {
+    history.push("/posts");
+  }
+
   //SUBMIT function
 
   const handleSubmit = async (e) => {
@@ -128,7 +133,7 @@ const PostEditForm = (props) => {
             <button className="postForm-button" type="submit" onClick={handleSubmit}>Submit</button>
             </div>
             
-            <button className="back-button">Back to this post</button>
+            <button className="back-button" onClick={backRouter}>Back to this post</button>
             </div>
         </form>
         

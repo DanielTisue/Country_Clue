@@ -26,6 +26,11 @@ const tagHandler = (e) => {
     console.log(tag);
   }
 
+  //REDIRECT
+  const backRouter = () => {
+    history.push("/posts");
+  }
+
 const handleSubmit = async (e) => {
       e.preventDefault();
 
@@ -95,7 +100,7 @@ const handleSubmit = async (e) => {
             <button className="postForm-button" type="submit" onClick={handleSubmit}>Submit</button>
             </div>
             
-            <button className="back-button">Back to all posts</button>
+            <button className="back-button" onClick={backRouter}>Back to all posts</button>
             </div>
         </form>
         
