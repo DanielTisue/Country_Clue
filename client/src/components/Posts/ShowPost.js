@@ -34,8 +34,7 @@ function ShowPost (props) {
      setTags(result.data.tags)
     })
       .catch((error) => console.log(error))
-  }, [props]);
-
+  }, [props])
 
   // DELETE POST
   const deletePost = (e) => {
@@ -54,6 +53,7 @@ function ShowPost (props) {
 
   const renderDate = (dateString) => {
     const date = new Date(dateString);
+    
     return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
   }
 

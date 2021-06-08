@@ -13,7 +13,9 @@ class App extends React.Component{
   render(){
     return (
       <AuthContextProvider>
+        <div className="container">
         <Router />
+        </div>
       </AuthContextProvider>
     )
   }

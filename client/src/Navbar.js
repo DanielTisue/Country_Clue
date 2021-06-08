@@ -7,7 +7,7 @@ function Navbar() {
 const { loggedIn } = useContext(AuthContext);
 
     return (
-      <div className="container">
+      // <div className="container">
         <div className="navBar">
           <ul className="navBar-items">
             <Link to='/'>
@@ -38,7 +38,7 @@ const { loggedIn } = useContext(AuthContext);
             
           </ul>
         </div>
-      </div>
+      // </div>
     )
   }
 

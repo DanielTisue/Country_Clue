@@ -25,11 +25,12 @@ class PostList extends React.Component {
   }
 
 render(){
-  return <div className="container">
-            <div className="flex-container">
+  return <div className="flex-container">
               {this.renderList()}
             </div>
-          </div>;
+  // <div className="container">
+            
+          // </div>;
   }
 }
 
