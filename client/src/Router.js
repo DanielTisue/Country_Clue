@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { BrowserRouter, Switch, Route, useHistory } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Navbar from './Navbar';
 import PostList from './components/Posts/PostList';
@@ -20,9 +20,9 @@ const Router = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/posts" component={PostList} />
-          {":id" === true && (
+        
           <Route exact path="/posts/:id" component={ShowPost} />
-          )}
+         
           {loggedIn === true && (
           <Route exact path="/posts/:id/edit" component={PostEditForm} />
           )}
