@@ -23,6 +23,7 @@ function ShowPost (props) {
 
   //Load data from post with id
   useEffect(() => {
+    
     axios.get('http://localhost:5000/posts/' + props.match.params.id)
     .then((result) => {
      setTitle(result.data.title)
@@ -72,13 +73,13 @@ function ShowPost (props) {
               {/* AUTHOR & DATE */}
               <div className="show-item">
               <div className="show-date">{author}</div>
-              <div className="show-date">{renderDate(createdAt)}</div>
+              {createdAt && <div className="show-date">{renderDate(createdAt)}</div>}
               </div>
 
               {/* IMAGE */}
-              <div className="show-item" value={image}>
+              { image && <div className="show-item" value={image}>
                 <img className="show-image" alt="" src={image} />
-              </div>
+              </div> }
                {/* TAGS */}
               <div className="show-item-tags">
                 {tags.map((tag, key) => {
