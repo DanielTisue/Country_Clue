@@ -21,9 +21,9 @@ function ShowPost (props) {
 
   let history = useHistory();
 
-  //Load data from post with id
+  //Get data from spedcific post
   useEffect(() => {
-    
+
     axios.get('http://localhost:5000/posts/' + props.match.params.id)
     .then((result) => {
      setTitle(result.data.title)
@@ -37,7 +37,7 @@ function ShowPost (props) {
       .catch((error) => console.log(error))
   }, [props])
 
-  // DELETE POST
+  // Delete post
   const deletePost = (e) => {
     axios.delete('http://localhost:5000/posts/' + props.match.params.id)
       .then((res) => {
@@ -52,6 +52,7 @@ function ShowPost (props) {
       })
   }
 
+  //Render date as MM/DD/YEAR
   const renderDate = (dateString) => {
     const date = new Date(dateString);
     
