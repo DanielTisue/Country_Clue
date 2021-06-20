@@ -50,7 +50,8 @@
   margin: 0 2px;
   /* border: 1px solid black; */
   padding: 3px;
-  background-color: rgb(0, 152, 253);
+  background-color: #717796;
+  opacity: .3;
   color: #ffffff;
   border-radius: 5px;
   box-shadow: 1px 1px 5px #d2d2d2;
