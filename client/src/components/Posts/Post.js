@@ -29,11 +29,12 @@ class Post extends React.Component {
     return ( 
     
       <div className="post" onClick={this.showPost} >
+            
+            <img className="post-img" alt="placeHolder" src={post.image} />
+             <p className="post-tags">{this.renderTags(post.tags)}</p>
             <h3 className="post-title post-item">{post.title}</h3>
-            <img className="post-img post-item" alt="placeHolder" src={post.image} />
             <p className="post-description post-item">{post.description}</p>
-            <p className="post-tags post-item">{this.renderTags(post.tags)}</p>
-            <button className="read-more post-item" >Read more</button>
+            {/* <button className="read-more post-item" >Read more</button> */}
             <p className="post-date">{this.renderDate(post.createdAt)}</p>
         </div>
         

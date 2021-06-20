@@ -1,47 +1,49 @@
 
 .post {
-  width: 300px;
-  height: 450px;
+  width: 28%;
+  height: 1005;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 5px;
-  padding: 25px 0;
-  box-shadow: 1px 1px  5px #d2d2d2;
-  margin: 8px;
+  border-radius: 15px;
+  box-shadow: 3px 6px 70px rgb(150 155 187 / 40%);
+  margin-bottom: 45px;
+  margin-left: 50px;
   background-color: #ffffff;
 }
 
 .post-item {
-  padding: 7px 15px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .post-title {
-  text-align: center;
+  padding-top: 25px;
+  text-align: left;
 }
 
 .post-img {
   width: 100%;
-  height: 200px;
-  /* border: 1px solid black; */
-  /* min-height: 100%; */
-  padding: 2px 0 !important;
+  height: auto;
   object-fit: contain;
+  transition: opacity 2s linear;
 }
 
+
+
 .post-description {
-  padding-right: 25px;
-  padding-left: 25px;
-  font-size: 15px;
+  padding-top: 20px;
+  font-size: 14px;
   line-height: 21px;
 }
 
 .post-tags {
+  padding-top: 15px;
   font-size: 13px;
   line-height: 18px;
   text-align: right;
-  padding-bottom: 20px;
+  padding-right: 15px;
 }
 
 .tag {
@@ -78,10 +80,12 @@
 }
 
 .post-date {
- padding-top: 20px;
- padding-right: 15px;
- font-size: 11px;
- line-height: 17px;
- text-align: right;
+ padding-top: 10px;
+ padding-left: 25px;
+ color: #717796;
+ font-size: 12px;
+ line-height: 18px;
+ text-align: left;
+ padding-bottom: 25px;
 }
 
