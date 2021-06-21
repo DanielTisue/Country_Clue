@@ -91,7 +91,7 @@
   }
 }
 
-/* TABLET & MOBILE layout */
+/* TABLET & SOME MOBILE layouts */
  @media only screen and (max-width: 960px) {
    .container {
    max-width: 1300px !important;
@@ -102,3 +102,4 @@
     justify-content: space-evenly;
   }
 }
+
