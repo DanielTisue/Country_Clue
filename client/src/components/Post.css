@@ -7,10 +7,11 @@
   flex-direction: column;
   justify-content: center;
   border-radius: 15px;
-  box-shadow: 3px 6px 70px rgb(150 155 187 / 40%);
+  box-shadow: 3px 6px 30px rgb(150 155 187 / 40%);
   margin-bottom: 45px;
   margin-left: 50px;
   background-color: #ffffff;
+  cursor: pointer;
 }
 
 .post-item {
@@ -25,12 +26,14 @@
 
 .post-img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  transition: opacity 2s linear;
+  height: 200px;
+  object-fit: cover;
+  transition: all .3s ease;
 }
 
-
+.post-img:hover {
+  transform: scale(1.05);
+}
 
 .post-description {
   padding-top: 20px;
@@ -48,7 +51,6 @@
 
 .tag {
   margin: 0 2px;
-  /* border: 1px solid black; */
   padding: 3px;
   background-color: #717796;
   opacity: .3;
