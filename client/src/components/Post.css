@@ -1,7 +1,21 @@
 
+ @media only screen and (max-width: 961px) {
+   .post {
+     width: 40% !important;
+     margin: 25px !important;
+   }
+  }
+
+  @media only screen and (max-width: 580px) {
+   .post {
+     width: 100% !important;
+     margin: 50px !important;
+   }
+  }
+
 .post {
   width: 28%;
-  height: 1005;
+  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
