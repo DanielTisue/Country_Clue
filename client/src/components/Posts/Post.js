@@ -31,6 +31,7 @@ class Post extends React.Component {
       <div className="post" onClick={this.showPost} >
             
             <img className="post-img" alt="placeHolder" src={post.image} />
+            
              <p className="post-tags">{this.renderTags(post.tags)}</p>
             <h3 className="post-title post-item">{post.title}</h3>
             <p className="post-description post-item">{post.description}</p>
