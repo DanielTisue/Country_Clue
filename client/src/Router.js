@@ -7,8 +7,10 @@ import ShowPost from './components/Posts/ShowPost';
 import CreatePostForm from './components/PostForms/CreatePostForm';
 import PostEditForm from './components/PostForms/PostEditForm';
 import Register from './components/Auth/Register';
-import Login from "./components/Auth/Login";
-import AuthContext from './components/Context/AuthContext'
+import Login from './components/Auth/Login';
+import AuthContext from './components/Context/AuthContext';
+import FourOFour from './404';
+
 
 
 const Router = () => {
@@ -33,7 +35,7 @@ const Router = () => {
           {loggedIn === false && (
           <Route exact path="/auth/login" component={Login} />
           )}
-          <Route path="*" component={() => "404 NOT FOUND" }/>
+          <Route path="*" component={FourOFour}/>
         </Switch>
       </BrowserRouter>
   )
