@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;600&display=swap');
 
 
  * {
@@ -12,8 +13,26 @@
    height: 100%;
    width: 100%;
    background: #fff;
+   font-family: Montserrat,sans-serif;
+   font-size: 16px
    /* background: rgb(63,94,251); */
    /* background: linear-gradient(122deg, rgba(63,94,251,1) 50%, rgba(70,239,252,1) 100%);   */
+ }
+
+ h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  line-height: 60px;
+  letter-spacing: .06em;
+  font-weight: 400;
+ }
+
+ h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 400;
+  color: rgba(117, 117, 117, 1); 
  }
 
  h3 {
@@ -78,6 +97,27 @@
    width: 100%;
    display: flex;
    justify-content: space-evenly;
+ }
+
+ .error-container {
+   width: 100%;
+   display: flex;
+   justify-content: space-evenly;
+   padding: 50px;
+ }
+
+ .error-img {
+   width: 40%;
+   padding: 25px;
+ }
+
+ .error-text {
+   width: 60%;
+   padding: 25px;
+ }
+
+ .button-wrapper {
+   margin-top: 25px;
  }
 
 /* DESKTOP larger than laptop */
