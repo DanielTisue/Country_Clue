@@ -65,15 +65,28 @@ function ShowPost (props) {
           <div className="postShow-container">
             {/* SHOW POST */}
             <div className="show-post">
+                {/* TAGS */}
+              <div className="show-item-tags">
+                {tags.map((tag, key) => {
+                  return <span className="postShow-tag" key={key}>{tag}<img className="postShow-tagImage" src={tagImage} alt="tag" /></span>
+                })}
+              </div>
 
               {/* TITLE */}
               <div className="show-item">
-                <h2 className="show-title">{title}</h2>
+                <h1 className="show-title">{title}</h1>
+              </div>
+
+               {/* DESCRIPTION */}
+              <div className="show-item">
+                  <div className="show-description" value={description}><h2 id="showPost-description">
+                    {description}
+                   </h2></div>
               </div>
 
               {/* AUTHOR & DATE */}
               <div className="show-item">
-              <div className="show-date">{author}</div>
+              <div className="show-author">{author}</div>
               {createdAt && <div className="show-date">{renderDate(createdAt)}</div>}
               </div>
 
@@ -81,18 +94,8 @@ function ShowPost (props) {
               { image && <div className="show-item" value={image}>
                 <img className="show-image" alt="" src={image} />
               </div> }
-               {/* TAGS */}
-              <div className="show-item-tags">
-                {tags.map((tag, key) => {
-                  return <span className="postShow-tag" key={key}>{tag}<img className="postShow-tagImage" src={tagImage} alt="tag" /></span>
-                })}
-              </div>
-              {/* DESCRIPTION */}
-              <div className="show-item">
-                  <div className="show-description" value={description}><h3>
-                    {description}
-                   </h3></div>
-              </div>
+             
+             
 
               {/* POST */}
               <div className="show-item">

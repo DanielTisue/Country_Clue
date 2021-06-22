@@ -10,7 +10,7 @@
 .show-post {
   width: 100%;
   display: flex;
-  padding: 10px 0;
+  padding: 50px 0;
   flex-direction: column;
   justify-content: space-around;
   align-items: space-around; 
@@ -24,16 +24,7 @@
   list-style-position: inside;
 }
 
-.show-date {
-  font-size: 15px;
-  line-height: 20px;
-}
 
-.show-image {
-  border: 1px solid black;
-  width: 100%;
-  /* height: 200px; */
-}
 
 /* .show-item p {
   padding: 0 10px;
@@ -43,23 +34,45 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .postShow-tag {
-  background-color: steelblue;
-  color: white;
-  font-size: 13px;
-  line-height: 18px;
-  margin: 0 3px;
-  border-radius: 3px;
-  padding: 5px;
+  background-color: #717796;
+  color: #ffffff;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: .05em;
+  margin: 0 2px;
+  border-radius: 5px;
+  padding: 3px;
+  opacity: .3;
 }
 
 .postShow-tagImage {
   width: 15px;
   height: 15px;
   margin: 0 2px;
+}
+
+.show-author {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #171717;
+}
+
+.show-date {
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(117, 117, 117, 1);
+}
+
+.show-image {
+  border: 1px solid black;
+  width: 100%;
+  /* height: 200px; */
 }
 
 #button-div {
