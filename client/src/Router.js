@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from './Home';
-import Navbar from './Navbar';
+import Home from './components/Layout/Home';
+import Navbar from './components/Layout/Navbar';
 import PostList from './components/Posts/PostList';
 import ShowPost from './components/Posts/ShowPost';
 import CreatePostForm from './components/PostForms/CreatePostForm';
@@ -9,7 +9,7 @@ import PostEditForm from './components/PostForms/PostEditForm';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
 import AuthContext from './components/Context/AuthContext';
-import FourOFour from './404';
+import FourOFour from './components/Layout/404';
 
 
 

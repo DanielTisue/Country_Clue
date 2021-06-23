@@ -21,9 +21,9 @@ app.use(cors({
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 connection.once('open', () => {
-  console.log("Database is connected!");
+  console.log('Database is connected!');
 })
-mongoose.set( 'useFindAndModify', false );
+mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
 app.use('/posts', postRoutes);

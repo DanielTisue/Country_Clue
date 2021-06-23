@@ -5,19 +5,16 @@ const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-
 //Register User
 router.post('/register', async (req, res) => {
-  
   try{
     const { username, password, passwordVerify } = req.body;
-
-    //Validate
+    // Validate
     if(!username || !password || !passwordVerify) {
-      console.log({ errMessage : "Please enter all required fields!" });
+      console.log({ errMessage : "Please enter all required fields! 😑" });
       return res.status(400).json({
         errorMessage: "Please enter all required fields!",
-      });
+      }).send();
     }
 
     if(password.length < 6 ) {
@@ -36,23 +33,21 @@ router.post('/register', async (req, res) => {
 
     const existingUser = await User.findOne({ username });
     if(existingUser) {
-      console.log({ errMessage : "An account with this username already exixts :(" });
+      console.log({ errMessage : "An account with this username already exists 🤨" });
       return res.status(400).json({
-        errorMessage: "An account with this username already exixts :(",
+        errorMessage: "An account with this username already exists 🤨",
       });
     }
 
     //Encrypt password
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
-
     // console.log(passwordHash);
 
     //Save new User
     const newUser = new User({ username: username, password: passwordHash });
     const savedUser = await newUser.save();
     // res.json(savedUser);
-
 
     //Log user in right away - Create & assign a token
     const token = jwt.sign({
@@ -66,8 +61,7 @@ router.post('/register', async (req, res) => {
     }).send();
 
   } catch (err) {
-    console.log(err);
-    // res.status(500).send();
+    res.status(500).json().send();
   }
 
 });

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import AuthContext from '../Context/AuthContext';
-import '../Form.css';
+import '../Styles/Form.css';
 
 axios.defaults.withCredentials = true;
 
@@ -10,7 +10,8 @@ function Register() {
 
   const [username, setUsername] = useState(""),
         [password, setPassword] = useState(""),
-        [passwordVerify, setpasswordVerify] = useState("");
+        [passwordVerify, setpasswordVerify] = useState(""),
+        [error, setError] = useState(null);
 
   const { getLoggedIn } = useContext(AuthContext);
   let history = useHistory();
@@ -24,14 +25,25 @@ function Register() {
         passwordVerify
       }
 
-      await axios.post('http://localhost:5000/auth/register', registerData, { withCredentials: true })
+      await axios.post('http://localhost:5000/auth/registers', registerData, { withCredentials: true })
       await getLoggedIn();
-        // console.log("user successfully created", registerData);
+
+      console.log("user successfully created", registerData);
+
       history.push('/');
      
     } catch (err) {
-      console.log(err);
+      // console.log(err.response.status)
+      if(err.response.status === 400) {
+        setError(err.response.data.errorMessage)
+      } else if (err.response.status === 500) {
+        setError('Status: 500 - There is a problem with the server. Please contact your site admin')
+      } else if (err.response.status === 404) {
+        setError('Status: 404 - The database can not be found. Please contact your site admin.')
+      } 
     }
+      // console.log(err)
+    
   }
 
   return (
@@ -39,6 +51,7 @@ function Register() {
     
     <form className="postForm" onSubmit={register}>
       <div className="internalPostForm-alignment">
+        { error && <div className="error-message-wrapper"><div className="error-message">{ error }</div></div>}
         <h3 className="postForm-title">Register</h3>
 
         <div className="postForm-item" id="postForm-item-1">

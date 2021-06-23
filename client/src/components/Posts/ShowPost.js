@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import dompurify from 'dompurify';
 import { Link, useHistory } from 'react-router-dom';
-import '../PostShow.css';
+import '../Styles/PostShow.css';
 import tagImage from '../../Images/tag.svg';
 import AuthContext from "../Context/AuthContext";
 

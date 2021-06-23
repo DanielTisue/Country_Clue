@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import '../Form.css';
+import '../Styles/Form.css';
 
 axios.defaults.withCredentials = true;
 

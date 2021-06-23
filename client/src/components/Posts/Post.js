@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Post.css';
+import '../Styles/Post.css';
 import tagImage from '../../Images/tag.svg';
 
 class Post extends React.Component {
@@ -20,7 +20,6 @@ class Post extends React.Component {
   }
 
   showPost() {
-    console.log(this);
     window.location.pathname = `/posts/${this.props.post._id}`;
   }
 
