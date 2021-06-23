@@ -25,7 +25,7 @@ function Register() {
         passwordVerify
       }
 
-      await axios.post('http://localhost:5000/auth/registers', registerData, { withCredentials: true })
+      await axios.post('http://localhost:5000/auth/register', registerData, { withCredentials: true })
       await getLoggedIn();
 
       console.log("user successfully created", registerData);
