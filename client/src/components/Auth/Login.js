@@ -8,7 +8,8 @@ axios.defaults.withCredentials = true;
 function Login() {
 
   const [username, setUsername] = useState(""),
-        [password, setPassword] = useState("");
+        [password, setPassword] = useState(""),
+        [error, setError] = useState(null);
        
   let history = useHistory();
 
@@ -26,6 +27,13 @@ function Login() {
        
     } catch (err) {
       console.log(err);
+       if(err.response.status === 400) {
+        setError(err.response.data.errorMessage)
+      } else if (err.response.status === 500) {
+        setError('Status: 500 - There is a problem with the server. Please contact your site admin')
+      } else if (err.response.status === 404) {
+        setError('Status: 404 - The database can not be found. Please contact your site admin.')
+      } 
     }
   }
 
@@ -34,6 +42,7 @@ function Login() {
     
     <form className="postForm" onSubmit={loggingIn}>
       <div className="internalPostForm-alignment">
+        { error && <div className="error-message-wrapper"><div className="error-message">{ error }</div></div> }
         <h3 className="postForm-title">Login</h3>
 
         <div className="postForm-item" id="postForm-item-1">
