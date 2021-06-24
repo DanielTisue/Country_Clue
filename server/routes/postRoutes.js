@@ -20,7 +20,11 @@ const storage =  new CloudinaryStorage({
 	params: {
 						folder: "countryClue",
 						public_id: (req, file) => file.filename,
+						//possibly change to 'allowed_formats: [jpeg, jpg, png] as outlined in Cloudinary docs -https://cloudinary.com/documentation/image_upload_api_reference#upload_method'. The below is not working!
 						allowedFormats: ["jpeg", "jpg", "png"],
+//** Try instead format: option as format: async(req, file) => { 
+	//            																								"jpg", "jpeg", "png";
+//																															} 
 						format: async () => "jpg",
 						transformation: [{ width: 800, crop: 'scale' }],
 
@@ -49,7 +53,7 @@ router.post('/', auth, upload.single("image"), async (req, res) => {
 
 				//save it
 					const savedPost = await newPost.save();
-					console.log(savedPost);
+					// console.log(savedPost);
 					res.json(savedPost);
   } catch (error) {
     console.log(error);
@@ -58,8 +62,13 @@ router.post('/', auth, upload.single("image"), async (req, res) => {
 
 // GET All POSTS
 router.get('/', async (req, res) => {
-  const posts = await Post.find({}).sort( { _id: -1 });
-	res.json(posts);
+	try {
+		const posts = await Post.find({}).sort( { _id: -1 });
+		res.json(posts);
+	} catch (err) {
+		console.loh(err);
+	}
+  
 });
 
 //GET SINGLE POST
