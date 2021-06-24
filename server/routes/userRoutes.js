@@ -61,7 +61,7 @@ router.post('/register', async (req, res) => {
     }).send();
 
   } catch (err) {
-    res.status(500).json().send();
+    res.status(500).send();
   }
 
 });
@@ -75,18 +75,27 @@ router.post('/login', async (req, res) => {
      //Validate
     if(!username || !password) {
       console.log({ errMessage : "Please enter all required fields!" });
+      return res.status(400).json({
+        errorMessage: "Please enter all required fields!",
+      }).send();
     }
 
     const existingUser = await User.findOne({ username });
     //Check for username
     if(!existingUser) {
       console.log({ errMessage : "Incorrect username or password. Please try again." });
+      return res.status(400).json({
+        errorMessage: "Incorrect username or password. Please try again.",
+      }).send();
     }
 
     const passwordUsed = await bcrypt.compare(password, existingUser.password);
     //Check for password
     if(!passwordUsed) {
       console.log({ errMessage : "Incorrect username or password. Please try again." });
+      return res.status(400).json({
+        errorMessage: "Incorrect username or password. Please try again.",
+      }).send();
     }
 
     //Create & assign a token
