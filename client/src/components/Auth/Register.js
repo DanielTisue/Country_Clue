@@ -13,6 +13,7 @@ function Register() {
         [passwordVerify, setpasswordVerify] = useState(""),
         [error, setError] = useState(null);
 
+
   const { getLoggedIn } = useContext(AuthContext);
   let history = useHistory();
 
@@ -26,11 +27,12 @@ function Register() {
       }
 
       await axios.post('http://localhost:5000/auth/register', registerData, { withCredentials: true })
-      await getLoggedIn();
-
-      console.log("user successfully created", registerData);
-
+      await getLoggedIn()
+      
+     
+      
       history.push('/');
+     
      
     } catch (err) {
       // console.log(err.response.status)
@@ -51,7 +53,7 @@ function Register() {
     
     <form className="postForm" onSubmit={register}>
       <div className="internalPostForm-alignment">
-        { error && <div className="error-message-wrapper"><div className="error-message">{ error }</div></div>}
+        { error && <div className="error-message-wrapper"><div className="error-message">{ error }</div></div> }
         <h3 className="postForm-title">Register</h3>
 
         <div className="postForm-item" id="postForm-item-1">
