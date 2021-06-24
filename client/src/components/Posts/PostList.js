@@ -12,9 +12,14 @@ class PostList extends React.Component {
   }
 
   async getPosts() {
-    const res = await axios.get("http://localhost:5000/posts");
-    console.log(res.data);
-    this.setState({posts: res.data})
+    try {
+      const res = await axios.get("http://localhost:5000/posts");
+      console.log(res.data);
+      this.setState({posts: res.data})
+    } catch (err) {
+      console.log(err);
+    }
+    
   }
 
 

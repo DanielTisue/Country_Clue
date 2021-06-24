@@ -14,8 +14,6 @@ import '../Styles/Form.css';
 //   author
 
 const PostEditForm = (props) => {
-
- 
  
     const [title, setTitle] = useState(""),
             [description, setDescription] = useState(""),
