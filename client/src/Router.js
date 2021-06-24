@@ -25,14 +25,14 @@ const Router = () => {
         
           <Route exact path="/posts/:id" component={ShowPost} />
          
-          {loggedIn === true && (
+          {loggedIn && (
           <Route exact path="/posts/:id/edit" component={PostEditForm} />
           )}
-          {loggedIn === true && (
+          {loggedIn && (
           <Route exact path="/create" component={CreatePostForm} />
           )}
           <Route exact path="/auth/register" component={Register} />
-          {loggedIn === false && (
+          {!loggedIn && (
           <Route exact path="/auth/login" component={Login} />
           )}
           <Route path="*" component={FourOFour}/>
