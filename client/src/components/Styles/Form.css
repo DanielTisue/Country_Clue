@@ -9,8 +9,8 @@
 }
 
 .postForm {
-  box-shadow: 5px 5px 5px 5px #d2d2d2;
-  border-radius: 10px;
+  box-shadow: 3px 6px 30px rgb(150 155 187 / 40%);
+  border-radius: 15px;
   height: 90%;
   width: 90%;
   max-width: 810px;
@@ -29,8 +29,6 @@
 }
 
 .postForm-title {
-  font-family: Arial, Helvetica, sans-serif;
-  color: black;
   text-align: center;
   padding-bottom: 10px;
 }
@@ -65,8 +63,11 @@ input::placeholder {
   font-size: 14px;
   line-height: 26px;
   color: #d2d2d2ee;
+  letter-spacing: .03em;
   /* font-style: italic; */
 }
+
+/* Placeholder form text-color : #757c98 */
 
 /* Webkit */
 [placeholder]:focus::-webkit-input-placeholder { opacity: 0; }
@@ -79,9 +80,9 @@ input::placeholder {
 
 input {
   width: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 17px;
-  line-height: 22px;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-size: 14px;
+  line-height: 20px;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -114,14 +115,12 @@ textarea {
 }
 
 label {
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
   line-height: 22px;
-  padding-top: 5px;
+  padding: 5px 0;
   display: block;
-  font-weight: bold;
-  color: #000;
-  text-shadow: 0 1px 1px #d2d2d2;
+  color: #171717;
+  letter-spacing: 1px;
 }
 
 .postForm-button {

@@ -24,12 +24,6 @@
   list-style-position: inside;
 }
 
-
-
-/* .show-item p {
-  padding: 0 10px;
-} */
-
 .show-item-tags {
   width: 100%;
   display: flex;
@@ -47,6 +41,10 @@
   border-radius: 5px;
   padding: 3px;
   opacity: .3;
+}
+
+.show-title {
+  font-weight: 600;
 }
 
 .postShow-tagImage {
