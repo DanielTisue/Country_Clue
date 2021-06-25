@@ -56,7 +56,7 @@ const PostEditForm = (props) => {
 
   //REDIRECT
   const backRouter = () => {
-    history.push("/posts");
+    history.push("/posts/" + props.match.params.id);
   }
 
   //SUBMIT function
