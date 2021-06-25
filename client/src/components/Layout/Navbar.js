@@ -26,13 +26,18 @@ const { loggedIn } = useContext(AuthContext);
             <li className="navBar-link">All Articles</li>
             </Link>
 
-            {loggedIn === false && (
+            {!loggedIn && (
               <Link to='/auth/login' >
               <li className="navBar-link">Login</li>
               </Link>
             )}
+            {loggedIn && (
+             <Link to='/create' >
+              <li className="navBar-link">Create Article</li>
+              </Link>
+            )}
 
-            {loggedIn === true && (
+            {loggedIn && (
               <LogOutBtn />
             )}
             

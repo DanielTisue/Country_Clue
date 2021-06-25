@@ -43,7 +43,7 @@ function Login() {
     <form className="postForm" onSubmit={loggingIn}>
       <div className="internalPostForm-alignment">
         { error && <div className="error-message-wrapper"><div className="error-message">{ error }</div></div> }
-        <h3 className="postForm-title">Login</h3>
+        <h1 className="postForm-title">Login</h1>
 
         <div className="postForm-item" id="postForm-item-1">
           <label>Username</label>

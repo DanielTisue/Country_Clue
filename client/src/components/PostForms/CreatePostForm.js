@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -65,7 +65,7 @@ const handleSubmit = async (e) => {
         
         <form className="postForm" encType="multipart/form-data"> 
           <div className="internalPostForm-alignment">
-            <h3 className="postForm-title">Make it count!</h3>
+            <h1 className="postForm-title">Make it count!</h1>
             
             <div className="postForm-item" id="postForm-item-1">
               <label>Title</label>

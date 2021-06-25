@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
 import { Link } from 'react-router-dom';
+import Delayed from "../Utils/Delayed";
 
-class FourOFour extends React.Component {
-  render() {
+const FourOFour = () => {
     return (
-     <div className="container"> 
+    <Delayed>
+     <div className="container">
        <div className="error-container">
         <div className="error-img">
           <p>There is going to be an image here or maybe an illustration or even possibly an ilustrated animation...ooooohhhhh ahhhh</p>
@@ -19,9 +20,10 @@ class FourOFour extends React.Component {
            </div>
         </div>
        </div>
-    </div>
+     </div>
+    </Delayed>
       )
   }
-}
+
 
 export default FourOFour;
