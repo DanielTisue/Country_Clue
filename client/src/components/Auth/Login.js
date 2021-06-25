@@ -1,15 +1,19 @@
 import axios from 'axios';
-import React, {useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../Styles/Form.css';
+import AuthContext from '../Context/AuthContext';
 
 axios.defaults.withCredentials = true;
 
 function Login() {
 
+
   const [username, setUsername] = useState(""),
         [password, setPassword] = useState(""),
         [error, setError] = useState(null);
+
+  const { getLoggedIn } = useContext(AuthContext);
        
   let history = useHistory();
 
@@ -22,8 +26,9 @@ function Login() {
       }
 
       await axios.post('http://localhost:5000/auth/login', loginData, { withCredentials: true })
-      // console.log("user successfully logged in", loginData);
-      history.push('/posts');
+      console.log("user successfully logged in", loginData);
+      getLoggedIn()
+      history.push('/');
        
     } catch (err) {
       // console.log(err);

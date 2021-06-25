@@ -31,6 +31,7 @@ const { loggedIn } = useContext(AuthContext);
               <li className="navBar-link">Login</li>
               </Link>
             )}
+            
             {loggedIn && (
              <Link to='/create' >
               <li className="navBar-link">Create Article</li>
@@ -38,7 +39,7 @@ const { loggedIn } = useContext(AuthContext);
             )}
 
             {loggedIn && (
-              <LogOutBtn />
+              <li className="navBar-link"> <LogOutBtn /> </li>
             )}
             
           </ul>
