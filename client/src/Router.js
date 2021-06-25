@@ -22,19 +22,21 @@ const Router = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/posts" component={PostList} />
-        
           <Route exact path="/posts/:id" component={ShowPost} />
-         
+          {/* //Conditiional Routes */}
           {loggedIn && (
           <Route exact path="/posts/:id/edit" component={PostEditForm} />
           )}
           {loggedIn && (
-          <Route exact path="/create" component={CreatePostForm} />
-          )}
+           <Route exact path="/create" component={CreatePostForm} />
+           )} 
+          {!loggedIn && (
           <Route exact path="/auth/register" component={Register} />
+          )}
           {!loggedIn && (
           <Route exact path="/auth/login" component={Login} />
           )}
+          {/*//Catchall 404 error */}
           <Route path="*" component={FourOFour}/>
         </Switch>
       </BrowserRouter>
