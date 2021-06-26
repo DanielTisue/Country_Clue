@@ -55,8 +55,10 @@ router.post('/', auth, upload.single("image"), async (req, res) => {
 					const savedPost = await newPost.save();
 					// console.log(savedPost);
 					res.json(savedPost);
+					res.status(201).json({ success: 'Your post has been successfully created'}).send( success.message );
   } catch (error) {
     console.log(error);
+		res.status(500).json( { error: error.status + 'Your post has not been created. Contact your site admin'}).send( error.message );
   }
 });
 
@@ -65,8 +67,10 @@ router.get('/', async (req, res) => {
 	try {
 		const posts = await Post.find({}).sort( { _id: -1 });
 		res.json(posts);
+		res.status(200).json()
 	} catch (err) {
-		console.loh(err);
+		console.log(err);
+		res.status(500).json().send();
 	}
   
 });
@@ -76,8 +80,10 @@ router.get('/:id', async (req, res) => {
 	try {
 		const post = await Post.findById(req.params.id);
 		res.json(post);
+		res.status(200).json();
 	} catch (error) {
 		console.log(error);
+		res.status(404).json( { error: error.status + 'This post no longer exists.'}).send( error.message );
 	}
 });
 
@@ -85,6 +91,11 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', auth, upload.single("image"), async (req, res) => {
    try {
 		let post = await Post.findById(req.params.id);
+
+		if(!post) {
+			res.status(404).json( { error: error.status + 'This post no longer exists.'}).send( error.message );
+		}
+
 		if (req.file) {
 				await cloudinary.uploader.destroy(post.image_id);
 				let updatedPost = {
@@ -111,6 +122,7 @@ router.put('/:id', auth, upload.single("image"), async (req, res) => {
 			
 	} catch (err) {
 		console.log(err);
+		res.status(500).json().send();
 	}
 
   });
@@ -123,8 +135,9 @@ router.delete('/:id', auth, async (req, res) => {
 			await cloudinary.uploader.destroy(post.image_id)
 			await post.remove();
 			res.json(post);
+			res.status(200).json({ success: 'Your post has been successfully deleted!' }).send( success.message )
 		} catch(err) {
-			console.log(err);
+			res.status(500).json().send();
 		}
 });
 
