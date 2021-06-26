@@ -54,11 +54,10 @@ router.post('/', auth, upload.single("image"), async (req, res) => {
 				//save it
 					const savedPost = await newPost.save();
 					// console.log(savedPost);
-					res.json(savedPost);
-					res.status(201).json({ success: 'Your post has been successfully created'}).send( success.message );
+					return res.status(201).json(savedPost).send( 'Your post has been successfully created' );
   } catch (error) {
     console.log(error);
-		res.status(500).json( { error: error.status + 'Your post has not been created. Contact your site admin'}).send( error.message );
+		return res.status(500).json(error).send( 'Your post has not been created. Contact your site admin' );
   }
 });
 
@@ -67,10 +66,10 @@ router.get('/', async (req, res) => {
 	try {
 		const posts = await Post.find({}).sort( { _id: -1 });
 		res.json(posts);
-		res.status(200).json()
+		return res.status(200).json()
 	} catch (err) {
 		console.log(err);
-		res.status(500).json().send();
+		return res.status(500).json().send();
 	}
   
 });
@@ -79,11 +78,13 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
 	try {
 		const post = await Post.findById(req.params.id);
-		res.json(post);
-		res.status(200).json();
+		if (!post) {
+         return res.status(404).json();
+      } 
+       return res.status(200).json(post);
 	} catch (error) {
 		console.log(error);
-		res.status(404).json( { error: error.status + 'This post no longer exists.'}).send( error.message );
+		return res.status(500).json().send();
 	}
 });
 
@@ -92,9 +93,9 @@ router.put('/:id', auth, upload.single("image"), async (req, res) => {
    try {
 		let post = await Post.findById(req.params.id);
 
-		if(!post) {
-			res.status(404).json( { error: error.status + 'This post no longer exists.'}).send( error.message );
-		}
+		// if(!post) {
+		// 	res.status(404).json( { error: error.status + 'This post no longer exists.'}).send( error.message );
+		// }
 
 		if (req.file) {
 				await cloudinary.uploader.destroy(post.image_id);
@@ -107,7 +108,7 @@ router.put('/:id', auth, upload.single("image"), async (req, res) => {
 					tags: req.body.tags
 				}
 				post = await Post.findByIdAndUpdate(req.params.id, updatedPost, { new: true });
-				res.json(updatedPost);
+				// res.json(updatedPost);
 		} else {
 			let updatedPost = {
 					title: req.body.title,
@@ -116,13 +117,13 @@ router.put('/:id', auth, upload.single("image"), async (req, res) => {
 				  tags: req.body.tags
 			}
 			await Post.findByIdAndUpdate(req.params.id, updatedPost, { new: true });
-			res.json(updatedPost);
+			// res.json(updatedPost);
 		}
 	 
 			
 	} catch (err) {
 		console.log(err);
-		res.status(500).json().send();
+		return res.status(500).json().send();
 	}
 
   });
@@ -135,9 +136,9 @@ router.delete('/:id', auth, async (req, res) => {
 			await cloudinary.uploader.destroy(post.image_id)
 			await post.remove();
 			res.json(post);
-			res.status(200).json({ success: 'Your post has been successfully deleted!' }).send( success.message )
+			// res.status(200).json({ success: 'Your post has been successfully deleted!' }).send( success.message )
 		} catch(err) {
-			res.status(500).json().send();
+			// res.status(500).json().send();
 		}
 });
 
