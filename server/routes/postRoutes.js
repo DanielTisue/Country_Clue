@@ -21,7 +21,7 @@ const storage =  new CloudinaryStorage({
 						folder: "countryClue",
 						public_id: (req, file) => file.filename,
 						//possibly change to 'allowed_formats: [jpeg, jpg, png] as outlined in Cloudinary docs -https://cloudinary.com/documentation/image_upload_api_reference#upload_method'. The below is not working!
-						allowedFormats: ["jpeg", "jpg", "png"],
+						allowed_formats: ["jpeg", "jpg", "png"], //- Changed allowedFornats to allowed_formats - PLEASE TEST
 //** Try instead format: option as format: async(req, file) => { 
 	//            																								"jpg", "jpeg", "png";
 //																															} 
