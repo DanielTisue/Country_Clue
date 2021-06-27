@@ -17,7 +17,8 @@ function ShowPost (props) {
         [message, setMessage] = useState(""),
         [createdAt, setDate] = useState(""),
         [author, setAuthor] = useState(""),
-        [tags, setTags] = useState([]);
+        [tags, setTags] = useState([]),
+        [error, setError] = useState(null);
 
   let history = useHistory();
 
@@ -40,15 +41,14 @@ function ShowPost (props) {
   // Delete post
   const deletePost = (e) => {
     axios.delete('http://localhost:5000/posts/' + props.match.params.id)
-      .then((res) => {
-        console.log('Post deleted');
-      })
         // Redirect to Posts  
       .then (res => {
         history.push('/posts');
       })
       .catch((err) => {
-        console.log(err);
+        if(err.response.status === 500) {
+        setError(err.response.data.errorMessage)
+      }
       })
   }
 
@@ -65,6 +65,7 @@ function ShowPost (props) {
           <div className="postShow-container">
             {/* SHOW POST */}
             <div className="show-post">
+              { error && <div className="error-message-wrapper"><div className="error-message">{ error }</div></div> }
                 {/* TAGS */}
               <div className="show-item-tags">
                 {tags.map((tag, key) => {
@@ -99,7 +100,7 @@ function ShowPost (props) {
 
               {/* POST */}
               <div className="show-item">
-                <div dangerouslySetInnerHTML={{__html: dompurify.sanitize(message)}}></div>
+                <div dangerouslySetInnerHTML={{__html: dompurify.sanitize(message)}} id="post-copy"></div>
               </div>
           
              {/* BUTTONS */}

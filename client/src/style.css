@@ -45,6 +45,7 @@
 
  p {
    font-family: 'Montserrat', sans-serif;
+   overflow-wrap: break-word;
  }
 
   .container {

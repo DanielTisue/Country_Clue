@@ -134,9 +134,9 @@ router.delete('/:id', auth, async (req, res) => {
 			let post = await Post.findById(req.params.id);
 			await cloudinary.uploader.destroy(post.image_id)
 			await post.remove();
-			return res.status(200).json(post).send( 'Your article has been successfully deleted!' );
+			return res.status(200).json(post);
 		} catch(err) {
-			return res.status(500).json().send();
+			return res.status(500).json({errorMessage: 'There is an issue with the server. Please contact your site admin.'}).send();
 		}
 });
 
