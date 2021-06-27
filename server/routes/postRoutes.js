@@ -54,10 +54,10 @@ router.post('/', auth, upload.single("image"), async (req, res) => {
 				//save it
 					const savedPost = await newPost.save();
 					// console.log(savedPost);
-					return res.status(201).json(savedPost).send( 'Your article has been successfully created' );
+					return res.status(200).json(savedPost);
   } catch (error) {
     console.log(error);
-		return res.status(500).json(error).send( 'Your article has not been created. Contact your site admin.' );
+		return res.status(500).json(error);
   }
 });
 
@@ -65,8 +65,7 @@ router.post('/', auth, upload.single("image"), async (req, res) => {
 router.get('/', async (req, res) => {
 	try {
 		const posts = await Post.find({}).sort( { _id: -1 });
-		res.json(posts);
-		return res.status(200).json()
+		return res.status(200).json(posts);
 	} catch (err) {
 		console.log(err);
 		return res.status(500).json().send('A problem occurred with the server. Please contact your site admin.');
@@ -79,7 +78,7 @@ router.get('/:id', async (req, res) => {
 	try {
 		const post = await Post.findById(req.params.id);
 		if (!post) {
-         return res.status(404).json().send( 'This article no longer exists' );
+         return res.status(404).json().send();
       } 
        return res.status(200).json(post);
 	} catch (error) {
@@ -108,7 +107,7 @@ router.put('/:id', auth, upload.single("image"), async (req, res) => {
 					tags: req.body.tags
 				}
 				post = await Post.findByIdAndUpdate(req.params.id, updatedPost, { new: true });
-				return res.status(200).json(updatedPost).send( 'Your article has been successfully updated' );
+				return res.status(200).json(updatedPost);
 		} else {
 			let updatedPost = {
 					title: req.body.title,
@@ -117,7 +116,7 @@ router.put('/:id', auth, upload.single("image"), async (req, res) => {
 				  tags: req.body.tags
 			}
 			await Post.findByIdAndUpdate(req.params.id, updatedPost, { new: true });
-			return res.status(200).json(updatedPost).send( 'Your article has been successfully updated' );
+			return res.status(200).json(updatedPost);
 		}
 	 
 			
