@@ -5,7 +5,7 @@ const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-//Register User
+//REGISTER
 router.post('/register', async (req, res) => {
   try{
     const { username, password, passwordVerify } = req.body;
@@ -47,7 +47,7 @@ router.post('/register', async (req, res) => {
     //Save new User
     const newUser = new User({ username: username, password: passwordHash });
     const savedUser = await newUser.save();
-    // res.json(savedUser);
+    
 
     //Log user in right away - Create & assign a token
     const token = jwt.sign({
@@ -60,13 +60,15 @@ router.post('/register', async (req, res) => {
       sameSite: "none",
     }).send();
 
+    return res.status(201).json(savedUser).send('You have been successfully registered!');
+
   } catch (err) {
     res.status(500).send();
   }
 
 });
 
-//Login User
+//LOGIN
 router.post('/login', async (req, res) => {
   
   try {
@@ -128,14 +130,14 @@ router.get('/loggedIn', (req, res) => {
     const token = req.cookies.token;
     
     if(!token) {
-      return res.json(false);
+      return res.status(500).json(false).send('You do not have authorization.');
     }
 
     jwt.verify(token, process.env.SERIALIZE_CONFIG);
 
     res.send(true);
   } catch (err) {
-    res.json(false);
+    return res.status(500).json(false).send('You do not have authorization.');
   }
 })
 
