@@ -29,10 +29,7 @@ function Register() {
       await axios.post('http://localhost:5000/auth/register', registerData, { withCredentials: true })
       await getLoggedIn()
       
-     
-      
       history.push('/');
-     
      
     } catch (err) {
       // console.log(err.response.status)
