@@ -20,12 +20,8 @@ const storage =  new CloudinaryStorage({
 	params: {
 						folder: "countryClue",
 						public_id: (req, file) => file.filename,
-						//possibly change to 'allowed_formats: [jpeg, jpg, png] as outlined in Cloudinary docs -https://cloudinary.com/documentation/image_upload_api_reference#upload_method'. The below is not working!
-						allowed_formats: ["jpeg", "jpg", "png"], //- Changed allowedFornats to allowed_formats - PLEASE TEST
-//** Try instead format: option as format: async(req, file) => { 
-	//            																								"jpg", "jpeg", "png";
-//																															} 
-						format: async () => "jpg",
+						allowed_formats: ["jpeg", "jpg", "png"], 
+				    format: async () => "jpg",
 						transformation: [{ width: 800, crop: 'scale' }],
 
 					}
@@ -50,14 +46,11 @@ router.post('/', auth, upload.single("image"), async (req, res) => {
 							message,
 							tags
 						});
-
 				//save it
 					const savedPost = await newPost.save();
-					// console.log(savedPost);
 					return res.status(200).json(savedPost);
   } catch (error) {
-    console.log(error);
-		return res.status(500).json(error);
+		return res.status(500).json({ errMessage: 'A problem occurred with the server. Please contact your site admin.'}).send();
   }
 });
 
@@ -68,7 +61,7 @@ router.get('/', async (req, res) => {
 		return res.status(200).json(posts);
 	} catch (err) {
 		console.log(err);
-		return res.status(500).json().send('A problem occurred with the server. Please contact your site admin.');
+		return res.status(500).json({ errMessage: 'A problem occurred with the server. Please contact your site admin.'}).send();
 	}
   
 });
@@ -78,12 +71,12 @@ router.get('/:id', async (req, res) => {
 	try {
 		const post = await Post.findById(req.params.id);
 		if (!post) {
-         return res.status(404).json().send();
+         return res.status(404).json({ errMessage: 'A problem occurred with the server. The article you requested can not be found.'}).send();
       } 
        return res.status(200).json(post);
 	} catch (error) {
 		console.log(error);
-		return res.status(500).json().send();
+		return res.status(500).json({ errMessage: 'A problem occurred with the server. Please contact your site admin.'}).send();
 	}
 });
 
@@ -93,7 +86,7 @@ router.put('/:id', auth, upload.single("image"), async (req, res) => {
 		let post = await Post.findById(req.params.id);
 
 		if(!post) {
-			return res.status(404).json().send( 'We couldn\'t find this article to updated it' );
+			return res.status(404).json({ errMessage: 'A problem occurred with the server. The article you requested can not be found.'}).send();
 		}
 
 		if (req.file) {
@@ -122,7 +115,7 @@ router.put('/:id', auth, upload.single("image"), async (req, res) => {
 			
 	} catch (err) {
 		console.log(err);
-		return res.status(500).json().send();
+		return res.status(500).json({ errMessage: 'A problem occurred with the server. Please contact your site admin.'}).send();
 	}
 
   });

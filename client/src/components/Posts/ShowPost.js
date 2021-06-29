@@ -24,7 +24,6 @@ function ShowPost (props) {
 
   //Get data from spedcific post
   useEffect(() => {
-
     axios.get('http://localhost:5000/posts/' + props.match.params.id)
     .then((result) => {
      setTitle(result.data.title)
@@ -35,7 +34,15 @@ function ShowPost (props) {
      setAuthor(result.data.author)
      setTags(result.data.tags)
     })
-      .catch((error) => console.log(error))
+    .catch((err) => {
+      if(err.response.status === 500) {
+        setError(err.response.data.errMessage)
+      } 
+      const errMessage = "There was a problem retrieving this article. Please contact your site admin."
+      setError("Status: " + err.response.status + ": " + errMessage)
+    });
+
+
   }, [props])
 
   // Delete post
@@ -47,7 +54,7 @@ function ShowPost (props) {
       })
       .catch((err) => {
         if(err.response.status === 500) {
-        setError(err.response.data.errorMessage)
+        setError(err.response.data.errMessage)
       }
       })
   }
