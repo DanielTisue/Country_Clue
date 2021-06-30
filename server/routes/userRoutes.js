@@ -104,40 +104,42 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({
       user: existingUser._id
     }, process.env.SERIALIZE_CONFIG);
-
+    // send the token in a HTTP-only cookie
     res.cookie('token', token, {
       httpOnly: true,
+      secure: true,
+      sameSite: "none",
     }).send();
 
     console.log("login sucessful");
 
   } catch (err) {
     console.log(err);
-    return res.status(500).send();
+    res.status(500).send();
   }
 });
+
 
 router.get('/logout', (req, res) => {
   res.cookie('token', "", {
     httpOnly: true,
-    expires: new Date(0)
-    })
-    .send();
+    expires: new Date(0),
+    secure: true,
+    sameSite: "none",
+    }).send();
+    console.log("logout successful")
 });
 
 router.get('/loggedIn', (req, res) => {
   try {
     const token = req.cookies.token;
-    
-    if(!token) {
-      return res.status(500).json(false).send('You do not have authorization.');
-    }
+    if (!token) return res.json(false);
 
     jwt.verify(token, process.env.SERIALIZE_CONFIG);
 
     res.send(true);
   } catch (err) {
-    return res.status(500).json(false).send('You do not have authorization.');
+    res.json(false);
   }
 })
 
