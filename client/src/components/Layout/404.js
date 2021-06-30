@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import Delayed from "../Utils/Delayed";
 
 const FourOFour = () => {
     return (
-    <Delayed>
      <div className="container">
        <div className="error-container">
         <div className="error-img">
@@ -21,7 +19,6 @@ const FourOFour = () => {
         </div>
        </div>
      </div>
-    </Delayed>
       )
   }
 
