@@ -41,8 +41,6 @@ function ShowPost (props) {
       const errMessage = "There was a problem retrieving this article. Please contact your site admin."
       setError("Status: " + err.response.status + ": " + errMessage)
     });
-
-
   }, [props])
 
   // Delete post

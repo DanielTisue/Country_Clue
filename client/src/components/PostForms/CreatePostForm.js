@@ -32,7 +32,7 @@ const tagHandler = (e) => {
   }
 
 
-const handleSubmit = async (e) => {
+const handleSubmit = (e) => {
       e.preventDefault();
   
       const formdata = new FormData();
@@ -47,11 +47,8 @@ const handleSubmit = async (e) => {
       }
       // console.log(image, title, description, message, tags)
     
-      await axios.post("http://localhost:5000/posts", formdata)
-      .then(res => {
-        history.push('/posts');
-        })
-      .catch((error) => console.log(error));
+      axios.post("http://localhost:5000/posts", formdata)
+      history.push('/posts');      
 }; 
 
  
