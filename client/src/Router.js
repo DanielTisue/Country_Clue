@@ -9,7 +9,7 @@ import PostEditForm from './components/PostForms/PostEditForm';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
 import AuthContext from './components/Context/AuthContext';
-// import FourOFour from './components/Layout/404';
+import FourOFour from './components/Layout/404';
 
 
 
@@ -37,7 +37,7 @@ const Router = () => {
           <Route exact path="/auth/login" component={Login} />
           )}
           {/*//Catchall 404 error */}
-          {/* <Route path="*" component={FourOFour}/> */}
+          <Route exact path="*" component={FourOFour}/>
         </Switch>
       </BrowserRouter>
   )

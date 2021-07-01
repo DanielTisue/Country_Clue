@@ -31,6 +31,9 @@ class PostList extends React.Component {
 
 render(){
   return <div className="flex-container">
+            <div className="articlepage-title-wrapper">
+                <h1 id="articlepage-title">Articles</h1>
+            </div>
               {this.renderList()}
             </div>
   // <div className="container">

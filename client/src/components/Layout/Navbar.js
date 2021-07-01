@@ -14,23 +14,23 @@ const { loggedIn } = useContext(AuthContext);
             <li className="navBar-link">Home</li>
             </Link>
 
-            <Link to='/'>
+            {/* <Link to='/'>
             <li className="navBar-link">About</li>
-            </Link>
+            </Link> */}
 
-            <Link to='/'>
+            {/* <Link to='/'>
             <li className="navBar-link">Featured</li>
-            </Link>
+            </Link> */}
 
             <Link to='/posts' >
-            <li className="navBar-link">All Articles</li>
+            <li className="navBar-link">Articles</li>
             </Link>
 
-            {!loggedIn && (
+            {/* {!loggedIn && (
               <Link to='/auth/login' >
               <li className="navBar-link">Login</li>
               </Link>
-            )}
+            )} */}
             
             {loggedIn && (
              <Link to='/create' >
@@ -43,6 +43,12 @@ const { loggedIn } = useContext(AuthContext);
             )}
             
           </ul>
+          <div class="hamburger">
+            <div id="rotate-top" class="line"></div>
+            <div id="rotate-bottom" class="line"></div>
+            <div id="remove-center" class="line"></div>
+          </div>
+
         </div>
       // </div>
     )
