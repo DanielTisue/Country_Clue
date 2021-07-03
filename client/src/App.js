@@ -8,18 +8,13 @@ import './style.css';
 axios.defaults.withCredentials = true;
 
 
-class App extends React.Component{
-  
-  render(){
-    return (
-      <AuthContextProvider>
-        <div className="container">
-        <Router />
-        </div>
-      </AuthContextProvider>
-    )
-  }
-} ;
+function App() {
+  return (
+    <AuthContextProvider>
+      <Router />
+    </AuthContextProvider>
+  );
+}
     
    
   
