@@ -37,7 +37,7 @@ const Router = () => {
           <Route exact path="/auth/login" component={Login} />
           )}
           {/*//Catchall 404 error */}
-          <Route exact path="*" component={FourOFour}/>
+          <Route exactpath="*" component={FourOFour}/>
         </Switch>
       </BrowserRouter>
   )
