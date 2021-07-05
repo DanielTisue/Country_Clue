@@ -76,6 +76,21 @@
    font-weight: 600;
  }
 
+ .featured {
+   margin-top: 500px;
+ }
+
+ .featured, .about {
+  height: 100vh;
+ }
+
+ #featured-section, #about-section {
+   font-size: 55px;
+   line-height: 61px;
+   font-weight: 600;
+   text-align: center;
+ }
+
   
  .flex-container {
   padding-top: 50px;
