@@ -26,7 +26,7 @@ function Login() {
       }
 
       await axios.post('http://localhost:5000/auth/login', loginData, { withCredentials: true })
-      console.log("user successfully logged in", loginData);
+      console.log("user successfully logged in");
       getLoggedIn()
       history.push('/');
        

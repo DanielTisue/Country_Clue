@@ -97,7 +97,7 @@ function ShowPost (props) {
               </div>
 
               {/* IMAGE */}
-              { image && <div className="show-item" value={image}>
+              {image && <div className="show-item" value={image}>
                 <img className="show-image" alt="" src={image} />
               </div> }
              
@@ -112,11 +112,11 @@ function ShowPost (props) {
               <div className="show-item" id="button-div">
 
                 {/* DELETE */}
-                {loggedIn === true && (
+                {loggedIn && (
                 <button className="read-more space-it" onClick={deletePost}>Delete</button>
                 )}
                 {/* EDIT */}
-                {loggedIn === true && (
+                {loggedIn && (
                 <Link to={`${props.match.params.id}/edit`} >
                 <button className="edit space-it">Edit</button>
                 </Link>
