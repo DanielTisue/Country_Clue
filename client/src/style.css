@@ -99,6 +99,18 @@
   flex-wrap: wrap;
  }
 
+ a {
+   text-decoration: none;
+   color: black;
+ }
+
+ .navBar {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   padding: 25px 20px;
+ }
+
  li.navBar-link {
    font-family: 'Montserrat', sans-serif;
    opacity: .6;
@@ -112,29 +124,12 @@
   ul li::marker {
     margin-right: 25px;
   }
- /* li {
-   list-style: none;
-   display: inline;
-   text-decoration: none;
- } */
-
- a {
-   text-decoration: none;
-   color: black;
- }
-
- .navBar {
-   width: 100%;
-   display: flex;
-   justify-content: center;
-   padding: 10px 20px;
- }
 
  .navBar-items {
    width: 100%;
    display: flex;
    justify-content: flex-start;
-   /* justify-content: space-evenly; */
+   align-items: center;
  }
 
  .navBar-link {
