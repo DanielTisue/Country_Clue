@@ -12,9 +12,8 @@ class Home extends React.Component {
         </section>
 
         <section className="about">
-          <h1 id="about-section">What are we about?</h1>
+          <h1 id="about-section">What's this about?</h1>
         </section>
-
         
     </div>
       )
