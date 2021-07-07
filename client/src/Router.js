@@ -14,20 +14,21 @@ import FourOFour from './components/Layout/404';
 
 
 const Router = () => {
-  const { loggedIn } = useContext(AuthContext);
-  // let history = useHistory();
+  const { loggedIn, loading } = useContext(AuthContext);
+
   return (
    <BrowserRouter>
       <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/posts" component={PostList} />
+          
           <Route exact path="/posts/:id" component={ShowPost} />
           {/* //Conditiional Routes */}
           {loggedIn && (
           <Route exact path="/posts/:id/edit" component={PostEditForm} />
           )}
-          {loggedIn && (
+          {loggedIn && !loading && (
            <Route exact path="/create" component={CreatePostForm} />
            )} 
           {!loggedIn && (
@@ -37,10 +38,14 @@ const Router = () => {
           <Route exact path="/auth/login" component={Login} />
           )}
           {/*//Catchall 404 error */}
-          <Route exactpath="*" component={FourOFour}/>
+          {!loading && (
+          <Route path='*' component={FourOFour}/>
+          )}
         </Switch>
       </BrowserRouter>
   )
 }
+
+
 
 export default Router;
