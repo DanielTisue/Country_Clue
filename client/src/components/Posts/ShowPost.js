@@ -18,7 +18,8 @@ function ShowPost (props) {
         [createdAt, setDate] = useState(""),
         [author, setAuthor] = useState(""),
         [tags, setTags] = useState([]),
-        [error, setError] = useState(null);
+        [error, setError] = useState(null),
+        [mounted, isMounting] = useState(true);
 
   let history = useHistory();
 
@@ -33,6 +34,7 @@ function ShowPost (props) {
      setDate(result.data.createdAt)
      setAuthor(result.data.author)
      setTags(result.data.tags)
+     isMounting(false)
     })
     .catch((err) => {
       if(err.response.status === 500) {
@@ -112,11 +114,11 @@ function ShowPost (props) {
               <div className="show-item" id="button-div">
 
                 {/* DELETE */}
-                {loggedIn && (
+                {loggedIn && !mounted && (
                 <button className="read-more space-it" onClick={deletePost}>Delete</button>
                 )}
                 {/* EDIT */}
-                {loggedIn && (
+                {loggedIn && !mounted && (
                 <Link to={`${props.match.params.id}/edit`} >
                 <button className="edit space-it">Edit</button>
                 </Link>
@@ -125,7 +127,9 @@ function ShowPost (props) {
                 {/* BACK TO POSTS */}
                
                 <Link to={'/posts'} >
-                <button className="read-more space-it">Articles</button>
+                {!mounted && (
+                 <button className="read-more space-it">Articles</button>
+                )}
                 </Link>
                 
 
