@@ -19,7 +19,8 @@ function ShowPost (props) {
         [author, setAuthor] = useState(""),
         [tags, setTags] = useState([]),
         [error, setError] = useState(null),
-        [mounted, isMounting] = useState(true);
+        [mounted, isMounting] = useState(true); 
+        // has to be set as separate state for buttons not contingent on loggedIn status
 
   let history = useHistory();
 
