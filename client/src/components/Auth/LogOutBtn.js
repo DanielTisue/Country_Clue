@@ -15,7 +15,7 @@ function LogOutBtn() {
       history.push('/');
   }
   return (
-    <button onClick={logOut}>
+    <button className="read-more" onClick={logOut}>
       Log out
     </button>
   )
