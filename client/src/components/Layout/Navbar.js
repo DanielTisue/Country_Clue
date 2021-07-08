@@ -43,11 +43,11 @@ const { loggedIn } = useContext(AuthContext);
             )}
             
           </ul>
-          <div className="hamburger">
+          {/* <div className="hamburger">
             <div id="rotate-top" className="line"></div>
             <div id="rotate-bottom" className="line"></div>
             <div id="remove-center" className="line"></div>
-          </div>
+          </div> */}
 
         </div>
       //  </div>

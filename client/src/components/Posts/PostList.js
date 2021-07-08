@@ -35,10 +35,7 @@ render(){
                 <h1 id="articlepage-title">Articles</h1>
             </div>
               {this.renderList()}
-            </div>
-  // <div className="container">
-            
-          // </div>;
+          </div>
   }
 }
 
