@@ -1,5 +1,5 @@
 
-@import url("https://use.typekit.net/oqb5vwd.css");
+@import url("https://use.typekit.net/eif4fwx.css");
 @import url('https://fonts.googleapis.com/css2?family=Bevan&family=Montserrat:wght@400;600&family=Rye&display=swap');
 
  * {
@@ -18,12 +18,14 @@
 
  h1 {
   /* font-family: 'becker-gothics-concave', serif; */
-  font-family: 'Bevan', cursive;
+  /* font-family: 'Bevan', cursive; */
   /* font-family: 'Rye', cursive; */
+  font-family: council, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 48px;
   line-height: 60px;
-  letter-spacing: .06em;
-  /* font-weight: 400; */
+  letter-spacing: .5rem;
  }
 
  h2 {
@@ -56,10 +58,12 @@
  }
 
  .homepage-title-wrapper {
-   width: 100%;
-   display: flex;
+   height: 100vh;
+   /* display: flex;
+   flex-direction: column;
    justify-content: center;
-   padding: 50px 50px 500px;
+   align-items: center;
+   padding: 50px 50px 500px; */
  }
 
  .articlepage-title-wrapper {
@@ -73,8 +77,24 @@
    font-size: 105px;
    line-height: 111px;
    text-align: center;
-   font-weight: 600;
  }
+
+#subhead, #homepage-title {
+  color: black;
+  padding-top: 50px;
+  text-align: center;
+  position: relative;
+  /* z-index: 1; */
+}
+
+.background-img {
+  position: absolute; 
+  bottom: 0;
+  left: 0;
+  z-index: 0; 
+  overflow: visible;
+  
+}
 
  .featured, .about {
   height: 100vh;
@@ -85,6 +105,7 @@
    line-height: 61px;
    font-weight: 600;
    text-align: center;
+   /* padding-top: 50px; */
  }
 
  .flex-container {
@@ -190,6 +211,10 @@
    .container {
    max-width: 1300px !important;
   }
+
+  /* .background-img {
+    width: 100vw;
+  } */
 
   .flex-container {
     width: 100%;
