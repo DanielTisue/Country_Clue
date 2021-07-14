@@ -66,8 +66,8 @@
   line-height: 18px;
   margin: 0 2px;
   padding: 3px;
-  background-color: #717796;
-  opacity: .3;
+  background-color: #05284f;
+  opacity: .8;
   color: #ffffff;
   border-radius: 5px;
   box-shadow: 1px 1px 5px #d2d2d2;
@@ -86,13 +86,11 @@
   border: none;
   margin: 0 auto;
   color: #ffffff;
-  background-color: rgb(179, 0, 54);
+  background-color: #BD2D0A;
   box-shadow: 3px 3px 3px #d2d2d2;
-  opacity: .75;
 }
 
 .read-more:hover {
-  opacity: 1;
   box-shadow: 2px 2px 5px #171717;
 }
 

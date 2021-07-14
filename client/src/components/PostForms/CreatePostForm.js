@@ -53,7 +53,6 @@ const handleSubmit = (e) => {
 
  
   return (
-    
      <div className="postForm-container">
         
         <form className="postForm" encType="multipart/form-data"> 
@@ -98,7 +97,7 @@ const handleSubmit = (e) => {
         </form>
         
         </div>
-      
+    
   )
 
 }

@@ -95,7 +95,7 @@ const PostEditForm = (props) => {
         
         <form className="postForm" encType="multipart/form-data"> 
           <div className="internalPostForm-alignment">
-            <h3 className="postForm-title">Make it count!</h3>
+            <h1 className="postForm-title">Make it count!</h1>
             
             <div className="postForm-item" id="postForm-item-1">
               <label>Title</label>

@@ -32,7 +32,9 @@
 }
 
 .postShow-tag {
-  background-color: #717796;
+  /* background-color: #26558c; */
+  background-color: #05284f;
+  opacity: .8;
   color: #ffffff;
   font-size: 11px;
   line-height: 16px;
@@ -40,7 +42,6 @@
   margin: 0 2px;
   border-radius: 5px;
   padding: 3px;
-  opacity: .3;
 }
 
 .show-title {
@@ -88,7 +89,7 @@
   border-radius: 5px;
   border: none;
   color: #ffffff;
-  background-color: rgb(255, 209, 56);
+  background-color: #fda62b;
   box-shadow: 3px 3px 3px #d2d2d2;
   opacity: .75;
 }

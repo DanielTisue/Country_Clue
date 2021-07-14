@@ -129,7 +129,7 @@ function ShowPost (props) {
                
                 <Link to={'/posts'} >
                 {!mounted && (
-                 <button className="read-more space-it">Articles</button>
+                 <button className="read-more space-it">Back to Articles</button>
                 )}
                 </Link>
                 
