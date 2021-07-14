@@ -90,11 +90,12 @@
   border: none;
   color: #ffffff;
   background-color: #fda62b;
-  box-shadow: 3px 3px 3px #d2d2d2;
+  /* box-shadow: 3px 3px 3px #d2d2d2; */
   opacity: .75;
 }
 
 .edit:hover {
   opacity: 1;
-  box-shadow: 2px 2px 5px #171717;
+  box-shadow: 3px 3px 3px #d2d2d2;
+  /* box-shadow: 2px 2px 5px #171717; */
 }

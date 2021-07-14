@@ -41,12 +41,10 @@ const handleSubmit = (e) => {
       formdata.append("title", title);
       formdata.append("description", description);
       formdata.append("message", message);
-
       for (var i = 0; i < tags.length; i++ ) {
         formdata.append("tags[]", tags[i]);
-      }
-      // console.log(image, title, description, message, tags)
-    
+      }    
+
       axios.post("http://localhost:5000/posts", formdata)
       history.push('/posts');      
 }; 
@@ -85,6 +83,16 @@ const handleSubmit = (e) => {
 
             <div className="postForm-item">
               <label>Tags</label>
+              {/* <select name="pets" multiple size="6">
+                <optgroup label="tags">
+                  <option value="artistReview">artistReview</option>
+                  <option value="concertReview">concertReview</option>
+                  <option value="albumReview" disabled>albumReview</option>
+                  <option value="goneButNotForgotten">goneButNotForgotten</option>
+                  <option value="roadtripPlaylist">roadtripPlaylist</option>
+                  <option value="newArtist">newArtist</option>
+                  </optgroup>
+              </select> */}
               <input type="text" name="tags" placeholder="Separate each tag with a comma and no spaces. Ex: tag1,tag2,tag3" value={tags} onChange={tagHandler} />
             </div>
            

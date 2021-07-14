@@ -24,7 +24,8 @@
   box-shadow: 3px 6px 30px rgb(150 155 187 / 40%);
   margin-bottom: 45px;
   margin-left: 50px;
-  background-color: #ffffff;
+  background-color: rgb(255 248 240);
+  filter: sepia(1%);
   cursor: pointer;
 }
 
@@ -87,11 +88,29 @@
   margin: 0 auto;
   color: #ffffff;
   background-color: #BD2D0A;
-  box-shadow: 3px 3px 3px #d2d2d2;
+  /* box-shadow: 3px 3px 3px #d2d2d2; */
 }
 
 .read-more:hover {
-  box-shadow: 2px 2px 5px #171717;
+  /* box-shadow: 2px 2px 5px #171717; */
+  box-shadow: 3px 3px 3px #d2d2d2;
+}
+
+.secondary {
+  padding: 8px 20px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: 1px solid #05284f;
+  margin: 0 auto;
+  color: #05284f;
+  background-color: #fff8f0;
+  /* background-color: #BD2D0A; */
+  /* box-shadow: 3px 3px 3px #d2d2d2; */
+}
+
+.secondary:hover {
+  box-shadow: 3px 3px 3px #d2d2d2;
+  /* box-shadow: 2px 2px 5px #171717; */
 }
 
 .post-date {
