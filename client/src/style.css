@@ -144,6 +144,10 @@
    margin: 0 20px;
  }
 
+ li.navBar-link:hover {
+   opacity: 1;
+ }
+
   ul li::marker {
     margin-right: 25px;
   }
