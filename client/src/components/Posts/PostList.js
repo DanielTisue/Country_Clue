@@ -11,6 +11,10 @@ class PostList extends React.Component {
     this.getPosts();
   }
 
+  componentDidUpdate() {
+    this.getPosts();
+  }
+
   async getPosts() {
     try {
       const res = await axios.get("http://localhost:5000/posts");
