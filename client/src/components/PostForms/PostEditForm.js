@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import AuthContext from "../Context/AuthContext";
 import '../Styles/Form.css';
 
 
@@ -14,14 +15,17 @@ import '../Styles/Form.css';
 //   author
 
 const PostEditForm = (props) => {
- 
+    const { loggedIn } = useContext(AuthContext);
+
     const [title, setTitle] = useState(""),
             [description, setDescription] = useState(""),
             [fileData, setFileData] = useState(),
             [image, setFile] = useState(""),
             [message, setMessage] = useState(""),
             [oldImage, setImage] = useState(""),
-            [tags, setTags] = useState([]);
+            [tags, setTags] = useState([]),
+            [error, setError] = useState(null),
+        [mounted, isMounting] = useState(true);
 
     let history = useHistory();
 
@@ -34,8 +38,15 @@ const PostEditForm = (props) => {
      setImage(result.data.image)
      setMessage(result.data.message)
      setTags(result.data.tags)
+     isMounting(false)
     })
-      .catch((error) => console.log(error))
+    .catch((err) => {
+      if(err.response.status === 500) {
+        setError(err.response.data.errMessage)
+      } 
+      const errMessage = "There was a problem retrieving this article. Please contact your site admin."
+      setError("Status: " + err.response.status + ": " + errMessage)
+    });
   }, [props]);
 
   //GET Image file
@@ -75,9 +86,6 @@ const PostEditForm = (props) => {
         formdata.append("tags[]", tags[i]);
       }
       
-  // for (var i = 0; i < tags.length; i++ ) {
-  //       formdata.append("newTags[]", newTags[i]);
-  //     }
 
     await axios.put("http://localhost:5000/posts/" + props.match.params.id, formdata)
     
@@ -92,7 +100,8 @@ const PostEditForm = (props) => {
   return (
     
      <div className="postForm-container">
-        
+        { error && <div className="error-message-wrapper"><div className="error-message">{ error }</div></div> }
+        {loggedIn && !mounted &&
         <form className="postForm" encType="multipart/form-data"> 
           <div className="internalPostForm-alignment">
             <h1 className="postForm-title">Make it count!</h1>
@@ -134,7 +143,7 @@ const PostEditForm = (props) => {
             <button className="back-button" onClick={backRouter}>Back to this post</button>
             </div>
         </form>
-        
+        }
         </div>
       
   )
