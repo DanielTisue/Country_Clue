@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import AuthContext from "../Context/AuthContext";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import AuthContext from "../Context/AuthContext";
 import '../Styles/Form.css';
 
 
@@ -88,12 +88,16 @@ const PostEditForm = (props) => {
       
 
     await axios.put("http://localhost:5000/posts/" + props.match.params.id, formdata)
-    
-    .then((res) => console.log("res", res.data, res.data.tags))
     .then(res => {
       history.push('/posts/' + props.match.params.id);
       })
-    .catch((error) => console.log(error));
+    .catch((err) => {
+      if(err.response.status === 500) {
+        setError(err.response.data.errMessage)
+      } 
+      const errMessage = "There was a problem updating this article. Please contact your site admin."
+      setError("Status: " + err.response.status + ": " + errMessage)
+    })
   };
  
  
