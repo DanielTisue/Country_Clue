@@ -1,17 +1,27 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import AuthContext from "../Context/AuthContext";
 import { useHistory } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import '../Styles/Form.css';
 
 const CreatePostForm = () => {
+
+  const { loggedIn } = useContext(AuthContext);
+
   const [title, setTitle] = useState(""),
         [description, setDescription] = useState(""),
         [fileData, setFileData] = useState(),
         [image, setFile] = useState(""),
         [message, setMessage] = useState(""),
-        [tags, setTags] = useState([]);
+        [tags, setTags] = useState([]),
+        [error, setError] = useState(null),
+        [mounted, isMounting] = useState(true);
+
+useEffect(() => {
+  isMounting(false)
+}, [])
 
 let history = useHistory();
 
@@ -32,7 +42,7 @@ const tagHandler = (e) => {
   }
 
 
-const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
       e.preventDefault();
   
       const formdata = new FormData();
@@ -45,14 +55,25 @@ const handleSubmit = (e) => {
         formdata.append("tags[]", tags[i]);
       }    
 
-      axios.post("http://localhost:5000/posts", formdata)
-      history.push('/posts');      
+      await axios.post("http://localhost:5000/posts", formdata)
+      .then(res => {
+      history.push('/posts');
+      })
+      .catch((err) => {
+        if(err.response.status === 500) {
+          setError(err.response.data.errMessage)
+        } 
+        const errMessage = "There was a problem creating this article. Please contact your site admin."
+        setError("Status: " + err.response.status + ": " + errMessage)
+      })
+            
 }; 
 
  
   return (
      <div className="postForm-container">
-        
+        { error && <div className="error-message-wrapper"><div className="error-message">{ error }</div></div> }
+        {loggedIn && !mounted &&
         <form className="postForm" encType="multipart/form-data"> 
           <div className="internalPostForm-alignment">
             <h1 className="postForm-title">Make it count!</h1>
@@ -103,7 +124,7 @@ const handleSubmit = (e) => {
             <button className="back-button" onClick={backRouter}>Back to all posts</button>
             </div>
         </form>
-        
+}
         </div>
     
   )
