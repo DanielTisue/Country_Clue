@@ -52,13 +52,12 @@
 
   .container {
    width: 100%;
-   /* max-width: 950px; */
    margin: 0 auto;
    background-color: transparent;
  }
 
  .homepage-title-wrapper {
-   height: 100vh;
+   height: 90vh;
    /* display: flex;
    flex-direction: column;
    justify-content: center;
@@ -100,7 +99,12 @@
   
 }
 
- .featured, .about {
+.featured {
+  height: 100%;
+  padding-bottom: 4rem;
+}
+
+ .about {
   height: 100vh;
  }
 
@@ -109,11 +113,10 @@
    line-height: 61px;
    font-weight: 400;
    text-align: center;
-   padding-top: 8rem;
+   padding: 8rem 0;
  }
 
  .flex-container {
-  /* padding-top: 50px; */
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -223,15 +226,17 @@
    background-color: #ffffff;
  }
 
+ .featured-block {
+   display: flex; 
+   flex-wrap: wrap;
+   align-items: center;
+ }
+
 /* DESKTOP larger than laptop */
 @media only screen and (min-width: 1400px) {
    .container {
    max-width: 1300px !important;
   }
-
-  /* .background-img {
-    width: 100vw;
-  } */
 
   .flex-container {
     width: 100%;
