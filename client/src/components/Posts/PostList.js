@@ -3,7 +3,10 @@ import axios from 'axios';
 import Post from './Post';
 
 class PostList extends React.Component {
+  // signal = axios.CancelToken.source();
+
   state = {
+    isLoading: false,
     posts: []
   }
 
@@ -11,17 +14,23 @@ class PostList extends React.Component {
     this.getPosts();
   }
 
-  componentDidUpdate() {
-    this.getPosts();
-  }
-
+  // componentWillUnmount() {
+  //   // this.signal.cancel();
+  // }
   async getPosts() {
     try {
-      const res = await axios.get("http://localhost:5000/posts");
+      this.setState( { isLoading: true });
+      const res = await axios.get("http://localhost:5000/posts"); 
+      // { cancelToken: this.signal.token }
       // console.log(res.data);
       this.setState({posts: res.data})
     } catch (err) {
       console.log(err);
+      // if (axios.isCancel(err)) {
+      //   console.log('Error: ', err.message); // => prints: Api is being canceled
+      // } else {
+      //   this.setState({ isLoading: false });
+      // }
     }
     
   }
@@ -34,11 +43,13 @@ class PostList extends React.Component {
   }
 
 render(){
-  return <div className="flex-container">
-            <div className="articlepage-title-wrapper">
-                <h1 id="articlepage-title">Articles</h1>
+  return <div className="container">
+            <div className="flex-container">
+              <div className="articlepage-title-wrapper">
+                  <h1 id="articlepage-title">Articles</h1>
+              </div>
+                {this.renderList()}
             </div>
-              {this.renderList()}
           </div>
   }
 }
