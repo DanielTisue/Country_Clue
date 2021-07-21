@@ -33,7 +33,6 @@ const handleFileChange = ({target}) => {
 const tagHandler = (e) => {
     let tag = e.target.value.split(",").map(e => e.trim());
     setTags(tag);
-    console.log(tag);
   }
 
   //REDIRECT
@@ -97,7 +96,7 @@ const handleSubmit = async (e) => {
               <div className="CK-placeholder">Let the genius flow...</div>
               <CKEditor className="article-editor" editor={ClassicEditor} value={message} onChange={( event, editor ) => { const data =         editor.getData();
                         setMessage(data)
-                        console.log(data);
+                        
                     }}  />
           
             </div>
