@@ -10,6 +10,19 @@
    font-size: 16px
  }
 
+ :root {
+  --main-bg-color: #fff8f0;
+  --primay-btn-color: ;
+  --primay-btn-bgcolor: ;
+  --primary-btn-color-hover: ;
+  --primay-btn-bgcolor-hover: ;
+  --secondary-btn-color: ;
+  --secondary-btn-bgcolor: ;
+  --secondary-btn-color-hover: ;
+  --secondary-btn-bgcolor-hover: ;
+
+}
+
  html, body {
    height: 100%;
    width: 100%;
