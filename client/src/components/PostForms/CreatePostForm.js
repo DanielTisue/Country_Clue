@@ -17,6 +17,7 @@ const CreatePostForm = () => {
         [message, setMessage] = useState(""),
         [tags, setTags] = useState([]),
         [error, setError] = useState(null),
+        [success, setSuccess] = useState(false),
         [mounted, isMounting] = useState(true);
 
 useEffect(() => {
@@ -40,6 +41,14 @@ const tagHandler = (e) => {
     history.push("/posts");
   }
 
+  const clearFormData = () => {
+        setTitle("")
+        setDescription("")
+        // setFileData()
+        setFile("")
+        setMessage("")
+        setTags([])
+  }
 
 const handleSubmit = async (e) => {
       e.preventDefault();
@@ -56,7 +65,15 @@ const handleSubmit = async (e) => {
 
       await axios.post("http://localhost:5000/posts", formdata)
       .then(res => {
-      history.push('/posts');
+        clearFormData();
+        if(res.status === 200) {
+          setSuccess(true)
+        }
+      })
+      .then( res => {
+        setTimeout(() => {
+          history.push('/posts');
+        }, 1000);
       })
       .catch((err) => {
         if(err.response.status === 500) {
@@ -115,12 +132,17 @@ const handleSubmit = async (e) => {
               </select> */}
               <input type="text" name="tags" placeholder="Separate each tag with a comma and no spaces. Ex: tag1,tag2,tag3" value={tags} onChange={tagHandler} />
             </div>
-           
+           {!success &&
             <div className="postForm-item">
             <button className="postForm-button" type="submit" onClick={handleSubmit}>Submit</button>
             </div>
-            
-            <button className="back-button" onClick={backRouter}>Back to all posts</button>
+            }
+            {success && 
+              <div className="postForm-item">
+              <button className="postForm-button-success">Article successfully created</button>
+              </div>
+            }
+            <button className="secondary" id="back-button" onClick={backRouter}>Back to all posts</button>
             </div>
         </form>
 }
