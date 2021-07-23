@@ -11,29 +11,31 @@
  }
 
  :root {
+  --text-font: 'Montserrat', sans-serif;
+  --title-font: 'council', sans-serif;
   --main-bg-color: #fff8f0;
-  --primay-btn-color: ;
-  --primay-btn-bgcolor: ;
-  --primary-btn-color-hover: ;
-  --primay-btn-bgcolor-hover: ;
-  --secondary-btn-color: ;
-  --secondary-btn-bgcolor: ;
-  --secondary-btn-color-hover: ;
-  --secondary-btn-bgcolor-hover: ;
-
+  --primay-btn-color: #ffffff;
+  --primay-btn-bgcolor: #BD2D0A;
+  --secondary-btn-color: #05284f;
+  --secondary-btn-bgcolor: #fff8f0;
+  --secondary-btn-color-hover: #ffffff;
+  --secondary-btn-bgcolor-hover: #05284f;
+  --tertiary-btn-color: #ffffff;
+  --tertiary-btn-bgcolor: #fda62b;
+  --success-btn: #42bda1;
 }
 
  html, body {
    height: 100%;
    width: 100%;
-   background: #fff8f0;
+   background: var(--main-bg-color);
  }
 
  h1 {
   /* font-family: 'becker-gothics-concave', serif; */
   /* font-family: 'Bevan', cursive; */
   /* font-family: 'Rye', cursive; */
-  font-family: council, sans-serif;
+  font-family: var(--title-font);
   font-weight: 400;
   font-style: normal;
   font-size: 55px;
@@ -42,7 +44,7 @@
  }
 
  h2 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--text-font);
   font-size: 20px;
   line-height: 26px;
   font-weight: 400;
@@ -50,7 +52,7 @@
  }
 
  h3 {
-   font-family: 'Montserrat', sans-serif;
+   font-family: var(--text-font);
    font-size: 18px;
    line-height: 26px;
    font-weight: 600;
@@ -59,7 +61,7 @@
  }
 
  p {
-   font-family: 'Montserrat', sans-serif;
+   font-family: var(--text-font);
    overflow-wrap: break-word;
  }
 
@@ -150,7 +152,7 @@
  }
 
  li.navBar-link {
-   font-family: 'Montserrat', sans-serif;
+   font-family: var(--text-font);
    opacity: .6;
    font-size: 16px;
    font-weight: 600;
