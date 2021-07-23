@@ -27,7 +27,8 @@ class PostList extends React.Component {
     } catch (err) {
       console.log(err);
       // if (axios.isCancel(err)) {
-      //   console.log('Error: ', err.message); // => prints: Api is being canceled
+      //   console.log('Error: ', err.message); 
+      // => prints: Api is being canceled
       // } else {
       //   this.setState({ isLoading: false });
       // }

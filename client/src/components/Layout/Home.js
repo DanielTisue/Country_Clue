@@ -3,7 +3,6 @@ import axios from 'axios';
 import Post from  '../Posts/Post';
 import {ReactComponent as Background } from '../Styles/MusicBackground.svg';
 
-
 class Home extends React.Component {
 mounted = false;
 
