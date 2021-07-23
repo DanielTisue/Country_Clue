@@ -122,7 +122,7 @@ const PostEditForm = (props) => {
 
             <div className="postForm-item">
                <label className="file-upload">Your Previous image</label>
-              <div><img className="oldImage" src={oldImage} alt=""/></div>
+              <div><img className="oldImage" src={oldImage} alt="previous"/></div>
               <label className="file-upload">Upload a new image below</label>
               <input id="file-upload-input" type="file" name="file" accept="image/*" value={image || ""} onChange={handleFileChange} />
             </div>
@@ -144,7 +144,7 @@ const PostEditForm = (props) => {
             <button className="postForm-button" type="submit" onClick={handleSubmit}>Submit</button>
             </div>
             
-            <button className="back-button" onClick={backRouter}>Back to this post</button>
+            <button className="secondary" id="back-button" onClick={backRouter}>Back to this Article</button>
             </div>
         </form>
         }

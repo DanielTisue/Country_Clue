@@ -116,7 +116,7 @@ function ShowPost (props) {
 
                 {/* DELETE */}
                 {loggedIn && !mounted && (
-                <button className="read-more space-it" onClick={deletePost}>Delete</button>
+                <button className="primary space-it" onClick={deletePost}>Delete</button>
                 )}
                 {/* EDIT */}
                 {loggedIn && !mounted && (
