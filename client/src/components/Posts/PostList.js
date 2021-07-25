@@ -6,7 +6,7 @@ class PostList extends React.Component {
   // signal = axios.CancelToken.source();
 
   state = {
-    isLoading: false,
+    error: null,
     posts: []
   }
 
@@ -14,24 +14,16 @@ class PostList extends React.Component {
     this.getPosts();
   }
 
-  // componentWillUnmount() {
-  //   // this.signal.cancel();
-  // }
   async getPosts() {
     try {
-      this.setState( { isLoading: true });
       const res = await axios.get("http://localhost:5000/posts"); 
-      // { cancelToken: this.signal.token }
-      // console.log(res.data);
       this.setState({posts: res.data})
     } catch (err) {
-      console.log(err);
-      // if (axios.isCancel(err)) {
-      //   console.log('Error: ', err.message); 
-      // => prints: Api is being canceled
-      // } else {
-      //   this.setState({ isLoading: false });
-      // }
+      if(err.response.status === 500) {
+          this.setState({ error: err.response.data.errMessage })
+        } 
+        const errMessage = "There was a problem retrieving the articles. Please contact your site admin."
+        this.setState({ error: "Status: " + err.response.status + ": " + errMessage })
     }
     
   }
@@ -48,6 +40,7 @@ render(){
             <div className="flex-container">
               <div className="articlepage-title-wrapper">
                   <h1 id="articlepage-title">Articles</h1>
+                  { this.error && <div className="error-message-wrapper"><div className="error-message">{ this.error }</div></div> }
               </div>
                 {this.renderList()}
             </div>
