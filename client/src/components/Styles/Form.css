@@ -18,7 +18,7 @@
   display: flex;
   justify-content: center;
   padding: 25px;
-  background-color: rgb(255 248 240);
+  background-color: var(--main-bg-color);
   filter: sepia(1%);
   /* background-color: #ffffff; */
   /* background-color: #fff8f0; */
@@ -46,8 +46,8 @@
   height: 500px;
   font-size: 14px;
   line-height: 20px;
-  background-color: rgb(255 248 240) !important;
-  filter: sepia(1%) !important;
+  background-color: var(--main-bg-color) !important;
+  /* filter: sepia(1%) !important; */
 }
 
 .ck-file-dialog-button, .ck-toolbar__grouped-dropdown {
@@ -60,19 +60,19 @@
   line-height: 20px;
 }
 
-textarea::placeholder {
+/* textarea::placeholder {
   font-size: 13px;
   line-height: 20px;
   font-style: italic;
-}
+} */
 
 input::placeholder {
   font-size: 14px;
   line-height: 26px;
   color: #d2d2d2ee;
   letter-spacing: .03em;
-  background-color: rgb(255 248 240);
-  filter: sepia(1%);
+  background-color: var(--main-bg-color);
+  /* filter: sepia(1%); */
 }
 
 /* Placeholder form text-color : #757c98 */
@@ -89,14 +89,19 @@ input::placeholder {
 input {
   width: 100%;
   /* font-family: Arial, Helvetica, sans-serif; */
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 25px;
   border-top: none;
   border-left: none;
   border-right: none;
   border-bottom: 1px solid #171717;
-  background-color: var(--main-bg-color);
+  background-color: var(--main-bg-color) !important;
 }
+
+.inputs, .inputs::placeholder {
+  background-color: var(--main-bg-color) !important;
+}
+
 
 .oldImage {
   width: 100%;
@@ -153,20 +158,6 @@ label {
   /* box-shadow: 2px 2px 35px #171717; */
 }
 
-.postForm-button-success {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  font-family: var(--text-font);
-  font-weight: 600;
-  font-size: 21px;
-  line-height: 27px;
-  letter-spacing: 2px;
-  color: var(--primay-btn-color);
-  background-color: var(--success-btn);
-}
-
 #back-button {
   width: 100%;
 }
@@ -181,13 +172,34 @@ label {
   padding-left: 3px;
 }
 
+/* form errors messaging */
+.error-message-wrapper {
+   width: 100%;
+   text-align: center;
+   background-color: var(--primay-btn-bgcolor);
+   opacity: .3;
+   color: white;
+   padding: 10px;
+   margin: 10px;
+ }
 
-/* input:focus, textarea:focus {
-border: 1px solid green !important;
-box-shadow: 0 0 3px green !important;
--moz-box-shadow: 0 0 3px green !important;
--webkit-box-shadow: 0 0 3px green !important;
-} */
+/* form success messaging */
+
+.postForm-button-success {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-family: var(--text-font);
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 27px;
+  letter-spacing: 2px;
+  color: var(--primay-btn-color);
+  background-color: var(--success-btn);
+}
+
+
 
 /* mobile */
 @media only screen 

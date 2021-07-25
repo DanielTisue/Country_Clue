@@ -114,6 +114,10 @@
   
 }
 
+.about {
+  padding: 0 4rem;
+}
+
 .featured {
   height: 100%;
   padding-bottom: 4rem;
@@ -199,36 +203,10 @@
     background-color: #000;
   }
 
- .error-container {
-   width: 100%;
-   display: flex;
-   justify-content: space-evenly;
-   padding: 50px;
- }
-
- .error-img {
-   width: 40%;
-   padding: 25px;
- }
-
- .error-text {
-   width: 60%;
-   padding: 25px;
- }
-
  .button-wrapper {
    margin-top: 25px;
  }
 
- .error-message-wrapper {
-   width: 100%;
-   text-align: center;
-   background-color: red;
-   opacity: .3;
-   color: white;
-   padding: 10px;
-   margin: 10px;
- }
 
  .btn-normal {
    border: 1px solid black;
@@ -245,6 +223,24 @@
    display: flex; 
    flex-wrap: wrap;
    align-items: center;
+ }
+
+ /* 404 page */
+ .error-container {
+   width: 100%;
+   display: flex;
+   justify-content: space-evenly;
+   padding: 50px;
+ }
+
+ .error-img {
+   width: 40%;
+   padding: 25px;
+ }
+
+ .error-text {
+   width: 60%;
+   padding: 25px;
  }
 
 /* DESKTOP larger than laptop */
