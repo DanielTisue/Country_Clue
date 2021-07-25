@@ -6,14 +6,6 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import '../Styles/Form.css';
 
-
-//   title
-//   description
-//   image
-//   message  
-//   tags
-//   author
-
 const PostEditForm = (props) => {
     const { loggedIn } = useContext(AuthContext);
 
@@ -25,7 +17,8 @@ const PostEditForm = (props) => {
             [oldImage, setImage] = useState(""),
             [tags, setTags] = useState([]),
             [error, setError] = useState(null),
-        [mounted, isMounting] = useState(true);
+            [success, setSuccess] = useState(false),
+            [mounted, isMounting] = useState(true);
 
     let history = useHistory();
 
@@ -61,13 +54,20 @@ const PostEditForm = (props) => {
   const tagHandler = (e) => {
   let tag = e.target.value.split(",").map(e => e.trim());
   setTags(tag)
-  // setNewTags(tag)   
-  console.log(tag);
   }
 
   //REDIRECT
   const backRouter = () => {
     history.push("/posts/" + props.match.params.id);
+  }
+
+  const clearFormData = () => {
+        setTitle("")
+        setDescription("")
+        setFile("")
+        setImage("")
+        setMessage("")
+        setTags([])
   }
 
   //SUBMIT function
@@ -89,7 +89,15 @@ const PostEditForm = (props) => {
 
     await axios.put("http://localhost:5000/posts/" + props.match.params.id, formdata)
     .then(res => {
-      history.push('/posts/' + props.match.params.id);
+        clearFormData();
+        if(res.status === 200) {
+          setSuccess(true)
+        }
+      })
+      .then( res => {
+        setTimeout(() => {
+          history.push('/posts/' + props.match.params.id);
+        }, 1000);
       })
     .catch((err) => {
       if(err.response.status === 500) {
@@ -139,10 +147,16 @@ const PostEditForm = (props) => {
               <label>Tags</label>
               <input type="text" name="tags" placeholder="Make you hit space after each tag" value={tags} required onChange={tagHandler} />
             </div>
-          
+            {!success &&
             <div className="postForm-item">
             <button className="postForm-button" type="submit" onClick={handleSubmit}>Submit</button>
             </div>
+            }
+            {success && 
+            <div className="postForm-item">
+            <button className="postForm-button-success">Article successfully updated</button>
+            </div>
+            } 
             
             <button className="secondary" id="back-button" onClick={backRouter}>Back to this Article</button>
             </div>

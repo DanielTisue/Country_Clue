@@ -1,3 +1,4 @@
+  
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';
 import AuthContext from "../Context/AuthContext";
@@ -44,7 +45,6 @@ const tagHandler = (e) => {
   const clearFormData = () => {
         setTitle("")
         setDescription("")
-        // setFileData()
         setFile("")
         setMessage("")
         setTags([])
@@ -96,17 +96,17 @@ const handleSubmit = async (e) => {
             
             <div className="postForm-item" id="postForm-item-1">
               <label>Title</label>
-              <input type="text" name="title" placeholder="Enter the title of your article" value={title} onChange={(e)=>setTitle(e.target.value)} />
+              <input className="inputs" type="text" name="title" placeholder="Enter the title of your article" value={title} onChange={(e)=>setTitle(e.target.value)} />
             </div>
 
             <div className="postForm-item">
               <label>Description</label>
-              <input type="text" name="description" placeholder="Enter a short description of your article" value={description} onChange={(e)=>setDescription(e.target.value)} />
+              <input className="inputs" type="text" name="description" placeholder="Enter a short description of your article" value={description} onChange={(e)=>setDescription(e.target.value)} />
             </div>
 
             <div className="postForm-item">
               <label className="file-upload">Upload your image below</label>
-              <input id="file-upload-input" type="file" name="file" accept="image/*" value={image} onChange={handleFileChange} />
+              <input className="inputs" id="file-upload-input" type="file" name="file" accept="image/*" value={image} onChange={handleFileChange} />
             </div>
             <div className="postForm-item">
               <label>Article</label>
@@ -130,7 +130,7 @@ const handleSubmit = async (e) => {
                   <option value="newArtist">newArtist</option>
                   </optgroup>
               </select> */}
-              <input type="text" name="tags" placeholder="Separate each tag with a comma and no spaces. Ex: tag1,tag2,tag3" value={tags} onChange={tagHandler} />
+              <input className="inputs" type="text" name="tags" placeholder="Separate each tag with a comma and no spaces. Ex: tag1,tag2,tag3" value={tags} onChange={tagHandler} />
             </div>
            {!success &&
             <div className="postForm-item">
