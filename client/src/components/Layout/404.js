@@ -13,7 +13,7 @@ const FourOFour = () => {
           <p>Can't get a Country Clue here...Let's get you back to the articles</p>
           <div className="button-wrapper">
            <Link to={'/posts'} >
-                <button className="read-more">Articles</button>
+                <button className="primary">Articles</button>
            </Link>
            </div>
         </div>

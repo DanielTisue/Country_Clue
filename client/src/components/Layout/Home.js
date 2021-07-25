@@ -55,6 +55,7 @@ render(){
 
             <section className="about">
               <h1 id="about-section">What's this about?</h1>
+              <p>This is about music you idiot...country music.</p>
             </section>
         
         </div>
