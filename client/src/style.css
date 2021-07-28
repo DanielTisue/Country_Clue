@@ -80,6 +80,7 @@
 
  .homepage-title-wrapper {
    height: 90vh;
+   max-height: 750px;
    /* display: flex;
    flex-direction: column;
    justify-content: center;
@@ -118,7 +119,6 @@
   left: 0;
   z-index: 0; 
   overflow: visible;
-  
 }
 
 /* .background-img-articles {
@@ -148,7 +148,7 @@
    line-height: 61px;
    font-weight: 400;
    text-align: center;
-   padding: 8rem 0;
+   padding: 6rem 0;
  }
 
  .flex-container {
@@ -162,6 +162,8 @@
    color: black;
  }
 
+ /* NAVBAR */
+
  .navBar {
    width: 100%;
    display: flex;
@@ -169,6 +171,10 @@
    padding: 25px 20px;
    position: relative;
    z-index: 1;
+ }
+
+ .navBar-home-icon {
+   display: none;
  }
 
  li.navBar-link {
@@ -258,6 +264,25 @@
    width: 60%;
    padding: 25px;
  }
+
+
+/* MOBILE smaller tahn 600px */
+ @media only screen and (max-width: 600px) {
+  #home-text {
+    display: none;
+  }
+
+  .navBar-home-icon {
+    display: block;
+    height: 30px;
+    width: 30px;
+  }
+
+   .about {
+    padding: 0 2rem;
+  }
+ }
+
 
 /* DESKTOP larger than laptop */
 @media only screen and (min-width: 1400px) {
