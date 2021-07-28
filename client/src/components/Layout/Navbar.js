@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
 import AuthContext from "../Context/AuthContext";
 import LogOutBtn from '../Auth/LogOutBtn';
+import HomeGuitar from '../../Images/guitar.png';
 
 function Navbar() {
 const { loggedIn } = useContext(AuthContext);
@@ -11,7 +12,10 @@ const { loggedIn } = useContext(AuthContext);
         <div className="navBar">
           <ul className="navBar-items">
             <Link to='/'>
-            <li className="navBar-link">Home</li>
+              <li className="navBar-link">
+              <img className="navBar-home-icon" src= {HomeGuitar} alt="HomeLogo" />
+              </li>
+            <li className="navBar-link" id="home-text">Home</li>
             </Link>
 
             {/* <Link to='/'>
