@@ -2,7 +2,10 @@ import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
 import AuthContext from "../Context/AuthContext";
 import LogOutBtn from '../Auth/LogOutBtn';
-import HomeGuitar from '../../Images/guitar.png';
+import {ReactComponent as HomeLogo } from '../../Images/MusicBackground.svg';
+import {ReactComponent as Articles } from '../../Images/MusicBackground.svg';
+import {ReactComponent as CreateArticle } from '../../Images/MusicBackground.svg';
+
 
 function Navbar() {
 const { loggedIn } = useContext(AuthContext);
@@ -13,7 +16,7 @@ const { loggedIn } = useContext(AuthContext);
           <ul className="navBar-items">
             <Link to='/'>
               <li className="navBar-link">
-              <img className="navBar-home-icon" src= {HomeGuitar} alt="HomeLogo" />
+              <img className="navBar-home-icon" src={HomeLogo} alt="HomeLogo" />
               </li>
             <li className="navBar-link" id="home-text">Home</li>
             </Link>
@@ -27,6 +30,9 @@ const { loggedIn } = useContext(AuthContext);
             </Link> */}
 
             <Link to='/posts' >
+              <li className="navBar-link">
+              <img className="navBar-article-icon" src={Articles} alt="Articles" />
+              </li>
             <li className="navBar-link">Articles</li>
             </Link>
 
@@ -38,6 +44,9 @@ const { loggedIn } = useContext(AuthContext);
             
             {loggedIn && (
              <Link to='/create' >
+               <li className="navBar-link">
+              <img className="navBar-create-icon" src={CreateArticle} alt="create Article" />
+              </li>
               <li className="navBar-link">Create Article</li>
               </Link>
             )}
