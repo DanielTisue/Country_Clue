@@ -19,7 +19,7 @@ const { loggedIn } = useContext(AuthContext);
               
                 <HomeLogo className="navBar-home-icon" alt="HomeLogo" />
               
-              <span id="homed-text">Gone Country</span>
+              {/* <span id="homed-text">Gone Country</span> */}
             </li>
             </Link>
 

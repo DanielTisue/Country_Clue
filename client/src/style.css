@@ -178,9 +178,9 @@
    max-height: 750px;
  }
 
- #homepage-title {
+ /* #homepage-title {
    padding-top: 8rem;
- }
+ } */
 
  .articlepage-title-wrapper {
    width: 100%;
@@ -290,7 +290,7 @@
 
 
 /* MOBILE smaller tahn 600px */
- @media only screen and (max-width: 890px) {
+ @media only screen and (max-width: 770px) {
 
   #homed-text {
     font-size: 32px;
@@ -303,7 +303,8 @@
 
   .menu-icon {
     display: block;
-    height: 45px;
+    height: 35px;
+    padding: 0;
   }
 
    .about {

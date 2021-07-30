@@ -44,7 +44,7 @@ render(){
          <Background className="background-img" />
         <div className="container"> 
               <div className="homepage-title-wrapper">
-                <h1 id="homepage-title">Country Music's Latest</h1>
+                <h1 id="homepage-title">GONE COUNTRY</h1>
                 <h2 id="subhead">You ain't country until you gone country.</h2>
               
               </div>
