@@ -32,7 +32,6 @@ function Register() {
       history.push('/');
      
     } catch (err) {
-      // console.log(err.response.status)
       if(err.response.status === 400) {
         setError(err.response.data.errorMessage)
       } else if (err.response.status === 500) {
@@ -41,7 +40,6 @@ function Register() {
         setError('Status: 404 - The database can not be found. Please contact your site admin.')
       } 
     }
-      // console.log(err)
     
   }
 
