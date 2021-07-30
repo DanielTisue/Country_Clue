@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
 import AuthContext from "../Context/AuthContext";
 import LogOutBtn from '../Auth/LogOutBtn';
-import {ReactComponent as HomeLogo } from '../../Images/MusicBackground.svg';
-import {ReactComponent as Articles } from '../../Images/MusicBackground.svg';
-import {ReactComponent as CreateArticle } from '../../Images/MusicBackground.svg';
+import {ReactComponent as HomeLogo } from '../../Images/guitar_amp.svg';
+import {ReactComponent as Articles } from '../../Images/articles.svg';
+import {ReactComponent as CreateArticle } from '../../Images/file-plus.svg';
 
 
 function Navbar() {
@@ -15,10 +15,12 @@ const { loggedIn } = useContext(AuthContext);
         <div className="navBar">
           <ul className="navBar-items">
             <Link to='/'>
-              <li className="navBar-link">
-              <img className="navBar-home-icon" src={HomeLogo} alt="HomeLogo" />
-              </li>
-            <li className="navBar-link" id="home-text">Home</li>
+            <li className="navBar-link">
+              
+                <HomeLogo className="navBar-home-icon" alt="HomeLogo" />
+              
+              <span id="homed-text">Gone Country</span>
+            </li>
             </Link>
 
             {/* <Link to='/'>
@@ -30,10 +32,7 @@ const { loggedIn } = useContext(AuthContext);
             </Link> */}
 
             <Link to='/posts' >
-              <li className="navBar-link">
-              <img className="navBar-article-icon" src={Articles} alt="Articles" />
-              </li>
-            <li className="navBar-link">Articles</li>
+            <li className="navBar-link"> <Articles className="navBar-articles-icon menu-icon" alt="Articles" /><span className="menu-text">Articles</span></li>
             </Link>
 
             {/* {!loggedIn && (
@@ -44,10 +43,7 @@ const { loggedIn } = useContext(AuthContext);
             
             {loggedIn && (
              <Link to='/create' >
-               <li className="navBar-link">
-              <img className="navBar-create-icon" src={CreateArticle} alt="create Article" />
-              </li>
-              <li className="navBar-link">Create Article</li>
+              <li className="navBar-link"><CreateArticle className="navBar-create-icon menu-icon" alt="create Article" /><span className="menu-text">Create Article</span></li>
               </Link>
             )}
 

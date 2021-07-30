@@ -67,11 +67,106 @@
    color: #171717;
  }
 
+ a {
+   text-decoration: none;
+   color: black;
+ }
+
  p {
    font-family: var(--text-font);
    overflow-wrap: break-word;
  }
 
+  /* NAVBAR */
+
+ .navBar {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   padding: 25px 20px;
+   position: relative;
+   z-index: 1;
+ }
+
+ /* .navBar-home-icon {
+   display: none;
+ } */
+
+ li.navBar-link {
+   font-family: var(--text-font);
+   opacity: .6;
+   font-size: 16px;
+   font-weight: 600;
+   list-style: none;
+   display: inline;
+   text-decoration: none;
+   margin: 0 20px;
+   display: flex;
+   height: 100%;
+   justify-content: center;
+   align-items: center;
+ }
+
+ .navBar-link:hover {
+   opacity: 1;
+ }
+
+  ul li::marker {
+    margin-right: 25px;
+  }
+
+ .navBar-items {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+
+ #homed-text {
+  font-family: var(--title-font);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 45px;
+  line-height: 50px;
+  letter-spacing: .5rem;
+  opacity: 1 !important;
+ }
+
+ .navBar-home-icon {
+   height: 50px;
+   padding-right: 1rem;
+ }
+
+ .navBar-articles-icon, .navBar-create-icon {
+   height: 36px;
+   padding-right: 1rem;
+   display: none;
+ }
+
+ .hamburger {
+    padding: 10px;
+    position: relative;
+    top: -10px;
+    right: -15px;
+    cursor: pointer;
+    transition: all .5s ease;
+    /* display: none; */
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+
+ .line {
+    height: 3px;
+    width: 30px;
+    margin: 3px;
+    border: none;
+    border-radius: 15px;
+    background-color: #000;
+  }
+
+
+  /* PAGE elements */
   .container {
    width: 100%;
    margin: 0 auto;
@@ -81,11 +176,10 @@
  .homepage-title-wrapper {
    height: 90vh;
    max-height: 750px;
-   /* display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   padding: 50px 50px 500px; */
+ }
+
+ #homepage-title {
+   padding-top: 8rem;
  }
 
  .articlepage-title-wrapper {
@@ -132,16 +226,13 @@
 
 .about {
   padding: 0 4rem;
+  height: 100vh;
 }
 
 .featured {
   height: 100%;
   padding-bottom: 4rem;
 }
-
- .about {
-  height: 100vh;
- }
 
  #featured-section, #about-section {
    font-size: 55px;
@@ -156,74 +247,6 @@
   display: flex;
   flex-wrap: wrap;
  }
-
- a {
-   text-decoration: none;
-   color: black;
- }
-
- /* NAVBAR */
-
- .navBar {
-   width: 100%;
-   display: flex;
-   justify-content: center;
-   padding: 25px 20px;
-   position: relative;
-   z-index: 1;
- }
-
- .navBar-home-icon {
-   display: none;
- }
-
- li.navBar-link {
-   font-family: var(--text-font);
-   opacity: .6;
-   font-size: 16px;
-   font-weight: 600;
-   list-style: none;
-   display: inline;
-   text-decoration: none;
-   margin: 0 20px;
- }
-
- li.navBar-link:hover {
-   opacity: 1;
- }
-
-  ul li::marker {
-    margin-right: 25px;
-  }
-
- .navBar-items {
-   width: 100%;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
- }
-
- .hamburger {
-    padding: 10px;
-    position: relative;
-    top: -10px;
-    right: -15px;
-    cursor: pointer;
-    transition: all .5s ease;
-    /* display: none; */
-    cursor: pointer;
-    z-index: 2;
-  }
-  
-
- .line {
-    height: 3px;
-    width: 30px;
-    margin: 3px;
-    border: none;
-    border-radius: 15px;
-    background-color: #000;
-  }
 
  .button-wrapper {
    margin-top: 25px;
@@ -267,15 +290,20 @@
 
 
 /* MOBILE smaller tahn 600px */
- @media only screen and (max-width: 600px) {
-  #home-text {
+ @media only screen and (max-width: 890px) {
+
+  #homed-text {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .menu-text {
     display: none;
   }
 
-  .navBar-home-icon {
+  .menu-icon {
     display: block;
-    height: 30px;
-    width: 30px;
+    height: 45px;
   }
 
    .about {

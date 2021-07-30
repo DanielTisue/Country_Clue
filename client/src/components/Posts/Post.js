@@ -10,7 +10,7 @@ class Post extends React.Component {
 
   renderDate(dateString) {
     const date = new Date(dateString);
-    return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
+    return `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
   }
 
   renderTags(tags) {
@@ -29,13 +29,14 @@ class Post extends React.Component {
     
       <div className="post" onClick={this.showPost} >
             
-            <img className="post-img" alt="placeHolder" src={post.image} />
+              <img className="post-img" alt="placeHolder" src={post.image} />
             
-             <p className="post-tags">{this.renderTags(post.tags)}</p>
-            <h3 className="post-title post-item">{post.title}</h3>
-            <p className="post-description post-item">{post.description}</p>
-            {/* <button className="read-more post-item" >Read more</button> */}
-            <p className="post-date">{this.renderDate(post.createdAt)}</p>
+              <p className="post-tags">{this.renderTags(post.tags)}</p>
+            {/* <div className="post-title-wrapper"> */}
+              <h3 className="post-title post-item">{post.title}</h3>
+            {/* </div> */}
+              <p className="post-description post-item">{post.description}</p>
+              <p className="post-date">{this.renderDate(post.createdAt)}</p>
         </div>
         
         );

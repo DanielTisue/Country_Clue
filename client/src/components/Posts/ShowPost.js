@@ -38,6 +38,7 @@ function ShowPost (props) {
      isMounting(false)
     })
     .catch((err) => {
+      console.log(err);
       if(err.response.status === 500) {
         setError(err.response.data.errMessage)
       } 

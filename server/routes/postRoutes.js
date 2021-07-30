@@ -58,7 +58,7 @@ router.post('/', auth, upload.single("image"), async (req, res) => {
 // GET All POSTS
 router.get('/', async (req, res) => {
 	try {
-		const posts = await Post.find({}).sort( { _id: -1 });
+		const posts = await Post.find({}).sort({ _id: -1 });
 		return res.status(200).json(posts);
 	} catch (err) {
 		console.log(err);
@@ -74,7 +74,9 @@ router.get('/:id', async (req, res) => {
 		if (!post) {
          return res.status(404).json({ errMessage: 'A problem occurred with the server. The article you requested can not be found.'}).send();
       } 
-       return res.status(200).json(post);
+				return res.status(200).json(post);
+			
+       
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json({ errMessage: 'A problem occurred with the server. Please contact your site admin.'}).send();
