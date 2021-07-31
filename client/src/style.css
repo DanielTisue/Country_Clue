@@ -1,12 +1,17 @@
 
 @import url("https://use.typekit.net/eif4fwx.css");
-@import url('https://fonts.googleapis.com/css2?family=Bevan&family=Montserrat:wght@400;600&family=Rye&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap'); */
 
 @font-face {
   font-family: 'council', sans-serif;
   font-style: normal;
   font-weight: 400;
   src: local("council"), local("council"), url(https://use.typekit.net/eif4fwx.css) format("css");
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: local('Merriweather'), url(https://fonts.gstatic.com/...) format('woff2');
 }
 
  * {

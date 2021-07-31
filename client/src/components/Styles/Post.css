@@ -6,7 +6,7 @@
    }
   }
 
-  @media only screen and (max-width: 580px) {
+  @media only screen and (max-width: 600px) {
    .post {
      width: 100% !important;
      margin: 50px !important;
