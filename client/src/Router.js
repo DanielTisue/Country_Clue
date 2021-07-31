@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './components/Layout/Home';
 import Navbar from './components/Layout/Navbar';
-import PostList from './components/Posts/PostList';
+// import PostList from './components/Posts/PostList';
+import PostList2 from './components/Posts/PostList2';
 import ShowPost from './components/Posts/ShowPost';
 import CreatePostForm from './components/PostForms/CreatePostForm';
 import PostEditForm from './components/PostForms/PostEditForm';
@@ -21,7 +22,8 @@ const Router = () => {
       <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/posts" component={PostList} />
+          {/* <Route exact path="/posts" component={PostList} /> */}
+          <Route exact path="/posts" component={PostList2} />
           
           <Route exact path="/posts/:id" component={ShowPost} />
           {/* //Conditiional Routes */}
