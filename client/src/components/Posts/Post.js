@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Styles/Post.css';
-import tagImage from '../../Images/tag.svg';
+import tagImage from '../../Assets/Images/tag.svg';
 
 class Post extends React.Component {
     constructor(props) {
