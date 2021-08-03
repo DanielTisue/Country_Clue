@@ -119,9 +119,6 @@ router.get('/logout', (req, res) => {
     sameSite: "none",
     }).send();
     console.log("logout successful")
-    if(err) {
-      res.status(500).send();
-    }
 });
 
 // GETTING TOKEN
