@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
 import AuthContext from "../Context/AuthContext";
 import LogOutBtn from '../Auth/LogOutBtn';
-import {ReactComponent as HomeLogo } from '../../Images/guitar_amp.svg';
-import {ReactComponent as Articles } from '../../Images/articles.svg';
-import {ReactComponent as CreateArticle } from '../../Images/file-plus.svg';
+import {ReactComponent as HomeLogo } from '../../Assets/Images/guitar_amp.svg';
+import {ReactComponent as Articles } from '../../Assets/Images/articles.svg';
+import {ReactComponent as CreateArticle } from '../../Assets/Images/file-plus.svg';
 
 
 function Navbar() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Post from  '../Posts/Post';
-import {ReactComponent as Background } from '../../Images/MusicBackground.svg';
+import {ReactComponent as Background } from '../../Assets/Images/MusicBackground.svg';
 
 class Home extends React.Component {
 
