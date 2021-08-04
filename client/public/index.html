@@ -11,7 +11,13 @@
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> 
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="preconnect" href="https://use.typekit.net/eif4fwx.css" crossorigin />
+    <link rel="preload" href="https://use.typekit.net/eif4fwx.css" as="style">
+    <link rel="stylesheet" href="https://use.typekit.net/eif4fwx.css" media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet" href="https://use.typekit.net/eif4fwx.css" />
+    </noscript>
     <title>Country Clue</title>
   </head>
   <body>
