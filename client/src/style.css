@@ -71,6 +71,7 @@
  :root {
   --text-font: 'Montserrat', sans-serif;
   --title-font: 'council', sans-serif;
+  --text-color: #171717;
   --main-bg-color: #fff8f0;
   --primay-btn-color: #ffffff;
   --primay-btn-bgcolor: #BD2D0A;
@@ -133,17 +134,22 @@
  .navBar {
    width: 100%;
    display: flex;
-   justify-content: center;
+   justify-content: space-between;
+   flex-direction: row;
+   align-items: center;
    padding: 25px 20px;
-   position: relative;
-   z-index: 1;
+   /* position: relative;
+   z-index: 1; */
  }
 
- /* .navBar-home-icon {
-   display: none;
- } */
+ .navBar-items {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
 
- li.navBar-link {
+ li.navBar-link-item {
    font-family: var(--text-font);
    opacity: .6;
    font-size: 16px;
@@ -156,6 +162,7 @@
    height: 100%;
    justify-content: center;
    align-items: center;
+   display: none;
  }
 
  .navBar-link:hover {
@@ -165,13 +172,6 @@
   ul li::marker {
     margin-right: 25px;
   }
-
- .navBar-items {
-   width: 100%;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
- }
 
  #homed-text {
   font-family: var(--title-font);
@@ -195,28 +195,54 @@
  }
 
  .hamburger {
-    padding: 10px;
     position: relative;
-    top: -10px;
-    right: -15px;
+    padding: 10px;
     cursor: pointer;
     transition: all .5s ease;
-    /* display: none; */
     cursor: pointer;
     z-index: 2;
+    transition: all .5s ease-in-out;
   }
   
-
  .line {
-    height: 3px;
-    width: 30px;
-    margin: 3px;
+    height: 4px;
+    width: 35px;
     border: none;
     border-radius: 15px;
-    background-color: #000;
+    background-color: var(--text-color);
+    transition: all .5s ease-in-out;
   }
 
+.line::before,
+.line::after {
+  content: '';
+  position: absolute;
+  width: 35px;
+  height: 4px;
+  background: var(--text-color);
+  border-radius: 15px;
+  transition: all .5s ease-in-out;
+}
 
+.line::before {
+  transform: translateY(-10px);
+}
+.line::after {
+  transform: translateY(10px);
+}
+
+/* ANIMATION */
+.hamburger.open .line {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+.hamburger.open .line::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+.hamburger.open .line::after {
+  transform: rotate(-45deg) translate(35px, 35px);
+}
   /* PAGE elements */
   .container {
    width: 100%;

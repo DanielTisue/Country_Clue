@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Post from  '../Posts/Post';
-import {ReactComponent as Background } from '../../Assets/Images/MusicBackground.svg';
+// import {ReactComponent as Background } from '../../Assets/Images/MusicBackground.svg';
 
 class Home extends React.Component {
 
@@ -41,7 +41,7 @@ state = {
 
 render(){
   return <React.Fragment>
-         <Background className="background-img" />
+         {/* <Background className="background-img" /> */}
         <div className="container"> 
               <div className="homepage-title-wrapper">
                 <h1 id="homepage-title">GONE COUNTRY</h1>
@@ -49,7 +49,7 @@ render(){
               
               </div>
 
-            <section className="featured">
+            <section className="featured" id="featured">
               <h1 id="featured-section">The Latest</h1>
              { this.error && <div className="error-message-wrapper"><div className="error-message">{ this.error }</div></div> }
              
@@ -59,7 +59,7 @@ render(){
             
             </section>
 
-            <section className="about">
+            <section className="about" id="about">
               <h1 id="about-section">What's this about?</h1>
               <p>This is about music you idiot...country music.</p>
             </section>
