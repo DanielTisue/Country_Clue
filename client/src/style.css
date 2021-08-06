@@ -88,6 +88,7 @@
    height: 100%;
    width: 100%;
    background: var(--main-bg-color);
+   overflow-x: hidden;
  }
 
  h1 {
@@ -129,6 +130,10 @@
    overflow-wrap: break-word;
  }
 
+   ul li::marker {
+    margin-right: 25px;
+  }
+
   /* NAVBAR */
 
  .navBar {
@@ -142,61 +147,16 @@
    z-index: 1; */
  }
 
- .navBar-items {
-   width: 100%;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
- }
-
- li.navBar-link-item {
-   font-family: var(--text-font);
-   opacity: .6;
-   font-size: 16px;
-   font-weight: 500;
-   list-style: none;
-   display: inline;
-   text-decoration: none;
-   margin: 0 20px;
-   display: flex;
-   height: 100%;
-   justify-content: center;
-   align-items: center;
-   display: none;
- }
-
- .navBar-link:hover {
-   opacity: 1;
- }
-
-  ul li::marker {
-    margin-right: 25px;
-  }
-
- #homed-text {
-  font-family: var(--title-font);
-  font-weight: 400;
-  font-style: normal;
-  font-size: 45px;
-  line-height: 50px;
-  letter-spacing: .5rem;
-  opacity: 1 !important;
- }
-
  .navBar-home-icon {
    height: 50px;
    padding-right: 1rem;
  }
 
- .navBar-articles-icon, .navBar-create-icon {
-   height: 36px;
-   padding-right: 1rem;
-   display: none;
- }
-
  .hamburger {
-    position: relative;
+    position: fixed;
     padding: 10px;
+    top: 40px;
+    right: 25px;
     cursor: pointer;
     transition: all .5s ease;
     cursor: pointer;
@@ -233,16 +193,54 @@
 
 /* ANIMATION */
 .hamburger.open .line {
-  transform: translateX(-50px);
+  transform: translateX(50px);
   background: transparent;
-  box-shadow: none;
 }
 .hamburger.open .line::before {
-  transform: rotate(45deg) translate(35px, -35px);
+  transform: rotate(45deg) translate(-35px, 35px);
 }
 .hamburger.open .line::after {
-  transform: rotate(-45deg) translate(35px, 35px);
+  transform: rotate(-45deg) translate(-35px, -35px);
 }
+
+.menu-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 25vw;
+  z-index: 1;
+  /* right: -100%; */
+}
+
+
+
+ .navBar-items {
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center; 
+ }
+
+ li.navBar-link-item {
+   font-family: var(--text-font);
+   opacity: .6;
+   font-size: 16px;
+   font-weight: 500;
+   list-style: none;
+   text-decoration: none;
+ }
+
+ .navBar-link-item:hover {
+   opacity: 1;
+ }
+
   /* PAGE elements */
   .container {
    width: 100%;
