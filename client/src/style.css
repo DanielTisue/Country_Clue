@@ -93,7 +93,7 @@
    height: 100%;
    width: 100%;
    background: var(--main-bg-color);
-   filter: sepia(10%);
+   /* filter: sepia(10%); */
    overflow-x: hidden;
  }
 
