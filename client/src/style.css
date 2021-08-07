@@ -1,19 +1,18 @@
 
-@import url("https://use.typekit.net/eif4fwx.css");
+/* @import url("https://use.typekit.net/eif4fwx.css"); */
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap'); */
 
-@font-face {
+/* @font-face {
   font-family: 'council', sans-serif;
   font-style: normal;
   font-weight: 400;
   src: local("council"), local("council"), url(https://use.typekit.net/eif4fwx.css) format("css");
-}
+} */
 
 @font-face {
-    font-family: 'Montserrat';
-    src: local('Montserrat Regular'), local('Montserrat-Regular'),
-        url('./Assets/Fonts/Montserrat-Regular.woff') format('woff2'),
-        url('./Assets/Fonts/Montserrat-Regular.woff') format('woff');
+    font-family: 'Abril Fatface';
+    src: local('Abril Fatface Regular'), local('AbrilFatface-Regular'),
+        url('./Assets/Fonts/AbrilFatface-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -21,19 +20,27 @@
 
 @font-face {
     font-family: 'Montserrat';
+    src: local('Montserrat Regular'), local('Montserrat-Regular'),
+        url('./Assets/Fonts/Montserrat-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* @font-face {
+    font-family: 'Montserrat';
     src: local('Montserrat Medium'), local('Montserrat-Medium'),
         url('./Assets/Fonts/Montserrat-Medium.woff2') format('woff2'),
         url('./Assets/Fonts/Montserrat-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
-}
+} */
 
 @font-face {
     font-family: 'Montserrat';
     src: local('Montserrat Bold'), local('Montserrat-Bold'),
-        url('./Assets/Fonts/Montserrat-Bold.woff2') format('woff2'),
-        url('./Assets/Fonts/Montserrat-Bold.woff') format('woff');
+        url('./Assets/Fonts/Montserrat-Bold.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -42,8 +49,7 @@
 @font-face {
     font-family: 'Montserrat';
     src: local('Montserrat Italic'), local('Montserrat-Italic'),
-        url('./Assets/Fonts/Montserrat-Italic.woff2') format('woff2'),
-        url('./Assets/Fonts/Montserrat-Italic.woff') format('woff');
+        url('./Assets/Fonts/Montserrat-Italic.woff2') format('woff2');
     font-weight: normal;
     font-style: italic;
     font-display: swap;
@@ -52,8 +58,7 @@
 @font-face {
     font-family: 'Montserrat';
     src: local('Montserrat Bold Italic'), local('Montserrat-BoldItalic'),
-        url('./Assets/Fonts/Montserrat-BoldItalic.woff2') format('woff2'),
-        url('./Assets/Fonts/Montserrat-BoldItalic.woff') format('woff');
+        url('./Assets/Fonts/Montserrat-BoldItalic.woff2') format('woff2');
     font-weight: bold;
     font-style: italic;
     font-display: swap;
@@ -65,18 +70,18 @@
    padding: 0;
    box-sizing: border-box;
    font-family: 'Montserrat', sans-serif;
-   font-size: 16px
+   font-size: 16px;
  }
 
  :root {
   --text-font: 'Montserrat', sans-serif;
-  --title-font: 'council', sans-serif;
+  --title-font: 'Abril Fatface', serif;
   --text-color: #171717;
-  --main-bg-color: #fff8f0;
+  --main-bg-color: #ffffff; /* #fff8f0: antique white;  #f6e1b4: wheat color; #663f0b: saddlebrown*/
   --primay-btn-color: #ffffff;
   --primay-btn-bgcolor: #BD2D0A;
   --secondary-btn-color: #05284f;
-  --secondary-btn-bgcolor: #fff8f0;
+  --secondary-btn-bgcolor: #ffffff;
   --secondary-btn-color-hover: #ffffff;
   --secondary-btn-bgcolor-hover: #05284f;
   --tertiary-btn-color: #ffffff;
@@ -88,6 +93,7 @@
    height: 100%;
    width: 100%;
    background: var(--main-bg-color);
+   filter: sepia(10%);
    overflow-x: hidden;
  }
 
@@ -143,13 +149,18 @@
    flex-direction: row;
    align-items: center;
    padding: 25px 20px;
-   /* position: relative;
-   z-index: 1; */
+   /* position: relative; */
  }
 
  .navBar-home-icon {
    height: 50px;
    padding-right: 1rem;
+   opacity: .6;
+   transition: all .3s ease-in-out;
+ }
+
+ .navBar-home-icon:hover {
+  opacity: 1;
  }
 
  .hamburger {
@@ -157,8 +168,6 @@
     padding: 10px;
     top: 40px;
     right: 25px;
-    cursor: pointer;
-    transition: all .5s ease;
     cursor: pointer;
     z-index: 2;
     transition: all .5s ease-in-out;
@@ -198,9 +207,11 @@
 }
 .hamburger.open .line::before {
   transform: rotate(45deg) translate(-35px, 35px);
+  background: var(--main-bg-color);
 }
 .hamburger.open .line::after {
   transform: rotate(-45deg) translate(-35px, -35px);
+  background: var(--main-bg-color);
 }
 
 .menu-bar {
@@ -208,17 +219,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: green;
+  background-color: var(--secondary-btn-color);
   position: fixed;
   top: 0;
   right: 0;
   height: 100vh;
-  width: 25vw;
+  width: 33%;
   z-index: 1;
-  /* right: -100%; */
+  transform: translateX(100%);
+  transition: all .5s ease-in-out;
 }
 
-
+.menu-bar.open-menu {
+  transform: translateX(-1%);
+}
 
  .navBar-items {
    height: 100%;
@@ -235,6 +249,8 @@
    font-weight: 500;
    list-style: none;
    text-decoration: none;
+   color: var(--main-bg-color);
+   transition: all .3s ease-in-out;
  }
 
  .navBar-link-item:hover {
@@ -282,13 +298,13 @@
   padding-top: 50px;
 }
 
-.background-img {
+/* .background-img {
   position: absolute; 
   bottom: 0;
   left: 0;
   z-index: 0; 
   overflow: visible;
-}
+} */
 
 /* .background-img-articles {
   position: absolute; 
@@ -298,15 +314,14 @@
   overflow: hidden;
   z-index: 0;
 } */
+.featured {
+  height: 100vh;
+  padding-bottom: 4rem;
+}
 
 .about {
   padding: 0 4rem;
   height: 100vh;
-}
-
-.featured {
-  height: 100%;
-  padding-bottom: 4rem;
 }
 
  #featured-section, #about-section {

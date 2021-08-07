@@ -32,8 +32,8 @@
   box-shadow: 3px 6px 30px rgb(150 155 187 / 40%);
   margin-bottom: 45px;
   margin-left: 50px;
-  background-color: rgb(255 248 240);
-  filter: sepia(1%);
+  background-color: #ffff;
+  /* filter: sepia(10%); */
   cursor: pointer;
   transition: all .3s ease;
 }
@@ -47,13 +47,13 @@
 .post-title {
   padding-top: 25px;
   text-align: left;
-  font-family: 'council', sans-serif;;
+  font-family: var(--title-font);
   font-weight: 400;
-  font-size: 36px;
-  line-height: 42px;
-  letter-spacing: .3rem;
+  font-size: 25px;
+  line-height: 40px;
+  letter-spacing: .1rem;
   overflow: hidden;
-  max-height: 70px;
+  max-height: 65px;
 }
 
 .post-img {
@@ -115,7 +115,8 @@
   border: 1px solid var(--secondary-btn-color);
   margin: 0 auto;
   color: var(--secondary-btn-color);
-  background-color: var(--secondary-btn-bgcolor);
+  background-color: var(--main-bg-color);
+  transition: all .3s ease;
 }
 
 .secondary:hover {

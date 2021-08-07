@@ -82,17 +82,7 @@ function ShowPost (props) {
                 })}
               </div>
 
-              {/* TITLE */}
-              <div className="show-item">
-                <h1 className="show-title">{title}</h1>
-              </div>
-
-               {/* DESCRIPTION */}
-              <div className="show-item">
-                  <div className="show-description" value={description}><h2 id="showPost-description">
-                    {description}
-                   </h2></div>
-              </div>
+          
 
               {/* AUTHOR & DATE */}
               <div className="show-item">
@@ -105,7 +95,17 @@ function ShowPost (props) {
                 <img className="show-image" alt="" src={image} />
               </div> }
              
-             
+                 {/* TITLE */}
+              <div className="show-item">
+                <h1 className="show-title">{title}</h1>
+              </div>
+
+               {/* DESCRIPTION */}
+              <div className="show-item">
+                  <div className="show-description" value={description}><h2 id="showPost-description">
+                    {description}
+                   </h2></div>
+              </div>
 
               {/* POST */}
               <div className="show-item">

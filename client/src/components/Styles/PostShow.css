@@ -46,6 +46,9 @@
 
 .show-title {
   font-weight: 400;
+  letter-spacing: .1rem;
+  font-size: 45px;
+  line-height: 51px;
 }
 
 .postShow-tagImage {
