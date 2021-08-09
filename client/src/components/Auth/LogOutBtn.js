@@ -27,7 +27,7 @@ function LogOutBtn() {
   return (
     <React.Fragment>
       { error && <div className="error-message-wrapper"><div className="error-message">{ error }</div></div> }
-    <button className="secondary" onClick={logOut}>
+    <button className="secondary no-hover" onClick={logOut}>
       Log out
     </button>
     </React.Fragment>  

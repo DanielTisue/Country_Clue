@@ -24,12 +24,13 @@ const PostList2 = () => {
 
   return (
     <div className="container">
-        <div className="flex-container">
+        
           <div className="articlepage-title-wrapper">
-              <h1 id="articlepage-title">Articles</h1>
+              <h1 id="articlepage-title">Articles<span className="antique">&nbsp;</span></h1>
               { error && <div className="error-message-wrapper"><div className="error-message">
                 {error}</div></div> }
           </div>
+          <div className="flex-container">
             {posts?.map((post => (
               <Post post={post} key={post._id} />
             )))}

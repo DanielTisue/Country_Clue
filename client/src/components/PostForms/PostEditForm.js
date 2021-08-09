@@ -116,7 +116,8 @@ const PostEditForm = (props) => {
         {loggedIn && !mounted &&
         <form className="postForm" encType="multipart/form-data"> 
           <div className="internalPostForm-alignment">
-            <h1 className="postForm-title">Make it count!</h1>
+            <h1 className="postForm-title">Don't worry! Nobody noticed.<span className="antique">&nbsp;</span></h1>
+            
             
             <div className="postForm-item" id="postForm-item-1">
               <label>Title</label>

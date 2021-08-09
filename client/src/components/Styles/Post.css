@@ -1,4 +1,8 @@
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1005px) {
+  .post {
+     margin: 10px !important;
+   }
+
   .post:hover {
   transform: translateY(-5px);
   }
@@ -8,7 +12,7 @@
   }
 }
 
- @media only screen and (max-width: 961px) {
+ @media only screen and (max-width: 1004px) {
    .post {
      width: 40% !important;
      margin: 25px !important;
@@ -117,6 +121,10 @@
   color: var(--secondary-btn-color);
   background-color: var(--main-bg-color);
   transition: all .3s ease;
+}
+
+.secondary.no-hover:hover {
+  box-shadow: none !important;
 }
 
 .secondary:hover {
