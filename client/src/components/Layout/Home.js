@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Post from  '../Posts/Post';
 import logo from '../../Assets/Images/Single_guitar.jpg';
+import { Footer } from './Footer';
 // import imagebg from '../../Assets/Images/WHT_Brick-bg_joe-woods_unsplash.jpg';
 // import {ReactComponent as Background } from '../../Assets/Images/MusicBackground.svg';
 
@@ -51,7 +52,7 @@ render(){
                       <h1 id="homepage-title">GONE COUNTRY</h1>
                       <h2 id="subhead">MUSIC BLOG</h2>
                       <Link to='/posts' >
-                      <button className="secondary" id="main-cta">Read now</button>
+                      <button className="secondary-inverse" id="main-cta">Read now</button>
                       </Link>
                     </div>
                   <div className="main-img-wrapper">
@@ -80,6 +81,7 @@ render(){
             </section>
         
         </div>
+        <Footer />
         </React.Fragment>
       
   }

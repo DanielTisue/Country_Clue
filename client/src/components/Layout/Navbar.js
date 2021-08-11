@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link } from 'react-router-dom';
-// import { Navlinks } from './NavbarData';
+import { Navlinks } from './NavbarData';
 import AuthContext from "../Context/AuthContext";
 import LogOutBtn from '../Auth/LogOutBtn';
 // import {ReactComponent as HomeLogo } from '../../Assets/Images/guitar_amp.svg';
@@ -29,11 +29,11 @@ return (
          <div className={openMenu ? 'menu-bar open-menu' : 'menu-bar'} onClick={showOpen}>
             <ul className="navBar-items">
 
-              {/* {Navlinks.map((navlink) => {
+              {Navlinks.map((navlink) => {
                 return <li className="navBar-link-item"><a href={navlink.url} key={navlink.id}>{navlink.text}</a></li>
-              })} */}
+              })}
 
-              <Link to='/'>
+              {/* <Link to='/'>
             <li className="navBar-link-item">Home</li>
             </Link>
              <Link to='/posts' >
@@ -44,7 +44,7 @@ return (
             </Link>
             <Link to='/'>
             <li className="navBar-link-item">About</li>
-            </Link>
+            </Link> */}
            {loggedIn && (
              <Link to='/create' >
               <li className="navBar-link-item">Create Article</li>
