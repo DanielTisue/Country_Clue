@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Post from  '../Posts/Post';
-import logo from '../../Assets/Images/GoneCountryLogoOnly.png';
+import logo from '../../Assets/Images/Single_guitar.jpg';
 // import imagebg from '../../Assets/Images/WHT_Brick-bg_joe-woods_unsplash.jpg';
 // import {ReactComponent as Background } from '../../Assets/Images/MusicBackground.svg';
 
@@ -39,21 +40,28 @@ state = {
     });
   }
 
-  
 render(){
   return <React.Fragment>
          <div className="bg-img">
-            <img className="main-img" src={logo} alt="GoneCountry" />
-            <div className="homepage-title-wrapper">
-               
-                <h1 id="homepage-title">GONE COUNTRY</h1>
-                <h2 id="subhead">MUSIC BLOG</h2>
-               
+           <div className="container" id="main-container">
+                <div className="main-bg"></div>
+                
+                  <div className="homepage-title-wrapper">
+                    
+                      <h1 id="homepage-title">GONE COUNTRY</h1>
+                      <h2 id="subhead">MUSIC BLOG</h2>
+                      <Link to='/posts' >
+                      <button className="secondary" id="main-cta">Read now</button>
+                      </Link>
+                    </div>
+                  <div className="main-img-wrapper">
+                    <img className="main-img" src={logo} alt="GoneCountry" />
+                  </div> 
               </div>
-         </div>
+          </div>
         <div className="container"> 
             <section className="featured" id="featured">
-              <h1 id="featured-section">The Latest<span className="antique">&nbsp;</span></h1>
+              <h1 id="featured-section">THE LATEST<span className="antique">&nbsp;</span></h1>
               <h2 className="subhead">Read the the most recent country music articles.</h2>
              { this.error && <div className="error-message-wrapper"><div className="error-message">{ this.error }</div></div> }
              
@@ -64,7 +72,7 @@ render(){
             </section>
 
             <section className="about" id="about">
-              <h1 id="about-section">What's this about?<span className="antique">&nbsp;</span></h1>
+              <h1 id="about-section">WHAT'S THIS ABOUT<span className="antique">&nbsp;</span></h1>
               <h2 className="subhead">This blog features a variety of country music topics.</h2>
               <div className="about-content-wrapper">
                 <p className="secondary-text">This is about music you idiot...country music.</p>

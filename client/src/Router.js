@@ -11,6 +11,7 @@ import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
 import AuthContext from './components/Context/AuthContext';
 import FourOFour from './components/Layout/404';
+import Footer from './components/Layout/Footer';
 
 
 
@@ -44,7 +45,8 @@ const Router = () => {
           <Route path='*' component={FourOFour}/>
           )}
         </Switch>
-      </BrowserRouter>
+      <Footer />
+    </BrowserRouter>
   )
 }
 
