@@ -6,11 +6,12 @@
   justify-content: center;
   align-items: center;
   padding: 50px 10px;
+  margin-top: -20px;
 }
 
 .postForm {
   box-shadow: 3px 6px 30px rgb(150 155 187 / 40%);
-  border-radius: 15px;
+  /* border-radius: 15px; */
   height: 90%;
   width: 90%;
   max-width: 810px;
@@ -33,7 +34,7 @@
   position: relative;
   text-align: center;
   padding-bottom: 10px;
-  color: var(--secondary-btn-color);
+  color: var(--text-color);
 }
 
 .postForm-item {
@@ -140,14 +141,15 @@ label {
   width: 100%;
   padding: 10px;
   border: none;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   font-family: var(--text-font);
   font-size: 21px;
   line-height: 27px;
   letter-spacing: 2px;
-  color: var(--tertiary-btn-color);
-  background-color: var(--tertiary-btn-bgcolor);
+  color: var(--secondary-btn-bgcolor);
+  background-color: var(--secondary-btn-color);
   opacity: .75;
+  transition: all .3s ease-in-out;
 }
 
 .postForm-button:hover {
@@ -172,13 +174,14 @@ label {
 
 /* form errors messaging */
 .error-message-wrapper {
+   position: relative;
    width: 100%;
    text-align: center;
    background-color: var(--primay-btn-bgcolor);
-   opacity: .3;
-   color: white;
+   color: #ffffff;
    padding: 10px;
    margin: 10px;
+   z-index: 10;
  }
 
 /* form success messaging */
