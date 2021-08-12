@@ -40,7 +40,7 @@ render(){
   return <div className="container">
             <div className="flex-container">
               <div className="articlepage-title-wrapper">
-                  <h1 id="articlepage-title">Articles</h1>
+                  <h1 id="articlepage-title">ARTICLES</h1>
                   { this.error && <div className="error-message-wrapper"><div className="error-message">{ this.error }</div></div> }
               </div>
                 {this.renderList()}
