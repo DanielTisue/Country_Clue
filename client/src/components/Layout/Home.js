@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Post from  '../Posts/Post';
-import logo from '../../Assets/Images/Single_guitar.jpg';
+import logo from '../../Assets/Images/NewSingleGuitar.jpg';
 import { Footer } from './Footer';
 // import imagebg from '../../Assets/Images/WHT_Brick-bg_joe-woods_unsplash.jpg';
 // import {ReactComponent as Background } from '../../Assets/Images/MusicBackground.svg';
@@ -79,9 +79,9 @@ render(){
                 <p className="secondary-text">This is about music you idiot...country music.</p>
               </div>
             </section>
-        
+         
         </div>
-        <Footer />
+       <Footer />
         </React.Fragment>
       
   }
