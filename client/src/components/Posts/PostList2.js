@@ -16,11 +16,9 @@ const PostList2 = () => {
         setPosts(res.data)
         setisLoading(false);
       }).catch((err) => {
-        if(err.response.status === 500) {
-          setError({ error: err.response.data.errMessage })
-        } 
-        const errMessage = "There was a problem retrieving the featured articles. Please contact your site admin."
-        setError({ error: "Status: " + err.response.status + ": " + errMessage })
+        let errMessage = "There was a problem retrieving the articles. Please contact your site admin."
+        let error = errMessage;
+        setError(error)
       });
     }
     return unsubscribe();
@@ -32,13 +30,13 @@ const PostList2 = () => {
     <div className="bg-img" id="article-bg-img">
       <div className="container">
         <div className="articlepage-title-wrapper">
-              <h1 id="articlepage-title">ARTICLES<span className="antique">&nbsp;</span></h1>
-              { error && <div className="error-message-wrapper"><div className="error-message">
-                {error}</div></div> }
+              <h1 id="articlepage-title">ARTICLES</h1>
         </div>
       </div>
     </div>
     <div className="container">
+        { error && <div className="error-message-wrapper"><div className="error-message">
+                {error}</div></div> }
       <div className="flex-container">
         {posts?.map((post => (
           <Post post={post} key={post._id} />

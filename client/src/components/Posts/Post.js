@@ -1,9 +1,11 @@
 import React from 'react';
 import '../Styles/Post.css';
 import tagImage from '../../Assets/Images/tag.svg';
+import { ReactComponent as Heart } from '../../Assets/Images/heart.svg';
 
 class Post extends React.Component {
-    constructor(props) {
+
+  constructor(props) {
     super(props);
     this.showPost = this.showPost.bind(this);
   }
@@ -28,17 +30,15 @@ class Post extends React.Component {
     return ( 
     
       <div className="post" onClick={this.showPost} >
-            {/* <div className="post-img-wrapped"> */}
+            <div className="like-wrapper">
+              <Heart className={post.likes > 0 ? 'heartOne filled' : 'heartOne'} alt="likes" />
+              <div className="likes">{post.likes}</div>
+            </div>
               <img className="post-img" alt="placeHolder" src={post.image} loading="lazy" />
-            {/* </div> */}
-            {/* <div className="post-content-wrapper"> */}
               <p className="post-tags">{this.renderTags(post.tags)}</p>
-            {/* <div className="post-title-wrapper"> */}
               <h3 className="post-title post-item">{post.title}</h3>
-            {/* </div> */}
               <p className="post-description post-item">{post.description}</p>
               <p className="post-date">{this.renderDate(post.createdAt)}</p>
-            {/* </div> */}
         </div>
         
         );

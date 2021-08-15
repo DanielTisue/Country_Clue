@@ -4,6 +4,7 @@ import dompurify from 'dompurify';
 import { Link, useHistory } from 'react-router-dom';
 import '../Styles/PostShow.css';
 import tagImage from '../../Assets/Images/tag.svg';
+import { ReactComponent as Heart } from '../../Assets/Images/heart.svg';
 import AuthContext from "../Context/AuthContext";
 
 
@@ -19,7 +20,10 @@ function ShowPost (props) {
         [author, setAuthor] = useState(""),
         [tags, setTags] = useState([]),
         [error, setError] = useState(null),
-        [mounted, isMounting] = useState(true); 
+        [mounted, isMounting] = useState(true),
+        [liked, setLiked] = useState(false);
+    let [likes, setLikes] = useState();
+ 
         // has to be set as separate state for buttons not contingent on loggedIn status
 
   let history = useHistory();
@@ -35,17 +39,52 @@ function ShowPost (props) {
      setDate(result.data.createdAt)
      setAuthor(result.data.author)
      setTags(result.data.tags)
+     setLikes(result.data.likes)
      isMounting(false)
+     if(likes > 0) {
+        setLiked(true)
+     }
     })
     .catch((err) => {
+      console.log(err);
+      let errMessage = "There was a problem retrieving this article. Please contact your site admin."
+      setError(errMessage)
+    });
+    
+  }, [props, likes]);
+
+  const addLike = () => {
+
+    if(likes > 0) {
+      setLiked(!liked)
+    }
+
+    let newLike = likes++;
+    setLikes(newLike)
+
+    let updatedPost = {
+        title,
+        description,
+        image,
+        message,
+        createdAt,
+        author,
+        tags,
+        likes  
+    }
+    
+    axios.put('http://localhost:5000/posts/' + props.match.params.id, updatedPost)
+    .then((res) => {
+      history.push(`/posts/` + props.match.params.id);
+    }).catch((err) => {
       console.log(err);
       if(err.response.status === 500) {
         setError(err.response.data.errMessage)
       } 
-      const errMessage = "There was a problem retrieving this article. Please contact your site admin."
+      const errMessage = "There was a problem updating this article. Please contact your site admin."
       setError("Status: " + err.response.status + ": " + errMessage)
-    });
-  }, [props])
+    })
+  }
 
   // Delete post
   const deletePost = (e) => {
@@ -58,6 +97,7 @@ function ShowPost (props) {
         if(err.response.status === 500) {
         setError(err.response.data.errMessage)
       }
+      setError(err)
       })
   }
 
@@ -65,7 +105,7 @@ function ShowPost (props) {
   const renderDate = (dateString) => {
     const date = new Date(dateString);
     
-    return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
+    return `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
   }
 
  
@@ -74,28 +114,37 @@ function ShowPost (props) {
           <div className="postShow-container">
             {/* SHOW POST */}
             <div className="show-post">
-              { error && <div className="error-message-wrapper"><div className="error-message">{ error }</div></div> }
+              { error && ( <div className="error-message-wrapper"><div className="error-message">{ error }</div></div> )}
                 {/* TAGS */}
-              <div className="show-item-tags">
-                {tags.map((tag, key) => {
-                  return <span className="postShow-tag" key={key}>{tag}<img className="postShow-tagImage" src={tagImage} alt="tag" /></span>
-                })}
-              </div>
+              <div className="show-post-header">
 
+                <div className="show-item-tags">
+                  {tags.map((tag, key) => {
+                    return <span className="postShow-tag" key={key}>{tag}<img className="postShow-tagImage" src={tagImage} alt="tag" /></span>
+                  })}
+                </div>
+                <div className="show-item-likes">
+                   {!mounted && (
+                  <Heart className={liked ? 'heart filled' : 'heart'} value={liked} onClick={addLike} />
+                   )}
+                   {likes}
+                </div>
+
+              </div>
           
 
               {/* AUTHOR & DATE */}
               <div className="show-item">
               <div className="show-author">{author}</div>
-              {createdAt && <div className="show-date">{renderDate(createdAt)}</div>}
+              {createdAt && (<div className="show-date">{renderDate(createdAt)}</div>)}
               </div>
 
               {/* IMAGE */}
-              {image && <div className="show-item" value={image}>
+              {image && (<div className="show-item" value={image}>
                 <img className="show-image" alt="" src={image} />
-              </div> }
+              </div> )}
              
-                 {/* TITLE */}
+              {/* TITLE */}
               <div className="show-item">
                 <h1 className="show-title">{title}</h1>
               </div>
