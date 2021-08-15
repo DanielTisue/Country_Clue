@@ -112,8 +112,8 @@ const PostEditForm = (props) => {
   return (
     
      <div className="postForm-container">
-        { error && <div className="error-message-wrapper"><div className="error-message">{ error }</div></div> }
-        {loggedIn && !mounted &&
+       
+        {loggedIn && !mounted && (
         <form className="postForm" encType="multipart/form-data"> 
           <div className="internalPostForm-alignment">
             <h1 className="postForm-title">Don't worry! Nobody noticed.<span className="antique">&nbsp;</span></h1>
@@ -160,9 +160,10 @@ const PostEditForm = (props) => {
             } 
             
             <button className="secondary" id="back-button" onClick={backRouter}>Back to this Article</button>
+             { error && <div className="error-message-wrapper"><div className="error-message">{ error }</div></div> }
             </div>
         </form>
-        }
+        )}
         </div>
       
   )

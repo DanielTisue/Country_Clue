@@ -17,6 +17,7 @@ const CreatePostForm = () => {
         [image, setFile] = useState(""),
         [message, setMessage] = useState(""),
         [tags, setTags] = useState([]),
+        [likes, setLikes] = useState(0),
         [error, setError] = useState(null),
         [success, setSuccess] = useState(false),
         [mounted, isMounting] = useState(true);
@@ -52,13 +53,15 @@ const tagHandler = (e) => {
 
 const handleSubmit = async (e) => {
       e.preventDefault();
-  
+      setLikes(0)
       const formdata = new FormData();
 
       formdata.append("image", fileData);
       formdata.append("title", title);
       formdata.append("description", description);
       formdata.append("message", message);
+      formdata.append("likes", likes);
+      console.log(likes);
       for (var i = 0; i < tags.length; i++ ) {
         formdata.append("tags[]", tags[i]);
       }    
@@ -79,7 +82,7 @@ const handleSubmit = async (e) => {
         if(err.response.status === 500) {
           setError(err.response.data.errMessage)
         } 
-        const errMessage = "There was a problem creating this article. Please contact your site admin."
+        const errMessage = "There was a problem creating this article. Make sure all required fields are filled in."
         setError("Status: " + err.response.status + ": " + errMessage)
       })
             
@@ -88,8 +91,8 @@ const handleSubmit = async (e) => {
  
   return (
      <div className="postForm-container">
-        { error && <div className="error-message-wrapper"><div className="error-message">{ error }</div></div> }
-        {loggedIn && !mounted &&
+        
+        {loggedIn && !mounted && (
         <form className="postForm" encType="multipart/form-data"> 
           <div className="internalPostForm-alignment">
             <h1 className="postForm-title">Make it count!<span className="antique">&nbsp;</span></h1>
@@ -120,16 +123,6 @@ const handleSubmit = async (e) => {
 
             <div className="postForm-item">
               <label>Tags</label>
-              {/* <select name="pets" multiple size="6">
-                <optgroup label="tags">
-                  <option value="artistReview">artistReview</option>
-                  <option value="concertReview">concertReview</option>
-                  <option value="albumReview" disabled>albumReview</option>
-                  <option value="goneButNotForgotten">goneButNotForgotten</option>
-                  <option value="roadtripPlaylist">roadtripPlaylist</option>
-                  <option value="newArtist">newArtist</option>
-                  </optgroup>
-              </select> */}
               <input className="inputs" type="text" name="tags" placeholder="Separate each tag with a comma and no spaces. Ex: tag1,tag2,tag3" value={tags} onChange={tagHandler} />
             </div>
            {!success &&
@@ -143,9 +136,10 @@ const handleSubmit = async (e) => {
               </div>
             }
             <button className="secondary" id="back-button" onClick={backRouter}>Back to all posts</button>
+            { error && <div className="error-message-wrapper"><div className="error-message">{ error }</div></div> }
             </div>
         </form>
-}
+      )}
         </div>
     
   )
