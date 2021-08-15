@@ -24,8 +24,41 @@
   list-style-position: inside;
 }
 
-.show-item-tags {
+.show-post-header {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px;
+}
+
+.show-item-likes {
+  width: 25%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.heart {
+  width: 25px;
+  height: 25px;
+  overflow: visible;
+  cursor: pointer;
+  padding: 3px;
+  fill: none;
+  stroke: var(--text-color);
+  stroke-width: 50px;
+}
+
+.heart.filled {
+  stroke: none;
+  stroke-width: 0;
+  /* fill: red; */
+  fill: var(--primay-btn-bgcolor);
+}
+
+.show-item-tags {
+  width: 75%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -49,6 +82,11 @@
   letter-spacing: .1rem;
   font-size: 45px;
   line-height: 51px;
+}
+
+#showPost-description {
+  font-size: 28px;
+  line-height: 34px;
 }
 
 .postShow-tagImage {
@@ -87,7 +125,7 @@
 
 .edit {
   padding: 8px 20px;
-  font-size: 15px;
+  font-size: 18px;
   max-width: 100%;
   border-radius: 5px;
   border: none;

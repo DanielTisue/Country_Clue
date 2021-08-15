@@ -160,6 +160,7 @@ label {
 
 #back-button {
   width: 100%;
+  /* margin-bottom: 20px; */
 }
 
 .tag-list {
@@ -174,14 +175,14 @@ label {
 
 /* form errors messaging */
 .error-message-wrapper {
-   position: relative;
+   /* position: relative; */
    width: 100%;
    text-align: center;
    background-color: var(--primay-btn-bgcolor);
    color: #ffffff;
    padding: 10px;
-   margin: 10px;
-   z-index: 10;
+   margin: 20px 0;
+   /* z-index: 10; */
  }
 
 /* form success messaging */
