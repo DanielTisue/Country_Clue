@@ -29,6 +29,9 @@ const postSchema = new mongoose.Schema({
     type: String,
     default: 'Elton Claude'
   },
+  likes: {
+    type: Number
+  }
 });
 
 
