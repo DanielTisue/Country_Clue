@@ -61,7 +61,6 @@ router.post('/', auth, upload.single("image"), async (req, res) => {
 router.get('/', async (req, res) => {
 	try {
 		const posts = await Post.find({}).sort({ _id: -1 });
-		console.log(posts.likes);
 		return res.status(200).json(posts);
 	} catch (err) {
 		console.log(err);
@@ -74,7 +73,6 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
 	try {
 		const post = await Post.findById(req.params.id);
-			console.log(post.likes);
 		if (!post) {
          return res.status(404).json({ errMessage: 'A problem occurred with the server. The article you requested can not be found.'}).send();
       } 
@@ -109,16 +107,7 @@ router.put('/:id', upload.single("image"), async (req, res) => {
 				}
 				post = await Post.findByIdAndUpdate(req.params.id, updatedPost, { new: true });
 				return res.status(200).json(updatedPost);
-		 } 
-		//else if (req.body.likes) {
-		// 		let updatedPost = {
-		// 			likes: req.body.likes
-		// 		}
-		
-		// 		post = await Post.findByIdAndUpdate(req.params.id, updatedPost, { new: true });
-		// 		return res.status(200).json(updatedPost);
-		
-		// } else {
+		} 
 			let updatedPost = {
 					title: req.body.title,
 					description: req.body.description,					
@@ -127,39 +116,13 @@ router.put('/:id', upload.single("image"), async (req, res) => {
 					likes: req.body.likes
 			}
 			await Post.findByIdAndUpdate(req.params.id, updatedPost, { new: true });
-			return res.status(200).json(updatedPost);
-		// }
-	 
-			
+			return res.status(200).json(updatedPost);	
 	} catch (err) {
 		console.log(err);
 		return res.status(500).json({ errMessage: 'A problem occurred with the server. Please contact your site admin.'}).send();
 	}
 
   });
-
-	// router.put('/:id', async (req, res) => {
-	// 	try {
-	// 			let post = await Post.findById(req.params.id);
-
-	// 			if(!post) {
-	// 				return res.status(404).json({ errMessage: 'A problem occurred with the server. The article you requested can not be found.'}).send();
-	// 			}
-	
-	// 			let updatedPost = {
-	// 				likes: req.body.likes
-	// 			}
-	// 			await Post.findByIdAndUpdate(req.params.id, updatedPost, { new: true });
-	// 			return res.status(200).json(updatedPost);
-			
-	// 		} catch (err) {
-
-	// 			console.log(err);
-	// 			return res.status(500).json({ errMessage: 'A problem occurred with the server. Please contact your site admin.'}).send();
-				
-	// 		}
-
-	// });
 
 //DELETE POST
 router.delete('/:id', auth, async (req, res) => {
