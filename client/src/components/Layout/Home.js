@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Post from  '../Posts/Post';
 import logo from '../../Assets/Images/NewSingleGuitar.jpg';
+import artistReview from '../../Assets/Images/ArtistReview.svg';
+import concertReview from '../../Assets/Images/ConcertReview.svg';
+import playlist from '../../Assets/Images/Playlist.svg';
 import { Footer } from './Footer';
 // import imagebg from '../../Assets/Images/WHT_Brick-bg_joe-woods_unsplash.jpg';
 // import {ReactComponent as Background } from '../../Assets/Images/MusicBackground.svg';
@@ -65,10 +68,24 @@ const [posts, setPosts] = useState([]),
                 </section>
 
                 <section className="about" id="about">
-                  <h1 id="about-section">WHAT'S THIS ABOUT<span className="antique">&nbsp;</span></h1>
-                  <h2 className="subhead">This blog features a variety of country music topics.</h2>
-                  <div className="about-content-wrapper">
+                  <h1 id="about-section">WHAT'S THIS ABOUT?<span className="antique">&nbsp;</span></h1>
+                  <h2 className="subhead">Country... This blog features a variety of country music topics.</h2>
+                  {/* <div className="about-content-wrapper">
                     <p className="secondary-text">This is about music you idiot...country music.</p>
+                  </div> */}
+                  <div className="about-content">
+                    <div className="artist review">
+                    <img className="artist-img about-img" src={artistReview} alt="artistReview"/>
+                    <p className="about-text">We take an indepth look at all country music artists. We don't limit ourselves to the most known but also take a look at non-mainstream country music artists.</p>
+                    </div>
+                    <div className="playlist review">
+                      <img className="playlist-img about-img" src={playlist} alt="playlist"/>
+                    <p className="about-text">Checkout the articles where we customize a much needed playlist for travel, on the go, or simply just because we love the music.</p>
+                    </div>
+                    <div className="concert review">
+                      <img className="concert-img about-img" src={concertReview} alt="concertReview"/>
+                    <p className="about-text">When we can, circumstances permitting, we love live shows. Check out our articles where we give in depth concert reviews of your favorites.</p>
+                    </div>
                   </div>
                 </section>
             
