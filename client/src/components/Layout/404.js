@@ -1,22 +1,27 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import four from '../../Assets/Images/404.svg';
+import notFound from '../../Assets/Images/NotFound.svg';
 
 const FourOFour = () => {
     return (
      <div className="container">
        <div className="error-container">
-        <div className="error-img">
-          <p>There is going to be an image here or maybe an illustration or even possibly an ilustrated animation...ooooohhhhh ahhhh</p>
-        </div>
-        <div className="error-text">
-          <h1>404 Page Not Found</h1>
-          <p>Can't get a Country Clue here...Let's get you back to the articles</p>
-          <div className="button-wrapper">
-           <Link to={'/posts'} >
-                <button className="primary">Articles</button>
-           </Link>
-           </div>
-        </div>
+
+          <div className="error-img">
+            <img className="error-left" src={notFound} alt="Not Found" />
+          </div>
+
+          <div className="error-text">
+            <img className="error-right" src={four} alt="Not Found" />
+            <p>You've gone way past country...don't worry, the blog is only a button click away.</p>
+            <div className="button-wrapper error-btn">
+            <Link to={'/posts'} >
+                  <button className="primary error-primary">Back to the Blog</button>
+            </Link>
+            </div>
+          </div>
+
        </div>
      </div>
       )

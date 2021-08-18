@@ -347,15 +347,16 @@
    line-height: 61px;
    font-weight: 400;
    text-align: center;
-   padding: 6rem 0 2rem 0;
    color: var(--text-color);
-   /* background-color: #e3dcda; */
  }
 
+ #about-section {
+   padding: 4rem 0 2rem 0;
+ }
 
-/* .featured {
-  height: 100%;
-} */
+#featured {
+  padding: 6rem 0 2rem 0;
+}
 
 .featured-block {
   padding: 65px 30px;
@@ -374,7 +375,7 @@
 .about {
   padding: 0 4rem;
   height: 100%;
-  min-height: 65vh;
+  min-height: 90vh;
   scroll-snap-align: center;
 }
 
@@ -448,38 +449,52 @@ img.about-img {
   padding: 25px 25px 150px 25px;
  }
 
- /* 404 page */
- .error-container {
-   width: 100%;
-   display: flex;
-   justify-content: space-evenly;
-   padding: 50px;
- }
-
- .error-img {
-   width: 40%;
-   padding: 25px;
- }
-
- .error-text {
-   width: 60%;
-   padding: 25px;
- }
-
  .footer-container {
    position: relative;
    bottom: 0;
    background-color: #e3dcda;
    width: 100vw !important;
    height: 50px;
-   padding: 50px;
+   padding: 25px 25px 75px 25px;
    display: flex;
    justify-content: center;
    text-align: center;
    align-items: center;
  }
 
+/* 404 page */
+ .error-container {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   padding: 100px 50px 50px 50px;
+ }
 
+ .error-img {
+   width: 50%;
+   padding: 25px;
+ }
+
+ .error-right {
+   height: 100%;
+   max-height: 300px;
+   padding: 25px;
+ }
+
+ .error-text {
+   width: 50%;
+   padding: 25px;
+ }
+
+ .error-text p {
+   padding: 25px;
+ }
+
+ .error-btn {
+   display: flex;
+   justify-content: center;
+   padding: 25px 0;
+ }
 
       /* DESKTOP larger than laptop */
       /* If screen size is more than */
@@ -511,7 +526,7 @@ img.about-img {
 
       /* TABLET & SOME MOBILE layouts */
       /* If screen size is more than */
-      @media only screen and (min-width: 1004px) {
+      @media only screen and (min-width: 1024px) {
         .container {
           max-width: 1300px !important;
         }
@@ -536,7 +551,7 @@ img.about-img {
 
       /* TABLET & SOME MOBILE layouts */
       /* If screen size is or less */
-      @media only screen and (max-width: 1004px) {
+      @media only screen and (max-width: 1024px) {
         .container {
           max-width: 1300px !important;
         }
@@ -547,6 +562,10 @@ img.about-img {
           flex-direction: column;
           justify-content: flex-start;
 
+        }
+
+        .bg-img, .featured, .about {
+          scroll-snap-align: none;
         }
 
         .main-img-wrapper {
@@ -628,6 +647,33 @@ img.about-img {
           padding-left: 0;
           padding-right: 0;
           max-width: 300px;
+        }
+
+        .footer-container {
+          padding: 25px;
+        }
+
+        .error-container {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 50px 25px;
+        }
+
+        .error-img {
+          padding: 25px 0;
+        }
+
+        .error-text {
+          width: 75%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .error-text p, .error-btn {
+          padding: 25px 0;
         }
       }
 
@@ -731,6 +777,15 @@ img.about-img {
           padding: 10px 0 40px 0;
           margin: 0;
         }
+
+        .error-text {
+          width: 100%;
+        }
+        
+        .primary.error-primary {
+          font-size: 15px;
+          padding: 8px 20px;
+        }
       }
 
       @media only screen and (max-width: 360px) {
@@ -757,4 +812,5 @@ img.about-img {
           letter-spacing: .9rem;
           padding: 0 0 15px 0;
         }
+
       }
