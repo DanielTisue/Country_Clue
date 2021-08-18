@@ -73,12 +73,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
 	try {
 		const post = await Post.findById(req.params.id);
-		if (!post) {
-         return res.status(404).json({ errMessage: 'A problem occurred with the server. The article you requested can not be found.'}).send();
-      } 
-				return res.status(200).json(post);
-			
-       
+		return res.status(200).json(post);
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json({ errMessage: 'A problem occurred with the server. Please contact your site admin.'}).send();
@@ -90,10 +85,6 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', upload.single("image"), async (req, res) => {
    try {
 		let post = await Post.findById(req.params.id);
-
-		if(!post) {
-			return res.status(404).json({ errMessage: 'A problem occurred with the server. The article you requested can not be found.'}).send();
-		}
 
 		if (req.file) {
 				await cloudinary.uploader.destroy(post.image_id);
