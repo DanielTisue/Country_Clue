@@ -219,6 +219,7 @@
   z-index: 2;
   transform: translateX(100%);
   transition: all .5s ease-in-out;
+  padding: 50px 0;
 }
 
 .menu-bar.open-menu {
@@ -455,11 +456,23 @@ img.about-img {
    background-color: #e3dcda;
    width: 100vw !important;
    height: 50px;
-   padding: 25px 25px 75px 25px;
+   padding: 25px;
    display: flex;
    justify-content: center;
    text-align: center;
    align-items: center;
+ }
+
+ .footer-title {
+   font-family: var(--title-font);
+   font-size: 15px;
+   line-height: 18px;
+ }
+
+ .footer p {
+   font-size: 13px;
+   line-height: 18px;
+   padding-bottom: 10px;
  }
 
 /* 404 page */
