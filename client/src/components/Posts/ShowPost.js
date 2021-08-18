@@ -47,8 +47,9 @@ function ShowPost (props) {
     })
     .catch((err) => {
       console.log(err);
-      let errMessage = "There was a problem retrieving this article. Please contact your site admin."
+      let errMessage = "There was a problem retrieving this article."
       setError(errMessage)
+      // history.push('/posts');
     });
     
   }, [props, likes]);
@@ -80,9 +81,11 @@ function ShowPost (props) {
       console.log(err);
       if(err.response.status === 500) {
         setError(err.response.data.errMessage)
+        // history.push('/posts');
       } 
-      const errMessage = "There was a problem updating this article. Please contact your site admin."
+      const errMessage = "There was a problem updating this article."
       setError("Status: " + err.response.status + ": " + errMessage)
+      // history.push('/posts');
     })
   }
 
@@ -96,8 +99,10 @@ function ShowPost (props) {
       .catch((err) => {
         if(err.response.status === 500) {
         setError(err.response.data.errMessage)
+        // history.push('/posts');
       }
       setError(err)
+      // history.push('/posts');
       })
   }
 
@@ -114,7 +119,14 @@ function ShowPost (props) {
           <div className="postShow-container">
             {/* SHOW POST */}
             <div className="show-post">
-              { error && ( <div className="error-message-wrapper"><div className="error-message">{ error }</div></div> )}
+              { error && ( 
+                <div className="error-message-wrapper">
+                  <div className="error-message">{ error }</div>
+                  <Link to={'/posts'} >
+                  <button className="secondary space-it no-hover">Back to Articles</button>
+                  </Link>
+                </div> 
+              )}
                 {/* TAGS */}
               <div className="show-post-header">
 

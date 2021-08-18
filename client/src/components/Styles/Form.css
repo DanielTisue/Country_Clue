@@ -180,9 +180,13 @@ label {
    text-align: center;
    background-color: var(--primay-btn-bgcolor);
    color: #ffffff;
-   padding: 10px;
+   padding: 25px 10px;
    margin: 20px 0;
    /* z-index: 10; */
+ }
+
+ .error-message {
+   padding-bottom: 20px;
  }
 
 /* form success messaging */
