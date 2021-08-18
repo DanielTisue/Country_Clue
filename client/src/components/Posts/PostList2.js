@@ -28,10 +28,8 @@ const PostList2 = () => {
     <>
     
     <div className="bg-img" id="article-bg-img">
-      <div className="container">
         <div className="articlepage-title-wrapper">
               <h1 id="articlepage-title">ARTICLES</h1>
-        </div>
       </div>
     </div>
     <div className="container">
