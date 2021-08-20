@@ -15,35 +15,28 @@ router.post('/register', async (req, res) => {
         errorMessage: "Please enter all required fields!",
       }).send();
     }
-
     if(password.length < 6 ) {
       return res.status(400).json({
         errorMessage: "Please make sure your password is longer than 6 characters.",
       });
     }
-
     if(password != passwordVerify ) {
       return res.status(400).json({
         errorMessage: "Please make sure your passwords match.",
       });
     }
-
     const existingUser = await User.findOne({ username });
     if(existingUser) {
       return res.status(400).json({
         errorMessage: "An account with this username already exists 🤨",
       });
     }
-
     //Encrypt password
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
-
     //Save new User
     const newUser = new User({ username: username, password: passwordHash });
     const savedUser = await newUser.save();
-    
-
     //Log user in right away - Create & assign a token
     const token = jwt.sign({
       user: savedUser._id
@@ -54,9 +47,7 @@ router.post('/register', async (req, res) => {
       secure: true,
       sameSite: "none",
     }).send();
-
     return res.status(201).json(savedUser).send('You have been successfully registered!');
-
   } catch (err) {
     res.status(500).send();
   }
@@ -68,14 +59,12 @@ router.post('/login', async (req, res) => {
   
   try {
     const { username, password } = req.body;
-
      //Validate
     if(!username || !password) {
       return res.status(400).json({
         errorMessage: "Please enter all required fields!",
       }).send();
     }
-
     const existingUser = await User.findOne({ username });
     //Check for username
     if(!existingUser) {
@@ -83,7 +72,6 @@ router.post('/login', async (req, res) => {
         errorMessage: "Incorrect username or password. Please try again.",
       }).send();
     }
-
     const passwordUsed = await bcrypt.compare(password, existingUser.password);
     //Check for password
     if(!passwordUsed) {
@@ -91,7 +79,6 @@ router.post('/login', async (req, res) => {
         errorMessage: "Incorrect username or password. Please try again.",
       }).send();
     }
-
     //Create & assign a token
     const token = jwt.sign({
       user: existingUser._id
@@ -102,9 +89,6 @@ router.post('/login', async (req, res) => {
       secure: true,
       sameSite: "none",
     }).send();
-
-    console.log("login sucessful");
-
   } catch (err) {
     res.status(500).send();
   }
@@ -118,7 +102,6 @@ router.get('/logout', (req, res) => {
     secure: true,
     sameSite: "none",
     }).send();
-    console.log("logout successful")
 });
 
 // GETTING TOKEN
@@ -126,9 +109,7 @@ router.get('/loggedIn', (req, res) => {
   try {
     const token = req.cookies.token;
     if (!token) return res.json(false);
-
     jwt.verify(token, process.env.SERIALIZE_CONFIG);
-
     res.send(true);
   } catch (err) {
     res.json(false);

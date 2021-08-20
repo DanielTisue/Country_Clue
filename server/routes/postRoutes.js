@@ -63,7 +63,6 @@ router.get('/', async (req, res) => {
 		const posts = await Post.find({}).sort({ _id: -1 });
 		return res.status(200).json(posts);
 	} catch (err) {
-		console.log(err);
 		return res.status(500).json({ errMessage: 'A problem occurred with the server. Please contact your site admin.'}).send();
 	}
   
@@ -75,7 +74,6 @@ router.get('/:id', async (req, res) => {
 		const post = await Post.findById(req.params.id);
 		return res.status(200).json(post);
 	} catch (error) {
-		console.log(error);
 		return res.status(500).json({ errMessage: 'A problem occurred with the server. Please contact your site admin.'}).send();
 	}
 });
@@ -85,7 +83,6 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', upload.single("image"), async (req, res) => {
    try {
 		let post = await Post.findById(req.params.id);
-
 		if (req.file) {
 				await cloudinary.uploader.destroy(post.image_id);
 				let updatedPost = {
@@ -112,7 +109,6 @@ router.put('/:id', upload.single("image"), async (req, res) => {
 		console.log(err);
 		return res.status(500).json({ errMessage: 'A problem occurred with the server. Please contact your site admin.'}).send();
 	}
-
   });
 
 //DELETE POST
