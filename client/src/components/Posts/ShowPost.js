@@ -170,7 +170,7 @@ function ShowPost (props) {
 
               {/* POST */}
               <div className="show-item">
-                <div dangerouslySetInnerHTML={{__html: dompurify.sanitize(message)}} id="post-copy"></div>
+                <div className="showPost-copy" dangerouslySetInnerHTML={{__html: dompurify.sanitize(message)}} id="post-copy"></div>
               </div>
           
              {/* BUTTONS */}

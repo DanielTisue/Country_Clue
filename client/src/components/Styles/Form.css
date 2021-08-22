@@ -11,7 +11,6 @@
 
 .postForm {
   box-shadow: 3px 6px 30px rgb(150 155 187 / 40%);
-  /* border-radius: 15px; */
   height: 90%;
   width: 90%;
   max-width: 810px;
@@ -46,7 +45,7 @@
   font-size: 14px;
   line-height: 20px;
   background-color: var(--main-bg-color) !important;
-  /* filter: sepia(1%) !important; */
+  padding: 25px !important;
 }
 
 .ck-file-dialog-button, .ck-toolbar__grouped-dropdown {
@@ -59,22 +58,14 @@
   line-height: 20px;
 }
 
-/* textarea::placeholder {
-  font-size: 13px;
-  line-height: 20px;
-  font-style: italic;
-} */
-
 input::placeholder {
   font-size: 14px;
   line-height: 26px;
   color: #d2d2d2ee;
   letter-spacing: .03em;
   background-color: var(--main-bg-color);
-  /* filter: sepia(1%); */
 }
 
-/* Placeholder form text-color : #757c98 */
 
 /* Webkit */
 [placeholder]:focus::-webkit-input-placeholder { opacity: 0; }
@@ -87,7 +78,6 @@ input::placeholder {
 
 input {
   width: 100%;
-  /* font-family: Arial, Helvetica, sans-serif; */
   font-size: 16px;
   line-height: 25px;
   border-top: none;
@@ -141,7 +131,6 @@ label {
   width: 100%;
   padding: 10px;
   border: none;
-  /* border-radius: 5px; */
   font-family: var(--text-font);
   font-size: 21px;
   line-height: 27px;
@@ -155,12 +144,10 @@ label {
 .postForm-button:hover {
   opacity: 1;
   box-shadow: 3px 3px 3px #d2d2d2;
-  /* box-shadow: 2px 2px 35px #171717; */
 }
 
 #back-button {
   width: 100%;
-  /* margin-bottom: 20px; */
 }
 
 .tag-list {
@@ -175,14 +162,12 @@ label {
 
 /* form errors messaging */
 .error-message-wrapper {
-   /* position: relative; */
    width: 100%;
    text-align: center;
    background-color: var(--primay-btn-bgcolor);
    color: #ffffff;
    padding: 25px 10px;
    margin: 20px 0;
-   /* z-index: 10; */
  }
 
  .error-message {
