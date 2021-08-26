@@ -72,6 +72,11 @@
   --success-btn: #42bda1;
 }
 
+html {
+  scroll-behavior: smooth !important;
+  scroll-snap-type: y mandatory;
+}
+
  body {
    height: 100%;
    width: 100%;
@@ -252,6 +257,7 @@
   overflow: visible;
   padding-top: 6rem;
   margin-top: -20px;
+  scroll-snap-align: start;
 }
 
   .container {
@@ -259,13 +265,14 @@
    margin: 0 auto;
    background-color: transparent;
    min-height: 100vh;
+   
  }
 
  #main-home {
    max-width: 1300px !important;
    height: 100%;
    padding: 30px;
-   scroll-snap-align: center;
+   
  }
 
  .main-img {
@@ -363,7 +370,7 @@
   padding: 0 4rem;
   height: 100%;
   min-height: 90vh;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
 }
 
 .about-content-wrapper {
