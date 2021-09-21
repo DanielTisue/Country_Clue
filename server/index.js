@@ -17,6 +17,8 @@ app.use(cors({
   credentials: true
 }));
 
+//Test to see if cors.config needed
+ 
 //MONGO SETUP
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
