@@ -39,6 +39,11 @@ return (
                 <li className="navBar-link-item">Login</li>
                 </Link>
               )}
+              {!loggedIn && (
+                <Link to='/auth/register' >
+                <li className="navBar-link-item">Register</li>
+                </Link>
+              )}
               {loggedIn && (
                 <li className="navBar-link-item"> <LogOutBtn /> </li>
               )}
