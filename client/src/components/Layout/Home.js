@@ -41,8 +41,8 @@ const [posts, setPosts] = useState([]),
                     <div className="main-bg"></div>
                     
                       <div className="homepage-title-wrapper">
-                        
-                          <h1 id="homepage-title">GONE COUNTRY</h1>
+                          <h2>get a...</h2>
+                          <h1 id="homepage-title">COUNTRY CLUE</h1>
                           <h2 id="subhead">MUSIC BLOG</h2>
                           <Link to='/posts' >
                           <button className="secondary-inverse" id="main-cta">Read now</button>
