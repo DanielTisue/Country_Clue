@@ -16,8 +16,6 @@ app.use(cors({
   origin: ["http://localhost:3000"],
   credentials: true
 }));
-
-//Test to see if cors.config needed
  
 //MONGO SETUP
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true });
