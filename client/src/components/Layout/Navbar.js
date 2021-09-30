@@ -27,7 +27,7 @@ return (
          <div className={openMenu ? 'menu-bar open-menu' : 'menu-bar'} onClick={showOpen}>
             <ul className="navBar-items">
               {Navlinks.map((navlink) => {
-                return <li className="navBar-link-item" key={navlink.id}><a href={navlink.url} key={navlink.id}>{navlink.text}</a></li>
+                return <li className="navBar-link-item" key={navlink.id}><a className="navBar-link" href={navlink.url} key={navlink.id}>{navlink.text}</a></li>
               })}
               {loggedIn && (
               <Link to='/create' >
