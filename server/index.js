@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000;
 app.use(express.json({ extended: true }));
 app.use(cookieParser());
 app.use(cors({
-  origin: ["http://localhost:3000"],
+  origin: ["167.71.249.200"],
   credentials: true
 }));
  
@@ -26,8 +26,8 @@ connection.once('open', () => {
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
-app.use('/posts', postRoutes);
-app.use('/auth', userRoutes);
+app.use('/api/posts', postRoutes);
+app.use('/api/auth', userRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);
