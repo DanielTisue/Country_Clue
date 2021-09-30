@@ -19,7 +19,7 @@ const [posts, setPosts] = useState([]),
   useEffect(() => {
     const unsubscribe = () => {
       // Synchronus
-      axios.get('http://localhost:5000/posts')
+      axios.get(`${process.env.REACT_APP_BASE_URL}/posts`)
       .then((res)=> {
         setPosts(res.data)
       }).catch((err) => {

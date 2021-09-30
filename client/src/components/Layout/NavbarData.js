@@ -3,7 +3,7 @@ export const Navlinks = [
   {
     id: 1,
     text: 'Home',
-    url: 'http://localhost:3000#main-home'
+    url: '167.71.249.200#main-home'
   },
   {
     id: 2,
@@ -13,12 +13,12 @@ export const Navlinks = [
   {
     id: 3,
     text: 'The Latest',
-    url: 'http://localhost:3000#featured'
+    url: '167.71.249.200#featured'
   },
   {
     id: 4,
     text: 'About',
-    url: 'http://localhost:3000#about'
+    url: '167.71.249.200#about'
   }
 ]
 
