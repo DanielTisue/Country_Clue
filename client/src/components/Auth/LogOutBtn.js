@@ -13,7 +13,7 @@ function LogOutBtn() {
 
   async function logOut() {
     try {
-      await axios.get('http://localhost:5000/auth/logout');
+      await axios.get(`${process.env.REACT_APP_BASE_URL}/auth/logout`);
       await getLoggedIn();
       history.push('/');
     }
