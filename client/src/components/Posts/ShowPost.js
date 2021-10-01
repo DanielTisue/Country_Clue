@@ -30,7 +30,7 @@ function ShowPost (props) {
 
   //Get data from spedcific post
   useEffect(() => {
-    axios.get('http://localhost:5000/posts/' + props.match.params.id)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/posts/` + props.match.params.id)
     .then((result) => {
      setTitle(result.data.title)
      setDescription(result.data.description)

@@ -24,7 +24,7 @@ const PostEditForm = (props) => {
 
 //Load data from post with id
   useEffect(() => {
-    axios.get("http://localhost:5000/posts/" + props.match.params.id)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/posts/` + props.match.params.id)
     .then((result) => {
      setTitle(result.data.title)
      setDescription(result.data.description)
@@ -87,7 +87,7 @@ const PostEditForm = (props) => {
       }
       
 
-    await axios.put("http://localhost:5000/posts/" + props.match.params.id, formdata)
+    await axios.put(`${process.env.REACT_APP_BASE_URL}/posts/` + props.match.params.id, formdata)
     .then(res => {
         clearFormData();
         if(res.status === 200) {
