@@ -26,7 +26,7 @@ https://cloudinary.com/documentation
 
 
 ## Production
-You can visit the production version at http://www.donegonecountry.com. Please be aware that your accesbility to the site is limited to that of a User and not an Admin. You will not be able to experiece admin priveleges such as logging in, creating, deleting, editing articles. You will be able to read articles and like articles. 
+You can visit the production version at https://www.donegonecountry.com. Please be aware that your accesbility to the site is limited to that of a User and not an Admin. You will not be able to experiece admin priveleges such as logging in, creating, deleting, editing articles. You will be able to read articles and like articles. 
 
 ## Credits
 All current photos from https://www.unsplash.com :
