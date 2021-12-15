@@ -66,7 +66,7 @@ const handleSubmit = async (e) => {
         formdata.append("tags[]", tags[i]);
       }    
 
-      await axios.post("http://localhost:5000/posts", formdata)
+      await axios.post(`${process.env.REACT_APP_BASE_URL}/posts`, formdata)
       .then(res => {
         clearFormData();
         if(res.status === 200) {

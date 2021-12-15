@@ -26,7 +26,7 @@ function Register() {
         passwordVerify
       }
 
-      await axios.post('http://localhost:5000/auth/register', registerData, { withCredentials: true })
+      await axios.post('http://localhost:8000/auth/register', registerData, { withCredentials: true })
       await getLoggedIn()
       
       history.push('/');

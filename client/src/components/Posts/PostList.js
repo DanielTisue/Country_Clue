@@ -17,7 +17,7 @@ class PostList extends React.Component {
 
   async getPosts() {
     try {
-      const res = await axios.get("http://localhost:5000/posts"); 
+      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/posts`); 
       this.setState({posts: res.data})
     } catch (err) {
       if(err.response.status === 500) {

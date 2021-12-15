@@ -9,9 +9,9 @@ const PostList2 = () => {
         [isloading, setisLoading] = useState(true);
   
   useEffect(() => {
-    const unsubscribe = () => {
-      // Synchronus
-      axios.get('http://localhost:5000/posts')
+    const unsubscribe = async () => {
+      // Asynchronus
+      await axios.get(`${process.env.REACT_APP_BASE_URL}/posts`)
       .then((res)=> {
         setPosts(res.data)
         setisLoading(false);

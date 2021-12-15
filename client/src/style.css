@@ -312,6 +312,10 @@ html {
    transition: all .3s ease-in-out;
  }
 
+ li.navBar-link-item a {
+   color: var(--main-bg-color);
+ }
+
  .navBar-link-item:hover {
    opacity: 1;
  }

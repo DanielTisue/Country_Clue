@@ -25,7 +25,7 @@ function Login() {
         password
       }
 
-      await axios.post('http://localhost:5000/auth/login', loginData, { withCredentials: true })
+      await axios.post(`${process.env.REACT_APP_BASE_URL}/auth/login`, loginData, { withCredentials: true })
       console.log("user successfully logged in");
       getLoggedIn()
       history.push('/');
